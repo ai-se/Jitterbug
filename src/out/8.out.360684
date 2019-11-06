@@ -1,0 +1,44 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2e5-6>
+Subject: Job 360684: </share/tjmenzie/zyu9/miniconda2/bin/python2.7 runner.py exp_HPC 8> in cluster <henry2> Exited
+
+Job </share/tjmenzie/zyu9/miniconda2/bin/python2.7 runner.py exp_HPC 8> was submitted from host <login01> by user <zyu9> in cluster <henry2> at Thu Mar 21 10:22:11 2019.
+Job was executed on host(s) <2*n2e5-6>, in queue <single_chassis>, as user <zyu9> in cluster <henry2> at Thu Mar 21 10:22:15 2019.
+</home/zyu9> was used as the home directory.
+</home/zyu9/projects/Better-Est/src> was used as the working directory.
+Started at Thu Mar 21 10:22:15 2019.
+Terminated at Thu Mar 21 10:23:06 2019.
+Results reported at Thu Mar 21 10:23:06 2019.
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share/tjmenzie/zyu9/miniconda2/bin/python2.7 runner.py exp_HPC 8
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 143.
+
+Resource usage summary:
+
+    CPU time :                                   41.43 sec.
+    Max Memory :                                 360.66 MB
+    Average Memory :                             184.79 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   1417 MB
+    Max Processes :                              3
+    Max Threads :                                11
+    Run time :                                   59 sec.
+    Turnaround time :                            55 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/8.err.360684> for stderr output of this job.
+
