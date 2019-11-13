@@ -1,9 +1,9 @@
 Project,label,original,questioned,changed
-columba,yes,204,0,0
+columba,yes,204,11,1
 columba,no,6264,90,27
 argouml,yes,1413,11,1
 argouml,no,8039,331,247
-emf,yes,104,7,0
+emf,yes,104,10,0
 emf,no,4286,58,26
 jfreechart,yes,209,11,0
 jfreechart,no,4199,61,18

@@ -37,20 +37,39 @@ class Treatment():
 
 
     def preprocess(self):
-        tfidfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=None, use_idf=True, smooth_idf=False,
-                                sublinear_tf=False,decode_error="ignore")
-        tfidf = tfidfer.fit_transform(self.x_content)
-        weight = tfidf.sum(axis=0).tolist()[0]
-        kept = np.argsort(weight)[-self.fea_num:]
-        self.voc = np.array(tfidfer.vocabulary_.keys())[np.argsort(tfidfer.vocabulary_.values())][kept]
-        ##############################################################
+        # tfidfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=None, use_idf=True, smooth_idf=False,
+        #                         sublinear_tf=False,decode_error="ignore")
+        # tfidf = tfidfer.fit_transform(self.x_content)
+        # weight = tfidf.sum(axis=0).tolist()[0]
+        # kept = np.argsort(weight)[-self.fea_num:]
+        # self.voc = np.array(tfidfer.vocabulary_.keys())[np.argsort(tfidfer.vocabulary_.values())][kept]
+        # ##############################################################
+        #
+        # ### Term frequency as feature, L2 normalization ##########
+        # tfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=u'l2', use_idf=False,
+        #                 vocabulary=self.voc,decode_error="ignore")
+        # self.train_data = tfer.fit_transform(self.x_content)
+        # self.test_data = tfer.fit_transform(self.y_content)
 
-        ### Term frequency as feature, L2 normalization ##########
-        tfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=u'l2', use_idf=False,
-                        vocabulary=self.voc,decode_error="ignore")
+
+        tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
         self.train_data = tfer.fit_transform(self.x_content)
         self.test_data = tfer.fit_transform(self.y_content)
+        ascend = np.argsort(tfer.vocabulary_.values())
+        self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
 
+
+    # def draw(self):
+    #     from sklearn.externals.six import StringIO
+    #     from IPython.display import Image
+    #     from sklearn.tree import export_graphviz
+    #     import pydotplus
+    #     dot_data = StringIO()
+    #     export_graphviz(self.model, out_file=dot_data,
+    #                     filled=True, rounded=True,
+    #                     special_characters=True)
+    #     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+    #     Image(graph.create_png())
 
 
 
@@ -146,7 +165,7 @@ class DT(Treatment):
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
-        self.model = DecisionTreeClassifier(class_weight="balanced")
+        self.model = DecisionTreeClassifier(class_weight="balanced",max_depth=8)
 
 class NB(Treatment):
 
@@ -182,6 +201,15 @@ def load(path="../new_data/"):
         data[file.split(".")[0]] = df0
     return data
 
+def load_new(path="../new_data/processed/"):
+    data={}
+    for file in listdir(path):
+        if file==".DS_Store":
+            continue
+        df = pd.read_csv(path+file)
+        data[file.split(".")[0]] = df
+    return data
+
 
 def show_result(results):
     metrics = results["ant"]["SVM"]["old"].keys()
@@ -197,6 +225,76 @@ def show_result(results):
         pd.DataFrame(df,columns=columns).to_csv("../results/"+metric+".csv", line_terminator="\r\n", index=False)
 
 
+def validate():
+    data = load_new()
+    content = []
+    label = []
+    pre_label = []
+    for target in data:
+        content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label += [c for c in data[target]["code"]]
+        pre_label += [c for c in data[target]["pre_label"]]
+    df = pd.DataFrame({"ID":range(len(content)), "Abstract": content, "code": label, "pre_label":pre_label},columns=["ID","Abstract","code","pre_label"])
+
+    conflicted = df[df["pre_label"]=="yes"][df["code"]=="no"]
+    conflicted.rename(columns = {'code':'groundtruth'}, inplace = True)
+    conflicted.to_csv("../results/validate.csv", line_terminator="\r\n", index=False)
+
+
+def hack():
+    data = load()
+    content = []
+    label = []
+    keys = ["fixme","todo","workaround","hack"]
+    for target in data:
+        content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label += [c for c in data[target]["code"]]
+
+    x=DT(content,content)
+    indices = {}
+    for key in keys:
+        indices[key] = [i for i,c in enumerate(content) if key in c]
+    new_label = ["no"]*len(label)
+    for key in keys:
+        for i in indices[key]:
+            new_label[i]="yes"
+        tp,fp,fn,tn = x.confusion(new_label, label)
+        metrics = {"tp": tp, "fp": fp, "fn": fn}
+        print(key)
+        print(metrics)
+    start = 0
+    for target in data:
+        end = len(data[target]["code"])+start
+        data[target]["pre_label"] = new_label[start:end]
+        start=end
+        data[target].to_csv("../new_data/processed/"+target+".csv", line_terminator="\r\n", index=False)
+
+    for i,l in enumerate(label):
+        if l=="no" and new_label[i]=="yes":
+            print(content[i])
+            set_trace()
+
+def highest_prec():
+    data = load()
+    content = []
+    label = []
+    for target in data:
+        content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label += [c for c in data[target]["code"]]
+    x=DT(content,content)
+    x.preprocess()
+    precs = {}
+    for key in x.voc:
+        ids = [i for i,c in enumerate(content) if key in c]
+        new_label = ["no"]*len(label)
+        for i in ids:
+            new_label[i]="yes"
+        tp,fp,fn,tn = x.confusion(new_label, label)
+        prec = float(tp)/(tp+fp)
+        precs[key]=prec
+    order = np.argsort(precs.values())[::-1][:10]
+    for o in order:
+        print((precs.keys()[o], precs.values()[o]))
 
 
 def exp():
@@ -247,7 +345,23 @@ def stats():
         table["changed"].extend([C["yes"],C["no"]])
     pd.DataFrame(table, columns=columns).to_csv("../results/questioned.csv", line_terminator="\r\n", index=False)
 
-
+def learner():
+    data = load()
+    x_content = []
+    x_label_old = []
+    for project in data:
+        x_content += [c.decode("utf8","ignore") for c in data[project]["Abstract"]]
+        x_label_old += [c for c in data[project]["code"]]
+    treatment = DT(x_content,x_content)
+    treatment.preprocess()
+    treatment.train(x_label_old)
+    features = treatment.model.feature_importances_
+    order = np.argsort(features)[::-1][:20]
+    out = []
+    for o in order:
+        out.append((treatment.voc[o],features[o]))
+    print(out)
+    # treatment.draw()
 
 
 if __name__ == "__main__":
