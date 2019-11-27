@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3abd812d-c856-459e-8ad2-ec2e72896149" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/APFD.csv" afterPath="$PROJECT_DIR$/results/APFD.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/AUC.csv" afterPath="$PROJECT_DIR$/results/AUC.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fastread.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/transfer.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/results/validate.csv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/GA.csv" afterPath="$PROJECT_DIR$/new_data/processed/GA.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/ant.csv" afterPath="$PROJECT_DIR$/new_data/processed/ant.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/argouml.csv" afterPath="$PROJECT_DIR$/new_data/processed/argouml.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/columba.csv" afterPath="$PROJECT_DIR$/new_data/processed/columba.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/emf.csv" afterPath="$PROJECT_DIR$/new_data/processed/emf.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/error.py" afterPath="$PROJECT_DIR$/src/error.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/f1.csv" afterPath="$PROJECT_DIR$/results/f1.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/fall-out.csv" afterPath="$PROJECT_DIR$/results/fall-out.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/precision.csv" afterPath="$PROJECT_DIR$/results/precision.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/questioned.csv" afterPath="$PROJECT_DIR$/results/questioned.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/results/recall.csv" afterPath="$PROJECT_DIR$/results/recall.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/jEdit.csv" afterPath="$PROJECT_DIR$/new_data/processed/jEdit.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/jfreechart.csv" afterPath="$PROJECT_DIR$/new_data/processed/jfreechart.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/jruby.csv" afterPath="$PROJECT_DIR$/new_data/processed/jruby.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_data/processed/sql.csv" afterPath="$PROJECT_DIR$/new_data/processed/sql.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="tech-debt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +36,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="error.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="error.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/error.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.17977528">
-              <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+            <state vertical-scroll-proportion="58.592594">
+              <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+                <element signature="e#740#861#0" expanded="false" />
+                <element signature="e#2711#2856#0" expanded="false" />
+                <element signature="e#2910#3274#0" expanded="false" />
+                <element signature="e#3310#3755#0" expanded="false" />
+                <element signature="e#5079#5301#0" expanded="false" />
+                <element signature="e#5127#5301#0" expanded="false" />
+                <element signature="e#5561#5777#0" expanded="false" />
+                <element signature="e#5609#5777#0" expanded="false" />
+                <element signature="e#5805#5977#0" expanded="false" />
+                <element signature="e#5853#5977#0" expanded="false" />
+                <element signature="e#6005#6205#0" expanded="false" />
+                <element signature="e#6053#6205#0" expanded="false" />
+                <element signature="e#7638#8161#0" expanded="false" />
+                <element signature="e#8212#8971#0" expanded="false" />
+                <element signature="e#9145#9736#0" expanded="false" />
+                <element signature="e#9778#10233#0" expanded="false" />
+                <element signature="e#10256#10933#0" expanded="false" />
+                <element signature="e#10961#11334#0" expanded="false" />
+                <element signature="e#11352#12471#0" expanded="false" />
+                <element signature="e#12497#13170#0" expanded="false" />
+                <element signature="e#13188#14353#0" expanded="false" />
+                <element signature="e#14372#15102#0" expanded="false" />
+                <element signature="e#15123#15661#0" expanded="false" />
+                <element signature="e#16718#16963#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fastread.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fastread.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+              <folding>
+                <element signature="e#1596#2662#0" expanded="false" />
+                <element signature="e#2701#3271#0" expanded="false" />
+                <element signature="e#3350#5159#0" expanded="false" />
+                <element signature="e#5222#5690#0" expanded="false" />
+                <element signature="e#5749#5977#0" expanded="false" />
+                <element signature="e#6031#6119#0" expanded="false" />
+                <element signature="e#6154#6465#0" expanded="false" />
+                <element signature="e#6496#6863#0" expanded="false" />
+                <element signature="e#6924#7178#0" expanded="false" />
+                <element signature="e#7252#7325#0" expanded="false" />
+                <element signature="e#7365#7482#0" expanded="false" />
+                <element signature="e#7529#8909#0" expanded="false" />
+                <element signature="e#8945#9029#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transfer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/transfer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.09501738">
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="111" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mar.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mar.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="127" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="536" selection-end-column="22" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -45,8 +123,8 @@
       <file leaf-file-name="runner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.62963">
-              <caret line="32" column="7" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="7" />
+            <state vertical-scroll-proportion="-23.962963">
+              <caret line="67" column="48" selection-start-line="28" selection-start-column="4" selection-end-line="67" selection-end-column="48" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -74,7 +152,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/fastread.py" />
         <option value="$PROJECT_DIR$/src/error.py" />
+        <option value="$PROJECT_DIR$/src/transfer.py" />
       </list>
     </option>
   </component>
@@ -167,6 +247,42 @@
               <option name="myItemId" value="tech-debt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tech-debt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tech-debt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="new_data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="processed" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tech-debt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tech-debt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -177,6 +293,130 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="tech-debt" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -227,20 +467,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.62963">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/util.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.62963">
@@ -258,10 +490,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-23.962963">
+          <caret line="67" column="48" selection-start-line="28" selection-start-column="4" selection-end-line="67" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="127" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="536" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fastread.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+          <folding>
+            <element signature="e#1596#2662#0" expanded="false" />
+            <element signature="e#2701#3271#0" expanded="false" />
+            <element signature="e#3350#5159#0" expanded="false" />
+            <element signature="e#5222#5690#0" expanded="false" />
+            <element signature="e#5749#5977#0" expanded="false" />
+            <element signature="e#6031#6119#0" expanded="false" />
+            <element signature="e#6154#6465#0" expanded="false" />
+            <element signature="e#6496#6863#0" expanded="false" />
+            <element signature="e#6924#7178#0" expanded="false" />
+            <element signature="e#7252#7325#0" expanded="false" />
+            <element signature="e#7365#7482#0" expanded="false" />
+            <element signature="e#7529#8909#0" expanded="false" />
+            <element signature="e#8945#9029#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/error.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.17977528">
-          <caret line="237" column="0" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
+        <state vertical-scroll-proportion="58.592594">
+          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#740#861#0" expanded="false" />
+            <element signature="e#2711#2856#0" expanded="false" />
+            <element signature="e#2910#3274#0" expanded="false" />
+            <element signature="e#3310#3755#0" expanded="false" />
+            <element signature="e#5079#5301#0" expanded="false" />
+            <element signature="e#5127#5301#0" expanded="false" />
+            <element signature="e#5561#5777#0" expanded="false" />
+            <element signature="e#5609#5777#0" expanded="false" />
+            <element signature="e#5805#5977#0" expanded="false" />
+            <element signature="e#5853#5977#0" expanded="false" />
+            <element signature="e#6005#6205#0" expanded="false" />
+            <element signature="e#6053#6205#0" expanded="false" />
+            <element signature="e#7638#8161#0" expanded="false" />
+            <element signature="e#8212#8971#0" expanded="false" />
+            <element signature="e#9145#9736#0" expanded="false" />
+            <element signature="e#9778#10233#0" expanded="false" />
+            <element signature="e#10256#10933#0" expanded="false" />
+            <element signature="e#10961#11334#0" expanded="false" />
+            <element signature="e#11352#12471#0" expanded="false" />
+            <element signature="e#12497#13170#0" expanded="false" />
+            <element signature="e#13188#14353#0" expanded="false" />
+            <element signature="e#14372#15102#0" expanded="false" />
+            <element signature="e#15123#15661#0" expanded="false" />
+            <element signature="e#16718#16963#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/transfer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.09501738">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="111" selection-end-column="42" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
           </folding>

@@ -228,7 +228,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 226,jruby-1.4.0,DESIGN,// FIXME: There's some code duplication here with RubyObject#inspect,yes,yes,0,yes
 227,jruby-1.4.0,DESIGN,"// for visibility checking without requiring frame self // TODO: don't bother passing when fcall or vcall, and adjust callsite appropriately",yes,yes,0,yes
 228,jruby-1.4.0,DESIGN,// FIXME: figure out why we get null sometimes,yes,yes,0,yes
-229,jruby-1.4.0,DESIGN,// Hacky: Advance position to eat newline here....,yes,yes,1572623746,yes
+229,jruby-1.4.0,DESIGN,// Hacky: Advance position to eat newline here....,yes,yes,1572623746,no
 230,jruby-1.4.0,DESIGN,// need to reexamine this,yes,yes,0,no
 231,jruby-1.4.0,DESIGN,"// FIXME: This is currently only here because of some problems with IOOutputStream writing to a ""bare"" runtime without a proper scope",yes,yes,0,yes
 232,jruby-1.4.0,DESIGN,// Workaround for JRUBY-4149,yes,yes,0,yes

@@ -104,7 +104,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 102,jEdit-4.2,DESIGN,// clear name resolvers... don't know if this is necessary.,yes,yes,0,no
 103,jEdit-4.2,DESIGN,"/* this is stupid and misleading.					 * but 'path' is not used anywhere except					 * the above line, and if this is done					 * after the 'continue', then we will					 * either hang, or be forced to duplicate					 * it inside the buffer == null, or add					 * a 'finally' clause. you decide which one's					 * worse. */",yes,yes,0,no
 104,jEdit-4.2,DESIGN,// I'm too tired to think of a better way // to handle this right now.,yes,yes,0,no
-105,jEdit-4.2,DESIGN,// hacked BufferIORequest to send VFSUpdates in case // two stage save is off now...,yes,yes,0,yes
+105,jEdit-4.2,DESIGN,// hacked BufferIORequest to send VFSUpdates in case // two stage save is off now...,yes,yes,0,no
 106,jEdit-4.2,DESIGN,"// some other primitive // should avoid calling methods on primitive, as we do // in Name (can't treat primitive like an object message) // but the hole is useful right now.",yes,yes,0,no
 107,jEdit-4.2,DESIGN,// Change the parent (which was the class static) to the class instance // We really need to check if we're a static inner class here first... // but for some reason Java won't show the static modifier on our // fake inner classes...  could generate a flag field.,yes,yes,0,no
 108,jEdit-4.2,DESIGN,// this is where checked exceptions piss me off. this method only uses // a StringReader which can never throw an exception...,yes,yes,0,no
@@ -126,7 +126,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 124,jEdit-4.2,DESIGN,// not sure if we should really recurse here for explicitly imported // class in parent...  ,yes,yes,0,no
 125,jEdit-4.2,DESIGN,// The following two boolean checks were tacked on. // This could probably be smoothed out.,yes,yes,0,no
 126,jEdit-4.2,DESIGN,"/*		Notes:		This is broken.  It finds public but less specific methods over		non-public but more specific ones.		findMostSpecficMethod() needs to be rewritten to eliminate 		findAccessibleMethod.  We should implement the findMostSpecificMethod 		that uses the publicOnly flag.  FindMostSpecificMethod should also		operate in two passes to give standard Java assignable matches priority		over extended bsh type matches.	*/",yes,yes,0,no
-127,jEdit-4.2,DESIGN,//{{{ UnixWorkaround constructor,yes,yes,0,yes
+127,jEdit-4.2,DESIGN,//{{{ UnixWorkaround constructor,yes,yes,0,no
 128,jEdit-4.2,DESIGN,// drag and drop support // I'd just move the code to // JEditTextArea but it // depends on JDK 1.4 APIs,yes,yes,1572972969,no
 129,jEdit-4.2,DESIGN,// next version: remove this,yes,yes,0,no
 130,jEdit-4.2,DESIGN,// compatibility kludge for jEdit 3.1 and earlier,yes,yes,0,no
@@ -171,7 +171,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 169,jEdit-4.2,DESIGN,"// while this might be questionable, some // menus depend on properties",yes,yes,0,no
 170,jEdit-4.2,DESIGN,"// Get available screens // O(n^3), this is nasty, but since we aren't dealling with // many items it should be fine",yes,yes,0,no
 171,jEdit-4.2,DESIGN,//{{{ Methods that really shouldn't be public...,yes,yes,0,no
-172,jEdit-4.2,DESIGN,//{{{ UnixWorkaround class,yes,yes,0,yes
+172,jEdit-4.2,DESIGN,//{{{ UnixWorkaround class,yes,yes,0,no
 173,jEdit-4.2,DESIGN,"// Perhaps if Xerces wasn't slightly brain-damaged, we would // not need this",yes,yes,0,no
 174,jEdit-4.2,DESIGN,// this is a weird hack. // we don't want C+e a to insert 'a' in the // search bar if the search bar has focus...,yes,yes,0,yes
 175,jEdit-4.2,DESIGN,// moved to GUIUtilities as it makes no sense being here.,yes,yes,0,no

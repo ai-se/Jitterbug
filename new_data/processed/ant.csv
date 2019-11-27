@@ -31,7 +31,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 29,apache-ant-1.7.0,DESIGN,"// Experimental/Testing, will be removed",yes,yes,0.0,no
 30,apache-ant-1.7.0,DESIGN,// XXX should instead make a new ProtectionDomain with a CodeSource // corresponding to container.toURI().toURL() and the same // PermissionCollection as Project.class.protectionDomain had,yes,yes,0.0,no
 31,apache-ant-1.7.0,DESIGN,//this is really irritating; we need a way to set stuff,yes,yes,0.0,no
-32,apache-ant-1.7.0,DESIGN,//XXX // All this to convert source to destination directory according // to weblogic standards Can be written better... this is too hacky!,yes,yes,0.0,yes
+32,apache-ant-1.7.0,DESIGN,//XXX // All this to convert source to destination directory according // to weblogic standards Can be written better... this is too hacky!,yes,yes,0.0,no
 33,apache-ant-1.7.0,DESIGN,//silly hack to avoid stack overflow...,yes,yes,1571864161.2556038,yes
 34,apache-ant-1.7.0,DESIGN,"// -------------------- Access to property tables  -------------------- // This is used to support ant call and similar tasks. It should be // deprecated, it is possible to use a better (more efficient) // mechanism to preserve the context.",yes,yes,0.0,no
 35,apache-ant-1.7.0,DESIGN,// XXX - should throw an exception instead?,yes,yes,0.0,no
@@ -94,9 +94,9 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 92,apache-ant-1.7.0,DESIGN,"// XXX - why not simply new File(dir, filename)?",yes,yes,1571864121.553254,no
 93,apache-ant-1.7.0,DESIGN,// This is ugly; checking for the root folder.,yes,yes,0.0,no
 94,apache-ant-1.7.0,DESIGN,//TODO: Parameterise ?? //Call compiler as class... dont want to fork again //Use classic compiler -- can be parameterised?,yes,yes,0.0,yes
-95,apache-ant-1.7.0,DESIGN,"//XXX // All this to get package according to weblogic standards // Can be written better... this is too hacky! // Careful.. similar code in scanDir , but slightly different!!",yes,yes,0.0,yes
+95,apache-ant-1.7.0,DESIGN,"//XXX // All this to get package according to weblogic standards // Can be written better... this is too hacky! // Careful.. similar code in scanDir , but slightly different!!",yes,yes,0.0,no
 96,apache-ant-1.7.0,DESIGN,//stolen from writeManifest,yes,yes,0.0,no
-97,apache-ant-1.7.0,DESIGN,"/* If the jarfile already exists then whack it and recreate it.             * Should probably think of a more elegant way to handle this             * so that in case of errors we don't leave people worse off             * than when we started =)             */",yes,yes,0.0,yes
+97,apache-ant-1.7.0,DESIGN,"/* If the jarfile already exists then whack it and recreate it.             * Should probably think of a more elegant way to handle this             * so that in case of errors we don't leave people worse off             * than when we started =)             */",yes,yes,0.0,no
 98,apache-ant-1.7.0,DESIGN,// XXX is the following really necessary? it is in the same thread group...,yes,yes,0.0,no
 99,apache-ant-1.7.0,DESIGN,// we have to find a cleaner way to put this output,yes,yes,0.0,no
 100,apache-ant-1.7.0,DESIGN,// This is the old way and is deprecated - classespath is // the right way to do this and is above,yes,yes,0.0,no

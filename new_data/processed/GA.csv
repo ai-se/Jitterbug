@@ -215,7 +215,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 213,hibernate-distribution-3.3.2.GA,DESIGN,//The class is now way to complex!,yes,yes,0,no
 214,hibernate-distribution-3.3.2.GA,DESIGN,// TODO : would be really nice to cache the spec on the query-def so as to not have to re-calc the hash; // currently not doable though because of the resultset-ref stuff...,yes,yes,0,yes
 215,hibernate-distribution-3.3.2.GA,DESIGN,//name from a super query (a bit inelegant that it shows up here),yes,yes,0,no
-216,hibernate-distribution-3.3.2.GA,DESIGN,//real hacky... // used to count the nesting of parentheses,yes,yes,0,yes
+216,hibernate-distribution-3.3.2.GA,DESIGN,//real hacky... // used to count the nesting of parentheses,yes,yes,0,no
 217,hibernate-distribution-3.3.2.GA,DESIGN,// todo : we can remove this once the deprecated ctor can be made private...,yes,yes,0,yes
 218,hibernate-distribution-3.3.2.GA,DESIGN,"//put() has nowait semantics, is this really appropriate? //note that it needs to be async replication, never local or sync",yes,yes,0,no
 219,hibernate-distribution-3.3.2.GA,DESIGN,"// ugly hack for cases like ""elements(foo.bar.collection)"" // (multi-part path expression ending in elements or indices)",yes,yes,0,yes

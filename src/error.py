@@ -2,7 +2,8 @@ from __future__ import division, print_function
 
 
 import numpy as np
-
+from fastread import FASTREAD
+from transfer import Transfer
 from sklearn import svm
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
@@ -49,12 +50,12 @@ class Treatment():
         # tfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=u'l2', use_idf=False,
         #                 vocabulary=self.voc,decode_error="ignore")
         # self.train_data = tfer.fit_transform(self.x_content)
-        # self.test_data = tfer.fit_transform(self.y_content)
+        # self.test_data = tfer.transform(self.y_content)
 
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
         self.train_data = tfer.fit_transform(self.x_content)
-        self.test_data = tfer.fit_transform(self.y_content)
+        self.test_data = tfer.transform(self.y_content)
         ascend = np.argsort(tfer.vocabulary_.values())
         self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
 
@@ -120,19 +121,24 @@ class Treatment():
 
         return apfd
 
-
-
-
-
     def eval(self, y_label):
         assert len(y_label)==len(self.y_content), "Size of test labels does not match test data."
         decisions = self.model.predict(self.test_data)
         tp,fp,fn,tn = self.confusion(decisions, y_label)
         result = {}
-        result["precision"] = float(tp) / (tp+fp)
-        result["recall"] = float(tp) / (tp+fn)
-        result["fall-out"] = float(fp) / (fp+tn)
-        result["f1"] = 2*result["precision"]*result["recall"]/(result["precision"]+result["recall"])
+        if tp==0:
+            result["precision"]=0
+            result["recall"]=0
+            result["f1"]=0
+        else:
+            result["precision"] = float(tp) / (tp+fp)
+            result["recall"] = float(tp) / (tp+fn)
+            result["f1"] = 2*result["precision"]*result["recall"]/(result["precision"]+result["recall"])
+        if fp==0:
+            result["fall-out"]=0
+        else:
+            result["fall-out"] = float(fp) / (fp+tn)
+
 
 
         pos_at = list(self.model.classes_).index("yes")
@@ -184,6 +190,65 @@ class LR(Treatment):
         self.model = LogisticRegression(class_weight="balanced")
 
 
+def active(data,start = "pre"):
+    thres = 0
+    starting = 1
+    uncertain_thres = 20
+    read=FASTREAD()
+    read.create(data)
+
+
+    while True:
+        pos, neg, total = read.get_numbers()
+        try:
+            print("%d, %d, %d" %(pos,pos+neg, read.est_num))
+        except:
+            print("%d, %d" %(pos,pos+neg))
+
+        if pos + neg >= total:
+            break
+
+        if pos < starting or pos+neg<thres:
+            if start=="random":
+                read.code_batch(read.random())
+            else:
+                a,b,c,d =read.query_pre()
+                read.code_batch(c)
+        else:
+            a,b,c,d =read.train(weighting=True,pne=True)
+            if pos<uncertain_thres:
+                read.code_batch(a)
+            else:
+                read.code_batch(c)
+    return read.APFD()
+
+def transfer(data, target):
+
+    uncertain_thres = 0
+    read=Transfer()
+    read.create(data, target)
+    step = len(data[target])
+
+
+    while True:
+        pos, neg, total = read.get_numbers()
+        try:
+            print("%d, %d, %d" %(pos,pos+neg, read.est_num))
+        except:
+            print("%d, %d" %(pos,pos+neg))
+
+        if pos + neg >= total:
+            break
+
+        a,b,c,d =read.train(weighting=True,pne=False)
+        if pos<uncertain_thres:
+            read.code_batch(a[:step])
+        else:
+            read.code_batch(c[:step])
+    return read.APFD()
+
+
+
 def load(path="../new_data/"):
     data={}
     for file in listdir(path+"data/"):
@@ -202,14 +267,34 @@ def load(path="../new_data/"):
     return data
 
 def load_new(path="../new_data/processed/"):
+    validate = pd.read_csv("../new_data/validate/validate0.csv")
+    fps = set(validate[validate["code"]=="no"]["Abstract"].tolist())
+
+
     data={}
     for file in listdir(path):
         if file==".DS_Store":
             continue
         df = pd.read_csv(path+file)
-        data[file.split(".")[0]] = df
+        truth = []
+        for i in range(len(df["pre_label"])):
+            if df["pre_label"][i]=="no":
+                tmp = df["code"][i]
+            elif df["Abstract"][i] in fps:
+                tmp = "no"
+            else:
+                tmp = "yes"
+            truth.append(tmp)
+        df["label"] = truth
+        df["code"] = ["undetermined"]*len(truth)
+        data[file.split(".")[0]] = df.loc[:,["projectname","classification","Abstract","pre_label","label","code"]]
+
     return data
 
+def load_rest():
+    data = load_new()
+    rest = {target: data[target][data[target]["pre_label"]=="no"] for target in data}
+    return rest
 
 def show_result(results):
     metrics = results["ant"]["SVM"]["old"].keys()
@@ -223,6 +308,18 @@ def show_result(results):
             df[data+"_new"] = [round(results[data][treatment]["new"][metric], 2) for treatment in treatments]
             df[data+"_old"] = [round(results[data][treatment]["old"][metric], 2) for treatment in treatments]
         pd.DataFrame(df,columns=columns).to_csv("../results/"+metric+".csv", line_terminator="\r\n", index=False)
+
+def show_result_processed(results):
+    metrics = results["ant"]["SVM"].keys()
+    treatments = results["ant"].keys()
+
+    for metric in metrics:
+        df = {"Treatment":treatments}
+        columns=["Treatment"]
+        for data in results:
+            columns.append(data)
+            df[data] = [round(results[data][treatment][metric], 2) for treatment in treatments]
+        pd.DataFrame(df,columns=columns).to_csv("../results/processed_"+metric+".csv", line_terminator="\r\n", index=False)
 
 
 def validate():
@@ -238,8 +335,19 @@ def validate():
 
     conflicted = df[df["pre_label"]=="yes"][df["code"]=="no"]
     conflicted.rename(columns = {'code':'groundtruth'}, inplace = True)
-    conflicted.to_csv("../results/validate.csv", line_terminator="\r\n", index=False)
+    conflicted.to_csv("../new_data/validate/validate.csv", line_terminator="\r\n", index=False)
 
+
+
+def ken_validate():
+    validate = pd.read_csv("../new_data/validate/validate.csv")
+    ken = pd.read_csv("../new_data/validate/ken_validate.csv")
+    ids = []
+    the_list = ken["ID"].tolist()
+    for id in validate["ID"]:
+        ids.append(the_list.index(id))
+    validate["code"] = ken["code"][ids]
+    validate.to_csv("../new_data/validate/validate0.csv", line_terminator="\r\n", index=False)
 
 def hack():
     data = load()
@@ -251,10 +359,13 @@ def hack():
         label += [c for c in data[target]["code"]]
 
     x=DT(content,content)
+    x.preprocess()
     indices = {}
     for key in keys:
-        indices[key] = [i for i,c in enumerate(content) if key in c]
+        id = x.voc.index(key)
+        indices[key] = [i for i in range(x.train_data.shape[0]) if x.train_data[i,id] > 0]
     new_label = ["no"]*len(label)
+
     for key in keys:
         for i in indices[key]:
             new_label[i]="yes"
@@ -363,6 +474,62 @@ def learner():
     print(out)
     # treatment.draw()
 
+
+
+def exp_rest():
+    data = load_rest()
+    treatments = [SVM, RF, DT, NB, LR]
+    treatments = [RF]
+    results={}
+    for target in data:
+        results[target]={}
+        x_content = []
+        x_label_old = []
+        y_label = []
+        y_content = []
+        for project in data:
+            if project==target:
+                y_label += data[target]["label"].tolist()
+                y_content += [c.decode("utf8","ignore") for c in data[target]["Abstract"]]
+            else:
+                x_content += [c.decode("utf8","ignore") for c in data[project]["Abstract"]]
+                x_label_old += [c for c in data[project]["label"]]
+        for model in treatments:
+            treatment = model(x_content,y_content)
+            treatment.preprocess()
+            treatment.train(x_label_old)
+            try:
+                result_old = treatment.eval(y_label)
+            except:
+                set_trace()
+            results[target][model.__name__]=result_old
+    set_trace()
+    show_result_processed(results)
+
+
+def exp_active():
+    data = load_new()
+    ns = []
+    for key in data:
+        n=len(data[key])
+        print(key+": %d" %n)
+        ns.append(n)
+    print(sum(ns))
+    apfds = {key: active(data[key],start="random") for key in data}
+    print(apfds)
+    set_trace()
+
+def exp_transfer():
+    data = load_rest()
+    ns = []
+    for key in data:
+        n=len(data[key])
+        print(key+": %d" %n)
+        ns.append(n)
+    print(sum(ns))
+    apfds = {key: transfer(data, key) for key in data}
+    print(apfds)
+    set_trace()
 
 if __name__ == "__main__":
     eval(cmd())

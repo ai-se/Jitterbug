@@ -47,7 +47,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 45,emf-2.4.1,DESIGN,// Motif kludge: we would get something random instead of null. //,yes,yes,1572973091,no
 46,emf-2.4.1,DESIGN,// TODO So what should be the eType be now? //,yes,yes,0,yes
 47,emf-2.4.1,DESIGN,"// This runs the operation, and shows progress. // (It appears to be a bad thing to fork this onto another thread.) //",yes,yes,0,no
-48,emf-2.4.1,DESIGN,// EATM Kind of hacky.,yes,yes,0,yes
+48,emf-2.4.1,DESIGN,// EATM Kind of hacky.,yes,yes,0,no
 49,emf-2.4.1,DESIGN,"//DMS Why not this? //new SubProgressMonitor(progressMonitor, 1));",yes,yes,0,no
 50,emf-2.4.1,DESIGN,"//DMS Why not this? //new SubProgressMonitor(progressMonitor, 1));",yes,yes,0,no
 51,emf-2.4.1,DESIGN,"// This runs the operation, and shows progress. // (It appears to be a bad thing to fork this onto another thread.) //",yes,yes,0,no

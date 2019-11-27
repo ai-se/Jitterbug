@@ -81,7 +81,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 79,columba-1.4-src,DESIGN,//TODO (@author fdietz): associate help with button and root pane,yes,yes,0,yes
 80,columba-1.4-src,DESIGN,// FIXME -- This will most likely not work. //          You want the element removed if the contents are the same //          Not just if the element reference is the same.,yes,yes,0,yes
 81,columba-1.4-src,DESIGN,"// // @author: fdietz // using shutdown-manager is wrong here, because this // automatically also calls the FrameManager, which  // also starts a second shutdown thread // -> This leads into two parallel shutdown thread which // -> is why sometimes config-files, etc. get messed up //        ",yes,yes,0,no
-82,columba-1.4-src,DESIGN,// @author fdietz: hackish way of creating a search toolbar //JToolBar searchToolBar = new ExtendableToolBar();,yes,yes,0,yes
+82,columba-1.4-src,DESIGN,// @author fdietz: hackish way of creating a search toolbar //JToolBar searchToolBar = new ExtendableToolBar();,yes,yes,0,no
 83,columba-1.4-src,DESIGN,"/** * A Command uses the information provided from {@link DefaultCommandReference} * to execute itself. * <p> * TODO: remove IFrameMediator dependency *  * @author Timo Stich <tstich@users.sourceforge.net> */",yes,yes,0,yes
 84,columba-1.4-src,DESIGN,"// manually rewrite the connection url, because // if there is no rewrite the database files are created // in the starting directory, we don't want that!",yes,yes,0,no
 85,columba-1.4-src,DESIGN,// TODO: fix updateActions //enableActions(getCurrentOwner());,yes,yes,0,yes
@@ -1595,7 +1595,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 1593,columba-1.4-src,WITHOUT_CLASSIFICATION,// update treemodel,no,no,0,no
 1594,columba-1.4-src,WITHOUT_CLASSIFICATION,//$NON-NLS-1$,no,no,0,no
 1595,columba-1.4-src,WITHOUT_CLASSIFICATION,//      notify tree //getRealModel().getTreeModel().nodeStructureChanged(getRootNode()); //},no,no,0,no
-1596,columba-1.4-src,WITHOUT_CLASSIFICATION,// only import VEVENT and VTODO for now,no,no,0,yes
+1596,columba-1.4-src,WITHOUT_CLASSIFICATION,// only import VEVENT and VTODO for now,no,no,0,no
 1597,columba-1.4-src,WITHOUT_CLASSIFICATION,// save every MessageNode in hashmap for later reference,no,no,0,no
 1598,columba-1.4-src,WITHOUT_CLASSIFICATION,//$NON-NLS-1$,no,no,0,no
 1599,columba-1.4-src,WITHOUT_CLASSIFICATION,// add this node to cache,no,no,0,no

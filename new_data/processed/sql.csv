@@ -3744,7 +3744,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 3742,sql12,WITHOUT_CLASSIFICATION,"/*     * Internal class for handling key events during editing     * of both JTextField and JTextArea.     */",no,no,0,no
 3743,sql12,WITHOUT_CLASSIFICATION,// use lenient input or force user to enter exact format // set to allow less stringent input,no,no,0,no
 3744,sql12,WITHOUT_CLASSIFICATION,// get which locale-dependent format to use // set to use the Java default,no,no,0,no
-3745,sql12,WITHOUT_CLASSIFICATION,// i18n[UpdateControllerImpl.promptToDownloadAvailableUpdatesMsg=There are updates available. // Do you want to download them now?],no,no,0,yes
+3745,sql12,WITHOUT_CLASSIFICATION,// i18n[UpdateControllerImpl.promptToDownloadAvailableUpdatesMsg=There are updates available. // Do you want to download them now?],no,no,0,no
 3746,sql12,WITHOUT_CLASSIFICATION,//i18n[explainplanexecuter.enumeration=#],no,no,0,no
 3747,sql12,WITHOUT_CLASSIFICATION,"// an error here may mean that the file cannot be // reached or has moved or some such.  In any case, // the file cannot be used for export.",no,no,0,no
 3748,sql12,WITHOUT_CLASSIFICATION,// i18n[ErrorStream.noerrors=No errors detected],no,no,0,no
@@ -5055,7 +5055,7 @@ Unnamed: 0,projectname,classification,Abstract,code,new_code,time,pre_label
 5053,sql12,WITHOUT_CLASSIFICATION,// i18n[NumericFunctionsTab.title=Numeric Functions],no,no,0,no
 5054,sql12,WITHOUT_CLASSIFICATION,// i18n[DialectUtils.columnNameUnsupported={0} doesn''t support // altering a column''s name],no,no,0,no
 5055,sql12,WITHOUT_CLASSIFICATION,// i18n[AboutBoxDialog.systempanelcreatetime=SystemPanel created in ],no,no,0,no
-5056,sql12,WITHOUT_CLASSIFICATION,// i18n[UpdateControllerImpl.promptToDownloadAvailableUpdatesTitle=Updates Available],no,no,0,yes
+5056,sql12,WITHOUT_CLASSIFICATION,// i18n[UpdateControllerImpl.promptToDownloadAvailableUpdatesTitle=Updates Available],no,no,0,no
 5057,sql12,WITHOUT_CLASSIFICATION,// i18n[popupEditableIoPanel.wrapWord=Wrap on Word on/off],no,no,0,no
 5058,sql12,WITHOUT_CLASSIFICATION,//i18n[SybaseASEPlugin.showViewSource=Show view source],no,no,0,no
 5059,sql12,WITHOUT_CLASSIFICATION,//i18n[ColumnDetailsDialog.newColumnValue=NewColumn],no,no,0,no
