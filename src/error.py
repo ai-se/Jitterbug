@@ -52,10 +52,11 @@ class Treatment():
         # self.train_data = tfer.fit_transform(self.x_content)
         # self.test_data = tfer.transform(self.y_content)
 
-
-        tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
+        tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,
+                               sublinear_tf=False, decode_error="ignore")
         self.train_data = tfer.fit_transform(self.x_content)
         self.test_data = tfer.transform(self.y_content)
+
         ascend = np.argsort(tfer.vocabulary_.values())
         self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
 
@@ -147,6 +148,7 @@ class Treatment():
         labels = np.array(y_label)[order]
         result["AUC"] = self.AUC(labels)
         result["APFD"] = self.APFD(labels)
+        result["p@10"] = Counter(labels[:10])["yes"] / float(len(labels[:10]))
         return result
 
 class SVM(Treatment):
@@ -222,20 +224,21 @@ def active(data,start = "pre"):
                 read.code_batch(c)
     return read.APFD()
 
-def transfer(data, target):
-
+def transfer(data, target, seed = 0):
+    np.random.seed(seed)
     uncertain_thres = 0
     read=Transfer()
     read.create(data, target)
     step = len(data[target])
+    step = 10
 
 
     while True:
         pos, neg, total = read.get_numbers()
-        try:
-            print("%d, %d, %d" %(pos,pos+neg, read.est_num))
-        except:
-            print("%d, %d" %(pos,pos+neg))
+        # try:
+        #     print("%d, %d, %d" %(pos,pos+neg, read.est_num))
+        # except:
+        #     print("%d, %d" %(pos,pos+neg))
 
         if pos + neg >= total:
             break
@@ -319,7 +322,7 @@ def show_result_processed(results):
         for data in results:
             columns.append(data)
             df[data] = [round(results[data][treatment][metric], 2) for treatment in treatments]
-        pd.DataFrame(df,columns=columns).to_csv("../results/processed_"+metric+".csv", line_terminator="\r\n", index=False)
+        pd.DataFrame(df,columns=columns).to_csv("../results/processed_"+metric+".csv", index=False)
 
 
 def validate():
@@ -479,7 +482,7 @@ def learner():
 def exp_rest():
     data = load_rest()
     treatments = [SVM, RF, DT, NB, LR]
-    treatments = [RF]
+    # treatments = [RF]
     results={}
     for target in data:
         results[target]={}
@@ -527,7 +530,7 @@ def exp_transfer():
         print(key+": %d" %n)
         ns.append(n)
     print(sum(ns))
-    apfds = {key: transfer(data, key) for key in data}
+    apfds = {key: [transfer(data, key, seed) for seed in range(5)] for key in data}
     print(apfds)
     set_trace()
 

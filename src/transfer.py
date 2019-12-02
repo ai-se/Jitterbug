@@ -105,10 +105,12 @@ class Transfer(object):
 
 
     def preprocess(self):
+        content0 = [c.decode("utf8", "ignore") for c in self.body["Abstract"][self.newpart:]]
         content = [c.decode("utf8","ignore") for c in self.body["Abstract"]]
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
-        self.csr_mat = tfer.fit_transform(content)
+        tfer.fit(content0)
+        self.csr_mat = tfer.transform(content)
         self.voc = tfer.vocabulary_.keys()
 
 
@@ -158,21 +160,21 @@ class Transfer(object):
         all_neg=list(negs)+list(unlabeled)
         sample = list(decayed) + list(unlabeled)
 
-        clf_pre.fit(self.csr_mat[sample], labels[sample])
-
-
-        ## aggressive undersampling ##
-        if len(poses)>=self.enough:
-            pos_at = list(clf_pre.classes_).index("yes")
-            train_dist = clf_pre.predict_proba(self.csr_mat[all_neg])[:,pos_at]
-            negs_sel = np.argsort(train_dist)[:len(left)]
-            sample = list(left) + list(np.array(all_neg)[negs_sel])
-
-        elif pne:
-            pos_at = list(clf_pre.classes_).index("yes")
-            train_dist = clf_pre.predict_proba(self.csr_mat[unlabeled])[:,pos_at]
-            unlabel_sel = np.argsort(train_dist)[:int(len(unlabeled) / 2)]
-            sample = list(decayed) + list(np.array(unlabeled)[unlabel_sel])
+        # clf_pre.fit(self.csr_mat[sample], labels[sample])
+        #
+        #
+        # ## aggressive undersampling ##
+        # if len(poses)>=self.enough:
+        #     pos_at = list(clf_pre.classes_).index("yes")
+        #     train_dist = clf_pre.predict_proba(self.csr_mat[all_neg])[:,pos_at]
+        #     negs_sel = np.argsort(train_dist)[:len(left)]
+        #     sample = list(left) + list(np.array(all_neg)[negs_sel])
+        #
+        # elif pne:
+        #     pos_at = list(clf_pre.classes_).index("yes")
+        #     train_dist = clf_pre.predict_proba(self.csr_mat[unlabeled])[:,pos_at]
+        #     unlabel_sel = np.argsort(train_dist)[:int(len(unlabeled) / 2)]
+        #     sample = list(decayed) + list(np.array(unlabeled)[unlabel_sel])
         clf.fit(self.csr_mat[sample], labels[sample])
 
 
