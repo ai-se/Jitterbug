@@ -356,7 +356,8 @@ def hack():
     data = load()
     content = []
     label = []
-    keys = ["fixme","todo","workaround","hack"]
+    keys = [u'todo', u'fixme', u'hack', u'workaround', u'xxx', u'defer',
+       u'renederer', u'dms', u'yuck', u'addtrigger']
     for target in data:
         content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
         label += [c for c in data[target]["code"]]
@@ -376,6 +377,7 @@ def hack():
         metrics = {"tp": tp, "fp": fp, "fn": fn}
         print(key)
         print(metrics)
+    set_trace()
     start = 0
     for target in data:
         end = len(data[target]["code"])+start
@@ -389,26 +391,46 @@ def hack():
             set_trace()
 
 def highest_prec():
+
+    def get_top_prec(matrix,label):
+        poses = np.where(label=="yes")[0]
+        count_tp = np.array(np.sum(matrix[poses],axis=0))[0]
+        count_p = np.array(np.sum(matrix,axis=0))[0]
+
+        prec = np.nan_to_num(count_tp*(count_tp/count_p)**2)
+        order = np.argsort(prec)[::-1]
+        print({'tp':count_tp[order[0]], 'fp':count_p[order[0]]-count_tp[order[0]]})
+        return order[0]
+
+
     data = load()
     content = []
     label = []
     for target in data:
-        content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
-        label += [c for c in data[target]["code"]]
-    x=DT(content,content)
-    x.preprocess()
-    precs = {}
-    for key in x.voc:
-        ids = [i for i,c in enumerate(content) if key in c]
-        new_label = ["no"]*len(label)
-        for i in ids:
-            new_label[i]="yes"
-        tp,fp,fn,tn = x.confusion(new_label, label)
-        prec = float(tp)/(tp+fp)
-        precs[key]=prec
-    order = np.argsort(precs.values())[::-1][:10]
-    for o in order:
-        print((precs.keys()[o], precs.values()[o]))
+        content = [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label = [c for c in data[target]["code"]]
+        label = np.array(label)
+        x=DT(content,content)
+        x.preprocess()
+        left = range(x.train_data.shape[0])
+        words_id = []
+        x.train_data[x.train_data.nonzero()]=1
+        data = x.train_data
+        for i in xrange(10):
+            id = get_top_prec(data[left],label[left])
+            words_id.append(id)
+            to_remove = set()
+            for row in left:
+                if data[row,id]>0:
+                    to_remove.add(row)
+            left = list(set(left)-to_remove)
+
+        print(target)
+        print(np.array(x.voc)[words_id])
+
+
+    set_trace()
+
 
 
 def exp():
@@ -522,7 +544,7 @@ def exp_active():
     print(apfds)
     set_trace()
 
-def exp_transfer():
+def exp_transfer(seed):
     data = load_rest()
     ns = []
     for key in data:
@@ -530,9 +552,10 @@ def exp_transfer():
         print(key+": %d" %n)
         ns.append(n)
     print(sum(ns))
-    apfds = {key: [transfer(data, key, seed) for seed in range(5)] for key in data}
+    apfds = {key: transfer(data, key, seed) for key in data}
     print(apfds)
-    set_trace()
+    with open("../dump/"+str(seed)+".pickle") as f:
+        f.dump(apfds)
 
 if __name__ == "__main__":
     eval(cmd())
