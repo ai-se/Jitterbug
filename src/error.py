@@ -554,8 +554,8 @@ def exp_transfer(seed):
     print(sum(ns))
     apfds = {key: transfer(data, key, seed) for key in data}
     print(apfds)
-    with open("../dump/"+str(seed)+".pickle") as f:
-        f.dump(apfds)
+    with open("../dump/"+str(seed)+".pickle","w") as f:
+        pickle.dump(apfds,f)
 
 if __name__ == "__main__":
     eval(cmd())
