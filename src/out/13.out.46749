@@ -1,0 +1,55 @@
+columba: 6273
+ant: 4062
+emf: 4341
+GA: 2596
+jruby: 4297
+argouml: 7979
+jEdit: 10264
+jfreechart: 4272
+sql: 7033
+jmeter: 7736
+58853
+{'columba': 0.9748310831524605, 'argouml': 0.960610015925952, 'emf': 0.9284496659755817, 'jfreechart': 0.8733013209839052, 'jruby': 0.9126170315604805, 'ant': 0.8818676673181843, 'jEdit': 0.9241165082614984, 'GA': 0.8287241019241298, 'sql': 0.9137810518135334, 'jmeter': 0.8469309584716703}
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2e4-2>
+Subject: Job 46749: </share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 13> in cluster <henry2> Done
+
+Job </share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 13> was submitted from host <login01> by user <zyu9> in cluster <henry2> at Fri Dec  6 09:56:48 2019
+Job was executed on host(s) <2*n2e4-2>, in queue <single_chassis>, as user <zyu9> in cluster <henry2> at Fri Dec  6 09:56:55 2019
+</home/zyu9> was used as the home directory.
+</home/zyu9/tech-debt/src> was used as the working directory.
+Started at Fri Dec  6 09:56:55 2019
+Terminated at Fri Dec  6 16:43:59 2019
+Results reported at Fri Dec  6 16:43:59 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 13
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   28489.42 sec.
+    Max Memory :                                 163.29 MB
+    Average Memory :                             146.74 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                11
+    Run time :                                   24423 sec.
+    Turnaround time :                            24431 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/13.err.46749> for stderr output of this job.
+

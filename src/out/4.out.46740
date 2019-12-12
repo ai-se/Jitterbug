@@ -1,0 +1,56 @@
+columba: 6273
+ant: 4062
+emf: 4341
+GA: 2596
+jruby: 4297
+argouml: 7979
+jEdit: 10264
+jfreechart: 4272
+sql: 7033
+jmeter: 7736
+58853
+{'columba': 0.9801039865602276, 'argouml': 0.9583036568553428, 'emf': 0.9373482081153125, 'jfreechart': 0.9201220180855012, 'jruby': 0.9159037611213547, 'ant': 0.907622507696363, 'jEdit': 0.9230166878002815, 'GA': 0.8262186580753607, 'sql': 0.9227746403812778, 'jmeter': 0.8518934033636314}
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2e1-6>
+Subject: Job 46740: </share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 4> in cluster <henry2> Done
+
+Job </share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 4> was submitted from host <login01> by user <zyu9> in cluster <henry2> at Fri Dec  6 09:56:47 2019
+Job was executed on host(s) <1*n2e1-6>, in queue <single_chassis>, as user <zyu9> in cluster <henry2> at Fri Dec  6 09:56:49 2019
+                            <1*n2e1-2>
+</home/zyu9> was used as the home directory.
+</home/zyu9/tech-debt/src> was used as the working directory.
+Started at Fri Dec  6 09:56:49 2019
+Terminated at Fri Dec  6 15:33:59 2019
+Results reported at Fri Dec  6 15:33:59 2019
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share/tjmenzie/zyu9/miniconda2/bin/python2.7 error.py exp_transfer 4
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   21751.62 sec.
+    Max Memory :                                 150.41 MB
+    Average Memory :                             144.92 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                8
+    Run time :                                   20249 sec.
+    Turnaround time :                            20232 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/4.err.46740> for stderr output of this job.
+
