@@ -141,8 +141,7 @@ class Transfer(object):
     def train(self,pne=False,weighting=True):
 
         # clf = svm.SVC(kernel='linear', probability=True, class_weight='balanced') if weighting else svm.SVC(kernel='linear', probability=True)
-        clf = RandomForestClassifier(class_weight='balanced')
-        clf_pre = tree.DecisionTreeClassifier(class_weight='balanced')
+        clf = svm.SVC(kernel='linear', probability=True, class_weight='balanced')
         poses = np.where(np.array(self.body['code']) == "yes")[0]
         negs = np.where(np.array(self.body['code']) == "no")[0]
         left = poses
@@ -157,7 +156,6 @@ class Transfer(object):
             unlabeled=[]
 
         labels=np.array([x if x!='undetermined' else 'no' for x in self.body['code']])
-        all_neg=list(negs)+list(unlabeled)
         sample = list(decayed) + list(unlabeled)
 
         # clf_pre.fit(self.csr_mat[sample], labels[sample])
@@ -177,7 +175,7 @@ class Transfer(object):
         #     sample = list(decayed) + list(np.array(unlabeled)[unlabel_sel])
         clf.fit(self.csr_mat[sample], labels[sample])
 
-
+        # self.est_num, self.est = self.estimate_curve(clf, reuse=False, num_neg=len(sample)-len(left))
 
         uncertain_id, uncertain_prob = self.uncertain(clf)
         certain_id, certain_prob = self.certain(clf)
@@ -185,6 +183,7 @@ class Transfer(object):
         return uncertain_id, uncertain_prob, certain_id, certain_prob
 
         ## Get uncertain ##
+
     def uncertain(self,clf):
         pos_at = list(clf.classes_).index("yes")
         prob = clf.predict_proba(self.csr_mat[self.pool])[:, pos_at]
@@ -238,7 +237,84 @@ class Transfer(object):
         self.body["time"][ids] =times
 
 
+    def estimate_curve(self, clf, reuse=False, num_neg=0):
+        from sklearn import linear_model
+        import random
 
+
+
+        def prob_sample(probs):
+            order = np.argsort(probs)[::-1]
+            count = 0
+            can = []
+            sample = []
+            for i, x in enumerate(probs[order]):
+                count = count + x
+                can.append(order[i])
+                if count >= 1:
+                    # sample.append(np.random.choice(can,1)[0])
+                    sample.append(can[0])
+                    count = 0
+                    can = []
+            return sample
+
+        poses = np.where(np.array(self.body['code']) == "yes")[0]
+        negs = np.where(np.array(self.body['code']) == "no")[0]
+
+        ###############################################
+
+        prob = clf.predict_proba(self.csr_mat)[:,0]
+        # prob1 = clf.decision_function(self.csr_mat)
+        # prob = np.array([[x] for x in prob1])
+        # prob = self.csr_mat
+
+
+        y = np.array([1 if x == 'yes' else 0 for x in self.body['code']])
+        y0 = np.copy(y)
+
+        all = range(len(y))
+
+
+        pos_num_last = Counter(y0)[1]
+
+        lifes = 1
+        life = lifes
+
+
+        while (True):
+            C = Counter(y[all])[1]/ num_neg
+            es = linear_model.LogisticRegression(penalty='l2', fit_intercept=True, C=C)
+
+            es.fit(prob[all], y[all])
+            pos_at = list(es.classes_).index(1)
+
+
+            pre = es.predict_proba(prob[self.pool])[:, pos_at]
+
+
+            y = np.copy(y0)
+
+            sample = prob_sample(pre)
+            for x in self.pool[sample]:
+                y[x] = 1
+
+
+
+            pos_num = Counter(y)[1]
+
+            if pos_num == pos_num_last:
+                life = life - 1
+                if life == 0:
+                    break
+            else:
+                life = lifes
+            pos_num_last = pos_num
+
+
+        esty = pos_num - self.last_pos
+        pre = es.predict_proba(prob)[:, pos_at]
+
+        return esty, pre
 
     def APFD(self):
         order = np.argsort(self.body["time"][:self.newpart])

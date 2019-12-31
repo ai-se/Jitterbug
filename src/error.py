@@ -77,6 +77,7 @@ class Treatment():
 
     def train(self, x_label):
         assert len(x_label)==len(self.x_content), "Size of training labels does not match training data."
+
         self.model.fit(self.train_data,x_label)
 
     def confusion(self,decisions, y_label):
@@ -149,35 +150,37 @@ class Treatment():
         result["AUC"] = self.AUC(labels)
         result["APFD"] = self.APFD(labels)
         result["p@10"] = Counter(labels[:10])["yes"] / float(len(labels[:10]))
+        result["p@100"] = Counter(labels[:100])["yes"] / float(len(labels[:100]))
         return result
 
 class SVM(Treatment):
 
-    def __init__(self,x_content,y_content):
+    def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
-        self.model = svm.SVC(kernel="linear",probability=True,class_weight="balanced")
+        self.model = svm.SVC(kernel="linear",probability=True,class_weight="balanced",random_state=seed)
 
 class RF(Treatment):
 
-    def __init__(self,x_content,y_content):
+    def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
-        self.model = RandomForestClassifier(class_weight="balanced")
+        self.model = RandomForestClassifier(class_weight="balanced",random_state=seed)
 
 class DT(Treatment):
 
-    def __init__(self,x_content,y_content):
+    def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
-        self.model = DecisionTreeClassifier(class_weight="balanced",max_depth=8)
+        self.model = DecisionTreeClassifier(class_weight="balanced",max_depth=8,random_state=seed)
 
 class NB(Treatment):
 
-    def __init__(self,x_content,y_content):
+    def __init__(self,x_content,y_content,seed=0):
+        np.random.seed(seed)
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
@@ -185,11 +188,11 @@ class NB(Treatment):
 
 class LR(Treatment):
 
-    def __init__(self,x_content,y_content):
+    def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
         self.fea_num=4000
-        self.model = LogisticRegression(class_weight="balanced")
+        self.model = LogisticRegression(class_weight="balanced",random_state=seed)
 
 
 def active(data,start = "pre"):
@@ -319,9 +322,11 @@ def show_result_processed(results):
     for metric in metrics:
         df = {"Treatment":treatments}
         columns=["Treatment"]
+        collects = []
         for data in results:
             columns.append(data)
-            df[data] = [round(results[data][treatment][metric], 2) for treatment in treatments]
+            df[data] = [round(np.median(results[data][treatment][metric]), 2) for treatment in treatments]
+
         pd.DataFrame(df,columns=columns).to_csv("../results/processed_"+metric+".csv", index=False)
 
 
@@ -397,31 +402,36 @@ def highest_prec():
         count_tp = np.array(np.sum(matrix[poses],axis=0))[0]
         count_p = np.array(np.sum(matrix,axis=0))[0]
 
-        prec = np.nan_to_num(count_tp*(count_tp/count_p)**2)
+        prec = np.nan_to_num(count_tp*(count_tp/count_p)**3)
         order = np.argsort(prec)[::-1]
         print({'tp':count_tp[order[0]], 'fp':count_p[order[0]]-count_tp[order[0]]})
         return order[0]
 
 
     data = load()
-    content = []
-    label = []
+
     for target in data:
-        content = [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
-        label = [c for c in data[target]["code"]]
+        content = []
+        label = []
+        for target2 in data:
+            if target2==target:
+                continue
+            content += [c.decode("utf8","ignore").lower() for c in data[target2]["Abstract"]]
+            label += [c for c in data[target2]["code"]]
+
         label = np.array(label)
         x=DT(content,content)
         x.preprocess()
         left = range(x.train_data.shape[0])
         words_id = []
         x.train_data[x.train_data.nonzero()]=1
-        data = x.train_data
+        data2 = x.train_data
         for i in xrange(10):
-            id = get_top_prec(data[left],label[left])
+            id = get_top_prec(data2[left],label[left])
             words_id.append(id)
             to_remove = set()
             for row in left:
-                if data[row,id]>0:
+                if data2[row,id]>0:
                     to_remove.add(row)
             left = list(set(left)-to_remove)
 
@@ -499,7 +509,12 @@ def learner():
     print(out)
     # treatment.draw()
 
-
+def insert_dict(single,multiple):
+    for key in single:
+        if key not in multiple:
+            multiple[key] = []
+        multiple[key].append(single[key])
+    return multiple
 
 def exp_rest():
     data = load_rest()
@@ -520,16 +535,21 @@ def exp_rest():
                 x_content += [c.decode("utf8","ignore") for c in data[project]["Abstract"]]
                 x_label_old += [c for c in data[project]["label"]]
         for model in treatments:
-            treatment = model(x_content,y_content)
-            treatment.preprocess()
-            treatment.train(x_label_old)
-            try:
-                result_old = treatment.eval(y_label)
-            except:
-                set_trace()
+            result_old = {}
+            num = 30 if model==RF else 1
+            for seed in range(num):
+                treatment = model(x_content,y_content,seed=seed)
+                treatment.preprocess()
+                treatment.train(x_label_old)
+                try:
+                    result_seed = treatment.eval(y_label)
+                except:
+                    set_trace()
+                result_old = insert_dict(result_seed,result_old)
             results[target][model.__name__]=result_old
     set_trace()
     show_result_processed(results)
+
 
 
 def exp_active():
@@ -554,8 +574,17 @@ def exp_transfer(seed):
     print(sum(ns))
     apfds = {key: transfer(data, key, seed) for key in data}
     print(apfds)
-    with open("../dump/"+str(seed)+".pickle","w") as f:
+    with open("../dump2/"+str(seed)+".pickle","w") as f:
         pickle.dump(apfds,f)
+
+def collect_result():
+    transfer_result = {}
+    for seed in range(30):
+        with open("../dump/"+str(seed)+".pickle","r") as f:
+            apfds = pickle.load(f)
+        transfer_result = insert_dict(apfds,transfer_result)
+    medians = {key:np.median(transfer_result[key]) for key in transfer_result}
+    set_trace()
 
 if __name__ == "__main__":
     eval(cmd())
