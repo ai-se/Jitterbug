@@ -18,7 +18,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
-class Transfer(object):
+class Estimate(object):
     def __init__(self):
         self.fea_num = 4000
         self.step = 10
@@ -34,7 +34,7 @@ class Transfer(object):
 
 
 
-    def create(self,data,target):
+    def create(self,data_rest,data_all,target):
         self.flag=True
         self.hasLabel=True
         self.record={"x":[],"pos":[],'est':[]}
@@ -48,9 +48,24 @@ class Transfer(object):
         self.est_num = 0
 
         self.target = target
-        self.loadfile(data[target])
 
-        self.create_old(data)
+        self.body = self.loadfile(data_rest[target])
+        self.newpart = len(self.body)
+        self.body = self.create_old(data_rest,self.body)
+
+        self.body_all = self.loadfile(data_all[target])
+        self.map = {}
+        id = 0
+        for i in range(len(self.body_all["pre_label"])):
+            if self.body_all["pre_label"][i]=="yes":
+                self.body_all["code"][i]="yes"
+            else:
+                self.map[id]=i
+                id+=1
+
+        self.newpart_all = len(self.body_all)
+        self.body_all = self.create_old(data_all,self.body_all)
+
         self.preprocess()
 
         return self
@@ -58,18 +73,18 @@ class Transfer(object):
 
 
     def loadfile(self,data):
-        self.body = data
-        self.body['code']=["undetermined"]*len(self.body)
-        self.body['fixed']=[0]*len(self.body)
-        self.body['count']=[0]*len(self.body)
-        self.body['time']=[0.0]*len(self.body)
-        # self.start_time = np.min(self.body['time'])
-        self.newpart = len(self.body)
-        return
+        data_new = data
+        data_new['code']=["undetermined"]*len(data_new)
+        data_new['fixed']=[0]*len(data_new)
+        data_new['count']=[0]*len(data_new)
+        data_new['time']=[0.0]*len(data_new)
+        # self.start_time = np.min(data_new['time'])
+        return data_new
+
 
     ### Use previous knowledge, labeled only
-    def create_old(self,data):
-        bodies = [self.body]
+    def create_old(self,data, out):
+        bodies = [out]
         for key in data:
             if key == self.target:
                 continue
@@ -80,15 +95,15 @@ class Transfer(object):
             body['count']=pd.Series([0]*len(label))
             bodies.append(body)
 
-        self.body = pd.concat(bodies,ignore_index = True)
+        return pd.concat(bodies,ignore_index = True)
 
 
 
 
     def get_numbers(self):
-        total = len(self.body["code"][:self.newpart])
-        pos = Counter(self.body["code"][:self.newpart])["yes"]
-        neg = Counter(self.body["code"][:self.newpart])["no"]
+        total = len(self.body_all["code"][:self.newpart])
+        pos = Counter(self.body_all["code"][:self.newpart])["yes"]
+        neg = Counter(self.body_all["code"][:self.newpart])["no"]
 
 
         try:
@@ -105,12 +120,14 @@ class Transfer(object):
 
 
     def preprocess(self):
-        content0 = [c.decode("utf8", "ignore") for c in self.body["Abstract"][self.newpart:]]
+        content0 = [c.decode("utf8", "ignore") for c in self.body_all["Abstract"][self.newpart_all:]]
         content = [c.decode("utf8","ignore") for c in self.body["Abstract"]]
+        content_all = [c.decode("utf8","ignore") for c in self.body_all["Abstract"]]
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
         tfer.fit(content0)
         self.csr_mat = tfer.transform(content)
+        self.csr_mat_all = tfer.transform(content_all)
         self.voc = tfer.vocabulary_.keys()
 
 
@@ -175,7 +192,7 @@ class Transfer(object):
         #     sample = list(decayed) + list(np.array(unlabeled)[unlabel_sel])
         clf.fit(self.csr_mat[sample], labels[sample])
 
-        self.est_num, self.est = self.estimate_curve(clf, reuse=False, num_neg=len(sample)-len(left))
+        self.est_num, self.est = self.estimate_curve()
 
         uncertain_id, uncertain_prob = self.uncertain(clf)
         certain_id, certain_prob = self.certain(clf)
@@ -235,11 +252,13 @@ class Transfer(object):
         labels = self.body["label"][ids]
         self.body["code"][ids] = labels
         self.body["time"][ids] =times
+        ids_all = [self.map[i] for i in ids]
+        self.body_all["code"][ids_all] = labels
+        self.body_all["time"][ids_all] =times
 
 
-    def estimate_curve(self, clf, reuse=False, num_neg=0):
+    def estimate_curve(self):
         from sklearn import linear_model
-        import random
 
 
 
@@ -254,67 +273,60 @@ class Transfer(object):
                 if count >= 1:
                     # sample.append(np.random.choice(can,1)[0])
                     sample.append(can[0])
-                    count -= 1
+                    count = 0
                     can = []
             return sample
 
 
 
         ###############################################
+        clf = RandomForestClassifier()
+        clf.fit(self.csr_mat_all[self.newpart_all:], self.body_all['code'][self.newpart_all:])
 
-        prob = clf.predict_proba(self.csr_mat[:self.newpart])[:,:1]
+
+        prob = clf.predict_proba(self.csr_mat_all[:self.newpart_all])[:,:1]
+        # prob = clf.apply(self.csr_mat_all[:self.newpart_all])
+        pool = np.where(np.array(self.body_all['code'][:self.newpart_all]) == "undetermined")[0]
+
         # prob = clf.apply(self.csr_mat)
         # prob = np.array([[x] for x in prob1])
         # prob = self.csr_mat
 
 
-        y = np.array([1 if x == 'yes' else 0 for x in self.body['code'][:self.newpart]])
+        y = np.array([1 if x == 'yes' else 0 for x in self.body_all['code'][:self.newpart_all]])
         y0 = np.copy(y)
 
         all = range(len(y))
 
 
         pos_num_last = Counter(y0)[1]
-        if pos_num_last==0:
-            pos_at = list(clf.classes_).index("yes")
-            return sum(clf.predict_proba(self.csr_mat[self.pool])[:,pos_at]), []
         pos_origin = pos_num_last
-        old_pos = pos_num_last - Counter(self.body["code"][:self.newpart])["yes"]
-
-        lifes = 1
-        life = lifes
-
-        while (True):
-            C = pos_num_last / pos_origin
-            es = linear_model.LogisticRegression(penalty='l2', fit_intercept=True, C=C)
-
-            es.fit(prob[all], y[all])
-            pos_at = list(es.classes_).index(1)
-
-
-            pre = es.predict_proba(prob[self.pool])[:, pos_at]
-
-
-            y = np.copy(y0)
-
-            sample = prob_sample(pre)
-            for x in self.pool[sample]:
-                y[x] = 1
 
 
 
-            pos_num = Counter(y)[1]
+        C = pos_num_last / pos_origin
+        es = linear_model.LogisticRegression(penalty='l1', fit_intercept=True, C=C)
 
-            if pos_num == pos_num_last:
-                life = life - 1
-                if life == 0:
-                    break
-            else:
-                life = lifes
-            pos_num_last = pos_num
+        es.fit(prob[all], y[all])
+        pos_at = list(es.classes_).index(1)
 
 
-        esty = pos_num - old_pos
+        pre = es.predict_proba(prob[pool])[:, pos_at]
+
+
+        y = np.copy(y0)
+
+        sample = prob_sample(pre)
+        for x in pool[sample]:
+            y[x] = 1
+
+
+
+        pos_num = Counter(y)[1]
+
+
+
+        esty = pos_num
         pre = es.predict_proba(prob)[:, pos_at]
 
         return esty, pre
@@ -332,6 +344,6 @@ class Transfer(object):
         return apfd
 
     def get_allpos(self):
-        return len([1 for c in self.body["label"][:self.newpart] if c=="yes"])
+        return len([1 for c in self.body_all["label"][:self.newpart] if c=="yes"])
 
 

@@ -4,6 +4,7 @@ from __future__ import division, print_function
 import numpy as np
 from fastread import FASTREAD
 from transfer import Transfer
+from estimate import Estimate
 from sklearn import svm
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
@@ -247,11 +248,39 @@ def transfer(data, target, seed = 0):
             break
 
         a,b,c,d =read.train(weighting=True,pne=False)
+
         if pos<uncertain_thres:
             read.code_batch(a[:step])
         else:
             read.code_batch(c[:step])
-    return read.APFD()
+    return read
+
+def estimate(data, data_all, target, seed = 0):
+    np.random.seed(seed)
+    uncertain_thres = 0
+    read=Estimate()
+    read.create(data,data_all,target)
+    step = 10
+    count = 0
+
+    while True:
+        pos, neg, total = read.get_numbers()
+        try:
+            print("%d, %d, %d" %(pos,pos+neg, read.est_num))
+        except:
+            print("%d, %d" %(pos,pos+neg))
+        count+=1
+        if pos + neg >= total or count>1:
+            break
+
+        a,b,c,d =read.train(weighting=True,pne=False)
+
+        if pos<uncertain_thres:
+            read.code_batch(a[:step])
+        else:
+            read.code_batch(c[:step])
+
+    return read
 
 
 
@@ -404,11 +433,26 @@ def highest_prec():
 
         prec = np.nan_to_num(count_tp*(count_tp/count_p)**3)
         order = np.argsort(prec)[::-1]
-        print({'tp':count_tp[order[0]], 'fp':count_p[order[0]]-count_tp[order[0]]})
-        return order[0]
+        top_prec = count_tp[order[0]]/count_p[order[0]]
 
+        print({'tp':count_tp[order[0]], 'fp':count_p[order[0]]-count_tp[order[0]], 'prec':top_prec})
+        return order[0], top_prec
+
+    def remove(data, label, left, id):
+        to_remove = set()
+        p = 0
+        tp = 0
+        for row in left:
+            if data[row,id]>0:
+                to_remove.add(row)
+                p+=1
+                if label[row]=="yes":
+                    tp+=1
+        left = list(set(left)-to_remove)
+        return left, {"p":p, "tp":tp}
 
     data = load()
+    # data = load_rest()
 
     for target in data:
         content = []
@@ -420,23 +464,36 @@ def highest_prec():
             label += [c for c in data[target2]["code"]]
 
         label = np.array(label)
-        x=DT(content,content)
+        content_test = [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label_test = [c for c in data[target]["code"]]
+        x=DT(content,content_test)
         x.preprocess()
-        left = range(x.train_data.shape[0])
+        left_train = range(x.train_data.shape[0])
+        left_test = range(x.test_data.shape[0])
         words_id = []
+        precs = []
+
         x.train_data[x.train_data.nonzero()]=1
-        data2 = x.train_data
-        for i in xrange(10):
-            id = get_top_prec(data2[left],label[left])
+        est=0
+        tp = 0
+        for i in xrange(20):
+            id, prec = get_top_prec(x.train_data[left_train],label[left_train])
             words_id.append(id)
-            to_remove = set()
-            for row in left:
-                if data2[row,id]>0:
-                    to_remove.add(row)
-            left = list(set(left)-to_remove)
+            precs.append(prec)
+
+            left_train,_ = remove(x.train_data,label,left_train, id)
+            left_test,removed = remove(x.test_data,label_test,left_test, id)
+            set_trace()
+            est+=removed["p"]*prec
+            tp+=removed["tp"]
+            print((est,tp))
+
 
         print(target)
         print(np.array(x.voc)[words_id])
+        print((est,tp))
+
+
 
 
     set_trace()
@@ -564,7 +621,7 @@ def exp_active():
     print(apfds)
     set_trace()
 
-def exp_transfer(seed):
+def exp_transfer(seed=0):
     data = load_rest()
     ns = []
     for key in data:
@@ -572,10 +629,38 @@ def exp_transfer(seed):
         print(key+": %d" %n)
         ns.append(n)
     print(sum(ns))
-    apfds = {key: transfer(data, key, seed) for key in data}
+    apfds = {key: transfer(data, key, seed).APFD() for key in data}
     print(apfds)
     with open("../dump2/"+str(seed)+".pickle","w") as f:
         pickle.dump(apfds,f)
+
+def exp_transfer_details(seed=0):
+    data = load_rest()
+    ns = []
+    for key in data:
+        n=len(data[key])
+        print(key+": %d" %n)
+        ns.append(n)
+    print(sum(ns))
+    records = {key: transfer(data, key, seed).record for key in data}
+    est = {key: (records[key]['pos'][-1],records[key]['est'][1]) for key in records}
+    print(est)
+    set_trace()
+
+def exp_estimate_details(seed=0):
+    data = load_rest()
+    data_all = load_new()
+    ns = []
+    for key in data:
+        n=len(data[key])
+        print(key+": %d" %n)
+        ns.append(n)
+    print(sum(ns))
+    records = {key: estimate(data, data_all, key, seed) for key in data}
+    set_trace()
+    est = {key: (records[key].get_allpos()-records[key].record['pos'][0],records[key].record['est'][1]-records[key].record['pos'][0]) for key in records}
+    print(est)
+    set_trace()
 
 def collect_result():
     transfer_result = {}
