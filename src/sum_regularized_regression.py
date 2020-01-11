@@ -22,7 +22,8 @@ class Sum_Regularized_Regression():
             print("Input type must be numpy.array.")
             return
         beta0 = self.beta
-        res = minimize(lambda beta:self.fitness_func(x,y,beta), beta0, method='L-BFGS-B', options = {'xatol': 1e-8, 'disp': False})
+        # res = minimize(lambda beta:self.fitness_func(x,y,beta), beta0, method='L-BFGS-B', options = {'disp': False})
+        res = minimize(lambda beta:self.fitness_func(x,y,beta), beta0, method='nelder-mead', options = {'xatol': 1e-8, 'disp': False})
         self.beta = res.x
 
     def decision_function(self,x):
