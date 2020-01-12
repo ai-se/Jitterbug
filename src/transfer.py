@@ -142,37 +142,7 @@ class Transfer(object):
 
         # clf = svm.SVC(kernel='linear', probability=True, class_weight='balanced') if weighting else svm.SVC(kernel='linear', probability=True)
         clf = RandomForestClassifier(class_weight='balanced')
-        poses = np.where(np.array(self.body['code']) == "yes")[0]
-        negs = np.where(np.array(self.body['code']) == "no")[0]
-        left = poses
-        decayed = list(left) + list(negs)
-        unlabeled = self.pool
-        try:
-            unlabeled = np.random.choice(unlabeled,size=np.max((len(decayed),2*len(left),self.atleast)),replace=False)
-        except:
-            pass
-
-        if not pne:
-            unlabeled=[]
-
-        labels=np.array([x if x!='undetermined' else 'no' for x in self.body['code']])
-        sample = list(decayed) + list(unlabeled)
-
-        # clf_pre.fit(self.csr_mat[sample], labels[sample])
-        #
-        #
-        # ## aggressive undersampling ##
-        # if len(poses)>=self.enough:
-        #     pos_at = list(clf_pre.classes_).index("yes")
-        #     train_dist = clf_pre.predict_proba(self.csr_mat[all_neg])[:,pos_at]
-        #     negs_sel = np.argsort(train_dist)[:len(left)]
-        #     sample = list(left) + list(np.array(all_neg)[negs_sel])
-        #
-        # elif pne:
-        #     pos_at = list(clf_pre.classes_).index("yes")
-        #     train_dist = clf_pre.predict_proba(self.csr_mat[unlabeled])[:,pos_at]
-        #     unlabel_sel = np.argsort(train_dist)[:int(len(unlabeled) / 2)]
-        #     sample = list(decayed) + list(np.array(unlabeled)[unlabel_sel])
+        sample = np.where(np.array(self.body['code']) != "undetermined")[0]
         clf.fit(self.csr_mat[sample], labels[sample])
 
         self.est_num, self.est = self.estimate_curve(clf, reuse=False, num_neg=len(sample)-len(left))
@@ -261,8 +231,11 @@ class Transfer(object):
 
 
         ###############################################
+        clf = LogisticRegression(class_weight='balanced')
+        sample = np.where(np.array(self.body['code']) != "undetermined")[0]
+        clf.fit(self.csr_mat[sample], labels[sample])
 
-        prob = clf.predict_proba(self.csr_mat[:self.newpart])[:,:1]
+        prob = clf.decision_function(self.csr_mat[:self.newpart])
         # prob = clf.apply(self.csr_mat)
         # prob = np.array([[x] for x in prob1])
         # prob = self.csr_mat

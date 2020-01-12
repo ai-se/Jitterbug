@@ -273,7 +273,7 @@ class Estimate(object):
                 if count >= 1:
                     # sample.append(np.random.choice(can,1)[0])
                     sample.append(can[0])
-                    count = 0
+                    count -= 1
                     can = []
             return sample
 
