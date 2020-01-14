@@ -386,12 +386,42 @@ def ken_validate():
     validate["code"] = ken["code"][ids]
     validate.to_csv("../new_data/validate/validate0.csv", line_terminator="\r\n", index=False)
 
+def test_hack():
+    # data = load()
+    data = load_new()
+    keys = [u'todo', u'fixme', u'hack', u'workaround']
+    for target in data:
+        content = [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        label = [c for c in data[target]["label"]]
+
+        x=DT(content,content)
+        x.preprocess()
+        indices = {}
+        for key in keys:
+            try:
+                id = x.voc.index(key)
+            except:
+                indices[key]=[]
+                continue
+            indices[key] = [i for i in range(x.train_data.shape[0]) if x.train_data[i,id] > 0]
+        new_label = ["no"]*len(label)
+
+        for key in keys:
+            for i in indices[key]:
+                new_label[i]="yes"
+            tp,fp,fn,tn = x.confusion(new_label, label)
+            metrics = {"tp": tp, "fp": fp, "fn": fn}
+            # print(key)
+            # print(metrics)
+        result = {'prec':float(tp)/(tp+fp), 'rec': float(tp)/(tp+fn)}
+        print(target)
+        print(result)
+
 def hack():
     data = load()
     content = []
     label = []
-    keys = [u'todo', u'fixme', u'hack', u'workaround', u'xxx', u'defer',
-       u'renederer', u'dms', u'yuck', u'addtrigger']
+    keys = [u'todo', u'fixme', u'hack', u'workaround']
     for target in data:
         content += [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
         label += [c for c in data[target]["code"]]
