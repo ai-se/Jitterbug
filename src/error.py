@@ -228,26 +228,26 @@ def active(data,start = "pre"):
                 read.code_batch(c)
     return read.APFD()
 
-def transfer(data, target, seed = 0):
+def transfer(data, target, model = "RF", seed = 0):
     np.random.seed(seed)
     uncertain_thres = 0
-    read=Transfer()
+    read=Transfer(model=model)
     read.create(data, target)
-    step = len(data[target])
+    # step = len(data[target])
     step = 10
 
 
     while True:
         pos, neg, total = read.get_numbers()
-        # try:
-        #     print("%d, %d, %d" %(pos,pos+neg, read.est_num))
-        # except:
-        #     print("%d, %d" %(pos,pos+neg))
+        try:
+            print("%d, %d, %d" %(pos,pos+neg, read.est_num))
+        except:
+            print("%d, %d" %(pos,pos+neg))
 
         if pos + neg >= total:
             break
 
-        a,b,c,d =read.train(weighting=True,pne=False)
+        a,b,c,d =read.train()
 
         if pos<uncertain_thres:
             read.code_batch(a[:step])
@@ -621,7 +621,7 @@ def exp_active():
     print(apfds)
     set_trace()
 
-def exp_transfer(seed=0):
+def exp_transfer(model = "RF",seed=0):
     data = load_rest()
     ns = []
     for key in data:
@@ -629,9 +629,9 @@ def exp_transfer(seed=0):
         print(key+": %d" %n)
         ns.append(n)
     print(sum(ns))
-    apfds = {key: transfer(data, key, seed).APFD() for key in data}
+    apfds = {key: transfer(data, key, model=model, seed=seed).APFD() for key in data}
     print(apfds)
-    with open("../dump2/"+str(seed)+".pickle","w") as f:
+    with open("../dump/"+str(model)+"_"+str(seed)+".pickle","w") as f:
         pickle.dump(apfds,f)
 
 def exp_transfer_details(seed=0):
@@ -642,7 +642,7 @@ def exp_transfer_details(seed=0):
         print(key+": %d" %n)
         ns.append(n)
     print(sum(ns))
-    records = {key: transfer(data, key, seed).record for key in data}
+    records = {key: transfer(data, key, model="RF", seed=seed).record for key in data}
     est = {key: (records[key]['pos'][-1],records[key]['est'][1]) for key in records}
     print(est)
     set_trace()

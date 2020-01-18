@@ -13,13 +13,15 @@ import os
 from sklearn import preprocessing
 import pandas as pd
 from scipy.spatial import distance
+from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import SGDClassifier
 
 
 class Transfer(object):
-    def __init__(self):
+    def __init__(self,model="RF"):
         self.fea_num = 4000
         self.step = 10
         self.enough = 30
@@ -29,6 +31,16 @@ class Transfer(object):
         self.interval = 500000000
         self.ham=False
         self.seed = 0
+        if model=="RF":
+            self.model = RandomForestClassifier(class_weight="balanced")
+        elif model=="NB":
+            self.model = MultinomialNB()
+        elif model == "LR":
+            self.model = LogisticRegression(class_weight="balanced")
+        elif model == "DT":
+            self.model = DecisionTreeClassifier(class_weight="balanced",max_depth=8)
+        elif model == "SVM":
+            self.model = SGDClassifier(class_weight="balanced")
 
 
 
@@ -46,6 +58,8 @@ class Transfer(object):
         self.record_time = {"x":[],"pos":[]}
         self.round = 0
         self.est_num = 0
+
+
 
         self.target = target
         self.loadfile(data[target])
@@ -138,34 +152,33 @@ class Transfer(object):
         return
 
     ## Train model ##
-    def train(self,pne=False,weighting=True):
+    def train(self):
 
-        # clf = svm.SVC(kernel='linear', probability=True, class_weight='balanced') if weighting else svm.SVC(kernel='linear', probability=True)
-        clf = RandomForestClassifier(class_weight='balanced')
+
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
-        clf.fit(self.csr_mat[sample], labels[sample])
+        self.model.fit(self.csr_mat[sample], self.body["code"][sample])
 
-        self.est_num, self.est = self.estimate_curve(clf, reuse=False, num_neg=len(sample)-len(left))
+        self.est_num, self.est = self.estimate_curve()
 
-        uncertain_id, uncertain_prob = self.uncertain(clf)
-        certain_id, certain_prob = self.certain(clf)
+        uncertain_id, uncertain_prob = self.uncertain()
+        certain_id, certain_prob = self.certain()
 
         return uncertain_id, uncertain_prob, certain_id, certain_prob
 
         ## Get uncertain ##
 
-    def uncertain(self,clf):
-        pos_at = list(clf.classes_).index("yes")
-        prob = clf.predict_proba(self.csr_mat[self.pool])[:, pos_at]
+    def uncertain(self):
+        pos_at = list(self.model.classes_).index("yes")
+        prob = self.model.predict_proba(self.csr_mat[self.pool])[:, pos_at]
         # train_dist = clf.decision_function(self.csr_mat[self.pool])
         # order = np.argsort(np.abs(train_dist))[:self.step]  ## uncertainty sampling by distance to decision plane
         order = np.argsort(np.abs(prob-0.5))   ## uncertainty sampling by prediction probability
         return np.array(self.pool)[order], np.array(prob)[order]
 
     ## Get certain ##
-    def certain(self,clf):
-        pos_at = list(clf.classes_).index("yes")
-        prob = clf.predict_proba(self.csr_mat[self.pool])[:,pos_at]
+    def certain(self):
+        pos_at = list(self.model.classes_).index("yes")
+        prob = self.model.predict_proba(self.csr_mat[self.pool])[:,pos_at]
         order = np.argsort(prob)[::-1]
         return np.array(self.pool)[order],np.array(self.pool)[order]
 
@@ -207,8 +220,9 @@ class Transfer(object):
         self.body["time"][ids] =times
 
 
-    def estimate_curve(self, clf, reuse=False, num_neg=0):
+    def estimate_curve(self):
         from sklearn import linear_model
+        from sum_regularized_regression import Sum_Regularized_Regression
         import random
 
 
@@ -231,11 +245,12 @@ class Transfer(object):
 
 
         ###############################################
-        clf = LogisticRegression(class_weight='balanced')
+        clf = linear_model.LogisticRegression(class_weight='balanced')
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
-        clf.fit(self.csr_mat[sample], labels[sample])
+        clf.fit(self.csr_mat[sample], self.body["code"][sample])
 
         prob = clf.decision_function(self.csr_mat[:self.newpart])
+        prob2 = np.array([[p] for p in prob])
         # prob = clf.apply(self.csr_mat)
         # prob = np.array([[x] for x in prob1])
         # prob = self.csr_mat
@@ -260,12 +275,13 @@ class Transfer(object):
         while (True):
             C = pos_num_last / pos_origin
             es = linear_model.LogisticRegression(penalty='l2', fit_intercept=True, C=C)
-
-            es.fit(prob[all], y[all])
+            es.fit(prob2[all], y[all])
             pos_at = list(es.classes_).index(1)
+            pre = es.predict_proba(prob2[self.pool])[:, pos_at]
 
-
-            pre = es.predict_proba(prob[self.pool])[:, pos_at]
+            # es  =Sum_Regularized_Regression()
+            # es.fit(prob[all], y[all])
+            # pre = es.predict(prob[self.pool])
 
 
             y = np.copy(y0)
@@ -288,7 +304,9 @@ class Transfer(object):
 
 
         esty = pos_num - old_pos
-        pre = es.predict_proba(prob)[:, pos_at]
+        pre = es.predict_proba(prob2)[:, pos_at]
+        # pre = es.predict(prob)
+
 
         return esty, pre
 
