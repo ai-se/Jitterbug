@@ -169,17 +169,25 @@ class Transfer(object):
 
     def uncertain(self):
         pos_at = list(self.model.classes_).index("yes")
-        prob = self.model.predict_proba(self.csr_mat[self.pool])[:, pos_at]
-        # train_dist = clf.decision_function(self.csr_mat[self.pool])
-        # order = np.argsort(np.abs(train_dist))[:self.step]  ## uncertainty sampling by distance to decision plane
-        order = np.argsort(np.abs(prob-0.5))   ## uncertainty sampling by prediction probability
+        if type(self.model).__name__ == "SGDClassifier":
+            prob = self.model.decision_function(self.csr_mat[self.pool])
+            order = np.argsort(np.abs(prob))   ## uncertainty sampling by prediction probability
+        else:
+            prob = self.model.predict_proba(self.csr_mat[self.pool])[:, pos_at]
+            order = np.argsort(np.abs(prob-0.5))   ## uncertainty sampling by prediction probability
         return np.array(self.pool)[order], np.array(prob)[order]
 
     ## Get certain ##
     def certain(self):
         pos_at = list(self.model.classes_).index("yes")
-        prob = self.model.predict_proba(self.csr_mat[self.pool])[:,pos_at]
-        order = np.argsort(prob)[::-1]
+        if type(self.model).__name__ == "SGDClassifier":
+            prob = self.model.decision_function(self.csr_mat[self.pool])
+            order = np.argsort(prob)
+            if pos_at>0:
+                order = order[::-1]
+        else:
+            prob = self.model.predict_proba(self.csr_mat[self.pool])[:, pos_at]
+            order = np.argsort(prob)[::-1]
         return np.array(self.pool)[order],np.array(self.pool)[order]
 
 
