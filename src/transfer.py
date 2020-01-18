@@ -171,10 +171,10 @@ class Transfer(object):
         pos_at = list(self.model.classes_).index("yes")
         if type(self.model).__name__ == "SGDClassifier":
             prob = self.model.decision_function(self.csr_mat[self.pool])
-            order = np.argsort(np.abs(prob))   ## uncertainty sampling by prediction probability
+            order = np.argsort(np.abs(prob))
         else:
             prob = self.model.predict_proba(self.csr_mat[self.pool])[:, pos_at]
-            order = np.argsort(np.abs(prob-0.5))   ## uncertainty sampling by prediction probability
+            order = np.argsort(np.abs(prob-0.5))
         return np.array(self.pool)[order], np.array(prob)[order]
 
     ## Get certain ##
