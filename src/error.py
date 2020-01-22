@@ -34,24 +34,10 @@ class Treatment():
     def __init__(self,x_content,y_content):
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = "Some Model"
 
 
     def preprocess(self):
-        # tfidfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=None, use_idf=True, smooth_idf=False,
-        #                         sublinear_tf=False,decode_error="ignore")
-        # tfidf = tfidfer.fit_transform(self.x_content)
-        # weight = tfidf.sum(axis=0).tolist()[0]
-        # kept = np.argsort(weight)[-self.fea_num:]
-        # self.voc = np.array(tfidfer.vocabulary_.keys())[np.argsort(tfidfer.vocabulary_.values())][kept]
-        # ##############################################################
-        #
-        # ### Term frequency as feature, L2 normalization ##########
-        # tfer = TfidfVectorizer(lowercase=True, stop_words="english", norm=u'l2', use_idf=False,
-        #                 vocabulary=self.voc,decode_error="ignore")
-        # self.train_data = tfer.fit_transform(self.x_content)
-        # self.test_data = tfer.transform(self.y_content)
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,
                                sublinear_tf=False, decode_error="ignore")
@@ -159,7 +145,6 @@ class SVM(Treatment):
     def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = svm.SVC(kernel="linear",probability=True,class_weight="balanced",random_state=seed)
 
 class RF(Treatment):
@@ -167,7 +152,6 @@ class RF(Treatment):
     def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = RandomForestClassifier(class_weight="balanced",random_state=seed)
 
 class DT(Treatment):
@@ -175,7 +159,6 @@ class DT(Treatment):
     def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = DecisionTreeClassifier(class_weight="balanced",max_depth=8,random_state=seed)
 
 class NB(Treatment):
@@ -184,7 +167,6 @@ class NB(Treatment):
         np.random.seed(seed)
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = MultinomialNB()
 
 class LR(Treatment):
@@ -192,8 +174,130 @@ class LR(Treatment):
     def __init__(self,x_content,y_content,seed=0):
         self.x_content = x_content
         self.y_content = y_content
-        self.fea_num=4000
         self.model = LogisticRegression(class_weight="balanced",random_state=seed)
+
+class TM(Treatment):
+
+    def __init__(self,data,target,seed=0):
+        np.random.seed(seed)
+        self.data = data
+        self.target = target
+
+
+    def preprocess(self):
+        self.x_content = []
+        self.x_label = []
+        for key in self.data:
+            if key == self.target:
+                self.y_content = [c.decode("utf8","ignore") for c in self.data[key]["Abstract"]]
+                self.y_label = self.data[key]["label"].tolist()
+            else:
+                self.x_content.append([c.decode("utf8","ignore") for c in self.data[key]["Abstract"]])
+                self.x_label.append(self.data[key]["label"].tolist())
+        flat_train = [item for sublist in self.x_content for item in sublist]
+
+        tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,
+                               sublinear_tf=False, decode_error="ignore")
+        tfer.fit(flat_train)
+        self.train_data = [tfer.transform(train) for train in self.x_content]
+        self.test_data = tfer.transform(self.y_content)
+        ascend = np.argsort(tfer.vocabulary_.values())
+        self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
+
+
+    # def draw(self):
+    #     from sklearn.externals.six import StringIO
+    #     from IPython.display import Image
+    #     from sklearn.tree import export_graphviz
+    #     import pydotplus
+    #     dot_data = StringIO()
+    #     export_graphviz(self.model, out_file=dot_data,
+    #                     filled=True, rounded=True,
+    #                     special_characters=True)
+    #     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+    #     Image(graph.create_png())
+
+
+
+    def train(self):
+
+        self.models = [MultinomialNB()]*len(self.train_data)
+
+        for i, model in enumerate(self.models):
+            model.fit(self.train_data[i],self.x_label[i])
+
+    def confusion(self,decisions, y_label):
+        tp,fp,fn,tn = 0,0,0,0
+        for i, d in enumerate(decisions):
+            gt = y_label[i]
+            if d=="yes" and gt=="yes":
+                tp+=1
+            elif d=="yes" and gt=="no":
+                fp+=1
+            elif d=="no" and gt=="yes":
+                fn+=1
+            elif d=="no" and gt=="no":
+                tn+=1
+        return tp,fp,fn,tn
+
+    def AUC(self,labels):
+        stats = Counter(labels)
+        fn = stats["yes"]
+        tn = stats["no"]
+        tp,fp, auc = 0,0,0.0
+        for label in labels:
+            if label == "yes":
+                tp+=1
+                fn-=1
+            else:
+                dfpr = float(fp)/(fp+tn)
+                fp+=1
+                tn-=1
+                tpr = float(tp)/(tp+fn)
+                fpr = float(fp)/(fp+tn)
+                auc+=tpr*(fpr-dfpr)
+        return auc
+
+    def APFD(self,labels):
+        n = len(labels)
+        m = Counter(labels)["yes"]
+        apfd = 0
+        for i,label in enumerate(labels):
+            if label == 'yes':
+                apfd += (i+1)
+        apfd = 1-float(apfd)/n/m+1/(2*n)
+
+        return apfd
+
+    def eval(self):
+        y_label = self.y_label
+        thres = len(self.models)/2
+        probs = [Counter([model.predict(test_data) for model in self.models])["yes"] for test_data in self.test_data]
+        decisions = ["yes" if prob>thres else "no" for prob in probs]
+        tp,fp,fn,tn = self.confusion(decisions, y_label)
+        result = {}
+        if tp==0:
+            result["precision"]=0
+            result["recall"]=0
+            result["f1"]=0
+        else:
+            result["precision"] = float(tp) / (tp+fp)
+            result["recall"] = float(tp) / (tp+fn)
+            result["f1"] = 2*result["precision"]*result["recall"]/(result["precision"]+result["recall"])
+        if fp==0:
+            result["fall-out"]=0
+        else:
+            result["fall-out"] = float(fp) / (fp+tn)
+
+
+        order = np.argsort(probs)[::-1]
+        labels = np.array(y_label)[order]
+        result["AUC"] = self.AUC(labels)
+        result["APFD"] = self.APFD(labels)
+        result["p@10"] = Counter(labels[:10])["yes"] / float(len(labels[:10]))
+        result["p@100"] = Counter(labels[:100])["yes"] / float(len(labels[:100]))
+        return result
+
 
 
 def active(data,start = "pre"):
@@ -504,8 +608,6 @@ def highest_prec():
         precs = []
 
         x.train_data[x.train_data.nonzero()]=1
-        est=0
-        tp = 0
         for i in xrange(20):
             id, prec = get_top_prec(x.train_data[left_train],label[left_train])
             words_id.append(id)
@@ -513,15 +615,7 @@ def highest_prec():
 
             left_train,_ = remove(x.train_data,label,left_train, id)
             left_test,removed = remove(x.test_data,label_test,left_test, id)
-            set_trace()
-            est+=removed["p"]*prec
-            tp+=removed["tp"]
-            print((est,tp))
 
-
-        print(target)
-        print(np.array(x.voc)[words_id])
-        print((est,tp))
 
 
 
@@ -602,6 +696,8 @@ def insert_dict(single,multiple):
             multiple[key] = []
         multiple[key].append(single[key])
     return multiple
+
+
 
 def exp_rest():
     data = load_rest()
@@ -699,6 +795,34 @@ def collect_result():
             apfds = pickle.load(f)
         transfer_result = insert_dict(apfds,transfer_result)
     medians = {key:np.median(transfer_result[key]) for key in transfer_result}
+    set_trace()
+
+def collect_results():
+    treatments = ['LR','DT','RF','NB','SVM']
+    results = {"Treatment":[]}
+    for treatment in treatments:
+        transfer_result = {}
+        for seed in range(30):
+            with open("../dump/"+str(treatment)+"_"+str(seed)+".pickle","r") as f:
+                apfds = pickle.load(f)
+            transfer_result = insert_dict(apfds,transfer_result)
+        medians = {key:np.median(transfer_result[key]) for key in transfer_result}
+        results = insert_dict(medians,results)
+        results["Treatment"].append(treatment)
+    df = pd.DataFrame(data=results,columns=["Treatment","columba","argouml","emf","jfreechart","jruby","ant","jEdit","GA","sql","jmeter"])
+
+    df.to_csv("../results/continuous_APFD.csv",index=False)
+    set_trace()
+
+def exp_TM(seed=0):
+    data = load_new()
+    result = {}
+    for key in data:
+        model = TM(data, key, seed=seed)
+        model.preprocess()
+        model.train()
+        result[key] = model.eval()
+    print(result)
     set_trace()
 
 if __name__ == "__main__":

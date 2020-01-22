@@ -1,0 +1,5 @@
+,,columba,argouml,emf,jfreechart,jruby,ant,jEdit,GA,sql,jmeter
+Precision,Uncorrected,91,85,69,72,93,89,95,94,85,87
+Precision,Corrected,99,100,100,100,100,100,100,100,100,100
+Recall,Uncorrected,87,88,33,47,90,24,21,74,54,75
+Recall,Corrected,88,90,41,55,90,27,22,75,58,77
