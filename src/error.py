@@ -5,6 +5,7 @@ import numpy as np
 from fastread import FASTREAD
 from transfer import Transfer
 from estimate import Estimate
+from tm import TM
 from sklearn import svm
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
@@ -176,127 +177,8 @@ class LR(Treatment):
         self.y_content = y_content
         self.model = LogisticRegression(class_weight="balanced",random_state=seed)
 
-class TM(Treatment):
-
-    def __init__(self,data,target,seed=0):
-        np.random.seed(seed)
-        self.data = data
-        self.target = target
 
 
-    def preprocess(self):
-        self.x_content = []
-        self.x_label = []
-        for key in self.data:
-            if key == self.target:
-                self.y_content = [c.decode("utf8","ignore") for c in self.data[key]["Abstract"]]
-                self.y_label = self.data[key]["label"].tolist()
-            else:
-                self.x_content.append([c.decode("utf8","ignore") for c in self.data[key]["Abstract"]])
-                self.x_label.append(self.data[key]["label"].tolist())
-        flat_train = [item for sublist in self.x_content for item in sublist]
-
-        tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,
-                               sublinear_tf=False, decode_error="ignore")
-        tfer.fit(flat_train)
-        self.train_data = [tfer.transform(train) for train in self.x_content]
-        self.test_data = tfer.transform(self.y_content)
-        ascend = np.argsort(tfer.vocabulary_.values())
-        self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
-
-
-    # def draw(self):
-    #     from sklearn.externals.six import StringIO
-    #     from IPython.display import Image
-    #     from sklearn.tree import export_graphviz
-    #     import pydotplus
-    #     dot_data = StringIO()
-    #     export_graphviz(self.model, out_file=dot_data,
-    #                     filled=True, rounded=True,
-    #                     special_characters=True)
-    #     graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
-    #     Image(graph.create_png())
-
-
-
-    def train(self):
-
-        self.models = [MultinomialNB()]*len(self.train_data)
-
-        for i, model in enumerate(self.models):
-            model.fit(self.train_data[i],self.x_label[i])
-
-    def confusion(self,decisions, y_label):
-        tp,fp,fn,tn = 0,0,0,0
-        for i, d in enumerate(decisions):
-            gt = y_label[i]
-            if d=="yes" and gt=="yes":
-                tp+=1
-            elif d=="yes" and gt=="no":
-                fp+=1
-            elif d=="no" and gt=="yes":
-                fn+=1
-            elif d=="no" and gt=="no":
-                tn+=1
-        return tp,fp,fn,tn
-
-    def AUC(self,labels):
-        stats = Counter(labels)
-        fn = stats["yes"]
-        tn = stats["no"]
-        tp,fp, auc = 0,0,0.0
-        for label in labels:
-            if label == "yes":
-                tp+=1
-                fn-=1
-            else:
-                dfpr = float(fp)/(fp+tn)
-                fp+=1
-                tn-=1
-                tpr = float(tp)/(tp+fn)
-                fpr = float(fp)/(fp+tn)
-                auc+=tpr*(fpr-dfpr)
-        return auc
-
-    def APFD(self,labels):
-        n = len(labels)
-        m = Counter(labels)["yes"]
-        apfd = 0
-        for i,label in enumerate(labels):
-            if label == 'yes':
-                apfd += (i+1)
-        apfd = 1-float(apfd)/n/m+1/(2*n)
-
-        return apfd
-
-    def eval(self):
-        y_label = self.y_label
-        thres = len(self.models)/2
-        probs = [Counter([model.predict(test_data) for model in self.models])["yes"] for test_data in self.test_data]
-        decisions = ["yes" if prob>thres else "no" for prob in probs]
-        tp,fp,fn,tn = self.confusion(decisions, y_label)
-        result = {}
-        if tp==0:
-            result["precision"]=0
-            result["recall"]=0
-            result["f1"]=0
-        else:
-            result["precision"] = float(tp) / (tp+fp)
-            result["recall"] = float(tp) / (tp+fn)
-            result["f1"] = 2*result["precision"]*result["recall"]/(result["precision"]+result["recall"])
-        if fp==0:
-            result["fall-out"]=0
-        else:
-            result["fall-out"] = float(fp) / (fp+tn)
-
-
-        order = np.argsort(probs)[::-1]
-        labels = np.array(y_label)[order]
-        result["AUC"] = self.AUC(labels)
-        result["APFD"] = self.APFD(labels)
-        result["p@10"] = Counter(labels[:10])["yes"] / float(len(labels[:10]))
-        result["p@100"] = Counter(labels[:100])["yes"] / float(len(labels[:100]))
-        return result
 
 
 
@@ -819,7 +701,6 @@ def exp_TM(seed=0):
     result = {}
     for key in data:
         model = TM(data, key, seed=seed)
-        model.preprocess()
         model.train()
         result[key] = model.eval()
     print(result)
