@@ -24,8 +24,7 @@ class TM():
         self.data = data
         self.target = target
 
-
-    def train(self):
+    def preprocess(self):
         def entropy(Nwt,N,Nt,Nw):
             return  np.nan_to_num(Nwt/N*np.log2(Nwt*N/Nt/Nw))
 
@@ -39,6 +38,11 @@ class TM():
                 self.x_content.append([re.sub(r'[^a-zA-Z]', ' ', c.decode("utf8","ignore")) for c in self.data[key]["Abstract"]])
                 self.x_label.append(self.data[key]["label"].tolist())
         self.prediction = np.array([0]*len(self.y_label))
+
+    def train(self):
+        def entropy(Nwt,N,Nt,Nw):
+            return  np.nan_to_num(Nwt/N*np.log2(Nwt*N/Nt/Nw))
+
         for i,content in enumerate(self.x_content):
             #  feature selection
             tfer = TfidfVectorizer(tokenizer=LemmaTokenizer(),lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,

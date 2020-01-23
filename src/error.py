@@ -342,7 +342,7 @@ def show_result_processed(results):
             columns.append(data)
             df[data] = [round(np.median(results[data][treatment][metric]), 2) for treatment in treatments]
 
-        pd.DataFrame(df,columns=columns).to_csv("../results/processed_"+metric+".csv", index=False)
+        pd.DataFrame(df,columns=columns).to_csv("../results/rest_"+metric+".csv", index=False)
 
 
 def validate():
@@ -583,7 +583,7 @@ def insert_dict(single,multiple):
 
 def exp_rest():
     data = load_rest()
-    treatments = [SVM, RF, DT, NB, LR]
+    treatments = [TM,SVM, RF, DT, NB, LR]
     # treatments = [RF]
     results={}
     for target in data:
@@ -603,16 +603,21 @@ def exp_rest():
             result_old = {}
             num = 30 if model==RF else 1
             for seed in range(num):
-                treatment = model(x_content,y_content,seed=seed)
-                treatment.preprocess()
-                treatment.train(x_label_old)
-                try:
-                    result_seed = treatment.eval(y_label)
-                except:
-                    set_trace()
+                if model == TM:
+                    treatment = model(data,target,seed=seed)
+                    treatment.preprocess()
+                    treatment.train()
+                    result_seed = treatment.eval()
+                else:
+                    treatment = model(x_content,y_content,seed=seed)
+                    treatment.preprocess()
+                    treatment.train(x_label_old)
+                    try:
+                        result_seed = treatment.eval(y_label)
+                    except:
+                        set_trace()
                 result_old = insert_dict(result_seed,result_old)
             results[target][model.__name__]=result_old
-    set_trace()
     show_result_processed(results)
 
 
@@ -701,6 +706,7 @@ def exp_TM(seed=0):
     result = {}
     for key in data:
         model = TM(data, key, seed=seed)
+        model.preprocess()
         model.train()
         result[key] = model.eval()
     print(result)
