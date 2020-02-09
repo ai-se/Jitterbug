@@ -1,5 +1,91 @@
 # Identifying Self-Admitted Technical Debt withPattern Recognition and Machine Learning
 
 ## Data
-[Original](https://github.com/ai-se/tech-debt/tree/master/data) from Maldonado and Shihab "Detecting and quantifying different types of self-admitted  technical  debt," in 2015 IEEE 7th InternationalWorkshop on Managing Technical Debt (MTD). IEEE, 2015, pp. 9–15.
-[Corrected](https://github.com/ai-se/tech-debt/tree/master/new_data)
+ - [Original](https://github.com/ai-se/tech-debt/tree/master/data) from Maldonado and Shihab "Detecting and quantifying different types of self-admitted  technical  debt," in 2015 IEEE 7th InternationalWorkshop on Managing Technical Debt (MTD). IEEE, 2015, pp. 9–15.
+ - [Corrected](https://github.com/ai-se/tech-debt/tree/master/new_data/corrected): 439 labels checked, 431 labels corrected.
+ 
+## Experiments
+### Setup
+```
+tech-debt$ pip install requirements.txt
+tech-debt$ python
+>>> import nltk
+>>> nltk.download('punkt')
+tech-debt$ cd src
+```
+### RQ1
+#### RQ1.1
+ - Prepare data:
+ ```
+ src$ python main.py parse
+ ```
+ - Find patterns with Easy (target project = apache-ant-1.7.0):
+ ```
+ src$ python main.py find_patterns
+ 
+ {'fp': 367.0, 'tp': 2493.0, 'fitness': 0.8716783216783217}
+ {'fp': 53.0, 'tp': 330.0, 'fitness': 0.8616187989556136}
+ {'fp': 7.0, 'tp': 87.0, 'fitness': 0.925531914893617}
+ {'fp': 3.0, 'tp': 46.0, 'fitness': 0.9387755102040817}
+ {'fp': 28.0, 'tp': 61.0, 'fitness': 0.6853932584269663}
+ Patterns:
+ [u'todo' u'fixme' u'hack' u'workaround']
+ Precisions on training set:
+ {u'fixme': 0.8616187989556136, u'todo': 0.8716783216783217, u'workaround': 0.9387755102040817, u'hack': 0.925531914893617}
+ ```
+ - Test Easy on every target project, save output as [step1_Easy_original.csv](https://github.com/ai-se/tech-debt/tree/master/results/step1_Easy_original.csv):
+ ```
+ src$ python main.py Easy_results original
+ ```
+ - Test MAT on every target project, save output as [step1_MAT_original.csv](https://github.com/ai-se/tech-debt/tree/master/results/step1_MAT_original.csv):
+ ```
+ src$ python main.py MAT_results original
+ ```
+#### RQ1.2
+ - Find conflicting labels (GT=no AND Easy=yes), save as csv files under the [conflicts](https://github.com/ai-se/tech-debt/tree/master/new_data/conflicts) directory:
+ ```
+ src$ python main.py validate_ground_truth
+ ```
+ - Validate the conflicting labels manually, results are under the [validate](https://github.com/ai-se/tech-debt/tree/master/new_data/validate) directory.
+ - Summarize validation results and save as [validate_sum.csv](https://github.com/ai-se/tech-debt/tree/master/results/validate_sum.csv):
+ ```
+ src$ python main.py summarize_validate
+ ```
+ - Correct ground truth labels with the validation results, new data saved under [corrected](https://github.com/ai-se/tech-debt/tree/master/new_data/corrected) directory:
+ ```
+ src$ python main.py correct_ground_truth
+ ```
+ - Test Easy on every target project with corrected labels, save output as [step1_Easy_corrected.csv](https://github.com/ai-se/tech-debt/tree/master/results/step1_Easy_corrected.csv), also output the data with the "easy to find" SATDs removed to the [rest](https://github.com/ai-se/tech-debt/tree/master/new_data/rest) directory:
+ ```
+ src$ python main.py Easy_results corrected
+ ```
+ - Test MAT on every target project with corrected labels, save output as [step1_MAT_corrected.csv](https://github.com/ai-se/tech-debt/tree/master/results/step1_MAT_corrected.csv):
+ ```
+ src$ python main.py MAT_results corrected
+ ```
+### RQ2
+#### RQ2.1
+ - Test Hard, TM, and other supervised learners on every target project with "easy to find" SATDs removed, save APFD results as [rest_APFD_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/rest_APFD_Hard.csv), AUC results as [rest_AUC_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/rest_AUC_Hard.csv), and dump results as [rest_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/rest_result.pickle):
+ ```
+ src$ python main.py rest_results
+ ```
+ - Plot recall-cost curves of Step2 experiments to [figures_rest](https://github.com/ai-se/tech-debt/tree/master/figures_rest) directory:
+ ```
+ src$ python main.py plot_recall_cost rest
+ ```
+#### RQ2.2
+ - Use estimator to stop at 90% recall, plot curves to [figures_est](https://github.com/ai-se/tech-debt/tree/master/figures_est) directory:
+ ```
+ src$ python main.py estimate_results
+ ```
+### RQ3
+ - Test Diamond, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD_Hard.csv), AUC results as [overall_AUC_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC_Hard.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
+ ```
+ src$ python main.py overall_results
+ ```
+ - Plot overall recall-cost curves to [figures_overall](https://github.com/ai-se/tech-debt/tree/master/figures_overall) directory:
+ ```
+ src$ python main.py plot_recall_cost overall
+ ```
+ 
+ 
