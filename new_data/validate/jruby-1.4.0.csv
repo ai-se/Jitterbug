@@ -1,0 +1,44 @@
+ID,projectname,classification,Abstract,label,easy_code,validate
+631,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// TODO: Ruby logic is somewhat more complicated here, see comments after",no,yes,yes
+725,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// done // done // done // Nothing to do for 1.8 // done // done // done // done // done // done // done? // done // done // done // done // done // done // done // done // done // done // done //            case DEFINEDNODE: return buildDefined(node, m); // Incomplete // done // done // done // done // done // done // done // done //            case ENSURENODE: return buildEnsureNode(node, m); // DEFERRED // done // done // done // done //            case FLIPNODE: return buildFlip(node, m); // SSS FIXME: What code generates this AST? // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done? // done // done // done // done // done // done -- partially //            case OPELEMENTASGNNODE: return buildOpElementAsgn(node, m); // DEFERRED SSS FIXME: What code generates this AST? // done //            case POSTEXENODE: return buildPostExe(node, m); // DEFERRED //            case PREEXENODE: return buildPreExe(node, m); // DEFERRED // done?? // done",no,yes,yes
+973,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: what is correct 'recv' argument? // (this does produce the desired behavior),no,yes,yes
+1001,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// Length check is a hack.  We should not be reeiving """" as a filename ever. ",no,yes,yes
+1275,jruby-1.4.0,WITHOUT_CLASSIFICATION,// add (potentially) overridden names to the key. // TODO: see note above re: optimizations,no,yes,yes
+1282,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+1288,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+1313,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// TODO: it's not clear to me why, in FloatingDecimal, the // ""slop"" calculation performed above for positive exponents // isn't used for negative exponents as well. Will find out...",no,yes,yes
+1361,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: This is where we would want to do precision checks to see // if it's non-destructive to coerce a given type into the target // integral primitive,no,yes,yes
+1501,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+1562,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// All errors to sysread should be SystemCallErrors, but on a closed stream // Ruby returns an IOError.  Java throws same exception for all errors so // we resort to this hack...",no,yes,yes
+1661,jruby-1.4.0,WITHOUT_CLASSIFICATION,// ignore; job was cancelled // FIXME: is this ok?,no,yes,yes
+1818,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: JRUBY-3604,no,yes,yes
+1870,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: 1.9 rb_enc_symname_p,no,yes,yes
+1891,jruby-1.4.0,WITHOUT_CLASSIFICATION,"/** * Represents the the dynamic portion of scoping information.  The variableValues are the * values of assigned local or block variables.  The staticScope identifies which sort of * scope this is (block or local). *  * Properties of Dynamic Scopes: * 1. static and dynamic scopes have the same number of names to values * 2. size of variables (and thus names) is determined during parsing.  So those structured do *    not need to change * * FIXME: When creating dynamic scopes we sometimes accidentally pass in extra parents.  This * is harmless (other than wasting memory), but we should not do that.  We can fix this in two * ways: * 1. Fix all callers * 2. Check parent that is passed in and make if new instance is local, then its parent is not local */",no,yes,yes
+1960,jruby-1.4.0,WITHOUT_CLASSIFICATION,"/**      * Nested class whose instances act as thunks reacting to to_str method     * called from (Exception#to_str, Exception#message)     * MRI equivalent: rb_cNameErrorMesg, class name: ""message"", construction method: ""!"",     * to_str implementation: ""name_err_mesg_to_str""     *     * TODO: this class should not be lookupable     */",no,yes,yes
+2029,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: make it 16 now ? // MUST be power of 2!,no,yes,yes
+2118,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+2120,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+2157,jruby-1.4.0,WITHOUT_CLASSIFICATION,// SSS FIXME: Can this ever be null?,no,yes,yes
+2195,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+2328,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: keep cr // TODO: rb_str_splice_0,no,yes,yes
+2472,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: READ_CHECK from MRI,no,yes,yes
+2495,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: read into buffer using all the fread logic //        int read = openFile.getMainStream().fread(buffer);,no,yes,yes
+2510,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// All errors to sysread should be SystemCallErrors, but on a closed stream // Ruby returns an IOError.  Java throws same exception for all errors so // we resort to this hack...",no,yes,yes
+2518,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: process options,no,yes,yes
+2528,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: rb_usascii_str_new2,no,yes,yes
+2563,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME warning,no,yes,yes
+2566,jruby-1.4.0,WITHOUT_CLASSIFICATION,//FIXME warning,no,yes,yes
+2634,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: why this: .setResult();,no,yes,yes
+2645,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: Temporarily disabling because this fires way too much running Rails tests. JRUBY-518,no,yes,yes
+2785,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// TODO: Ruby logic is somewhat more complicated here, see comments after",no,yes,yes
+2861,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+3382,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: JRUBY-3604,no,yes,yes
+3696,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: varargs?,no,yes,yes
+4068,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: peek('u') utf8 stuff for 1.9,no,yes,yes
+4075,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: Old Mac format strings?,no,yes,yes
+4083,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: Old Mac format strings?,no,yes,yes
+4095,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO: FD_CLOEXEC is mysterious and we are not sure how constantine should include this. // We did it here for now,no,yes,yes
+4255,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: Temporarily disabling because this fires way too much running Rails tests. JRUBY-518,no,yes,yes
+4268,jruby-1.4.0,WITHOUT_CLASSIFICATION,// FIXME: Temporarily disabling because this fires way too much running Rails tests. JRUBY-518,no,yes,yes
+4276,jruby-1.4.0,WITHOUT_CLASSIFICATION,"// FIXME: DSTR,EVSTR,STR: warning ""string literal in condition""",no,yes,yes
+4411,jruby-1.4.0,WITHOUT_CLASSIFICATION,// TODO assuming case is a fixnum,no,yes,yes

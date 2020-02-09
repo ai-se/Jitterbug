@@ -1,0 +1,5 @@
+ID,projectname,classification,Abstract,label,easy_code,validate
+2043,apache-ant-1.7.0,WITHOUT_CLASSIFICATION,"//TODO Test on other versions of weblogic //TODO add more attributes to the task, to take care of all jspc options //TODO Test on Unix",no,yes,yes
+2169,apache-ant-1.7.0,WITHOUT_CLASSIFICATION,// set the default values if not specified //@todo should be moved to the test class instead.,no,yes,yes
+2173,apache-ant-1.7.0,WITHOUT_CLASSIFICATION,// CheckStyle:VisibilityModifier OFF - bc //ToDo: If dealing with default cl need to parse out <enter description here>,no,yes,yes
+3712,apache-ant-1.7.0,WITHOUT_CLASSIFICATION,//TODO: use ANTLR to parse the grammar file to do this.,no,yes,yes

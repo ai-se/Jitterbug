@@ -1,0 +1,4 @@
+ID,projectname,classification,Abstract,label,easy_code
+1559,jEdit-4.2,WITHOUT_CLASSIFICATION,"/**    * Parse a conditional section.    * [63] conditionalSect ::= includeSect || ignoreSect    * [64] includeSect ::= '<![' %'INCLUDE' '[' (%markupdecl*)* ']]>'    * [65] ignoreSect ::= '<![' %'IGNORE' '[' ignoreSectContents* ']]>'    * [66] ignoreSectContents ::= ((SkipLit | Comment | PI) -(Char* ']]>'))    *                           | ('<![' ignoreSectContents* ']]>')    *                           | (Char - (']' | [<'""]))    *                           | ('<!' (Char - ('-' | '[')))    * *NOTE: the '<![' has already been read.    * *TODO: verify that I am handling ignoreSectContents right.    */",no,yes
+2752,jEdit-4.2,WITHOUT_CLASSIFICATION,/* M+ discarded by key event workaround! */,no,yes
+4950,jEdit-4.2,WITHOUT_CLASSIFICATION,//{{{ Instance variables // this is a bad hack,no,yes

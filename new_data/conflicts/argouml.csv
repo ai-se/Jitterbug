@@ -1,0 +1,225 @@
+ID,projectname,classification,Abstract,label,easy_code
+1449,argouml,WITHOUT_CLASSIFICATION,/* Owner related todo items: */,no,yes
+1451,argouml,WITHOUT_CLASSIFICATION,/* Fig related todo items: */,no,yes
+1463,argouml,WITHOUT_CLASSIFICATION,// TODO: Update setting,no,yes
+1488,argouml,WITHOUT_CLASSIFICATION,"/**     * Private utility routine to work out the (positive) x coordinate of a     * point on an oval, given the radii and y coordinate.<p>     * TODO: Use this to calculate the separator lines!     *     * @param a  radius in X direction     * @param b  radius in Y direction     * @param y  Y coordinate     * @return   Positive X coordinate for the given Y coordinate     */",no,yes
+1501,argouml,WITHOUT_CLASSIFICATION,//TODO: Does this help?,no,yes
+1513,argouml,WITHOUT_CLASSIFICATION,// TODO: assumes public,no,yes
+1522,argouml,WITHOUT_CLASSIFICATION,//TODO: AssociationRole,no,yes
+1532,argouml,WITHOUT_CLASSIFICATION,// TODO -> settings,no,yes
+1568,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+1572,argouml,WITHOUT_CLASSIFICATION,// TODO: We should be able to just call renderingChanged on the child // figs here instead of doing an updateOperations...,no,yes
+1639,argouml,WITHOUT_CLASSIFICATION,// TODO: This is using the default platform character encoding // specifying an encoding will produce more predictable results,no,yes
+1663,argouml,WITHOUT_CLASSIFICATION,// TODO: the last argument (recursive flag) should be a // selectable option,no,yes
+1665,argouml,WITHOUT_CLASSIFICATION,"// skip backup files. This is actually a workaround for the // cpp generator, which always creates backup files (it's a // bug).",no,yes
+1666,argouml,WITHOUT_CLASSIFICATION,"// TODO: The following is carried over from setOwner, but probably // isn't needed //        renderingChanged(); // It does the following (add as needed): //        updateNameText(); //        updateStereotypeText(); //        updateStereotypeIcon(); //        updateBounds(); //        damage();",no,yes
+1667,argouml,WITHOUT_CLASSIFICATION,// TODO: This is using the default platform character // encoding.  Specifying an encoding will produce more // predictable results,no,yes
+1669,argouml,WITHOUT_CLASSIFICATION,// TODO: Get saved default directory // outputDirectoryComboBox.getModel().setSelectedItem(savedDir);,no,yes
+1682,argouml,WITHOUT_CLASSIFICATION,// TODO: Changed from UML 1.4,no,yes
+1694,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+1696,argouml,WITHOUT_CLASSIFICATION,// TODO: Should be improved so that it's recognized whether there is something selected that can actually be generated // Nothing selected in the diagram,no,yes
+1739,argouml,WITHOUT_CLASSIFICATION,// TODO: Get the list of extended settings from the current // language importer and add those too,no,yes
+1769,argouml,WITHOUT_CLASSIFICATION,// TODO: Add filename ?,no,yes
+1813,argouml,WITHOUT_CLASSIFICATION,// TODO: this seems to be called at startup only so no check so far,no,yes
+1817,argouml,WITHOUT_CLASSIFICATION,"/*|  //removed to workaround problems with autosplit                     OCLEditor.OPTIONMASK_AUTOSPLIT*/",no,yes
+1818,argouml,WITHOUT_CLASSIFICATION,"/**     * ADDONLY_COMMAND determines a changeability kind.     * TODO: Removed from UML 2.x.  Phase out of UI - tfm - 20070529     */",no,yes
+1869,argouml,WITHOUT_CLASSIFICATION,// TODO: Why is this ignored? - tfm - 20070110,no,yes
+1897,argouml,WITHOUT_CLASSIFICATION,// TODO: I18N // Don't use the empty string for this or it won't show in the list,no,yes
+1899,argouml,WITHOUT_CLASSIFICATION,/* TODO: Here too? */,no,yes
+1901,argouml,WITHOUT_CLASSIFICATION,/* TODO: Here too? */,no,yes
+1955,argouml,WITHOUT_CLASSIFICATION,// TODO: this seems to be called at startup only so no check so far,no,yes
+1968,argouml,WITHOUT_CLASSIFICATION,"// TODO: the following cleans up left overs from previous tests, but, // preferably we shouldn't have to do this...",no,yes
+1978,argouml,WITHOUT_CLASSIFICATION,"// TODO: User defined profile support untested currently //        + ""\t\t<userDefined>\n"" //        + ""\t\t\t<filename>\n"" //        + ""foo.profile\n"" //        + ""</filename>\n"" //        + ""\t\t\t<model>\n"" //        + ""foo.profile.package\n"" //        + ""\t\t\t</model>\n"" //        + ""\t\t</userDefined>\n""",no,yes
+1998,argouml,WITHOUT_CLASSIFICATION,//TODO: We should also test that the object //have been removed from their namespace. //Collection c = Model.getFacade().getOwnedElements(p.getRoot());,no,yes
+2000,argouml,WITHOUT_CLASSIFICATION,"// TODO: the following fails due to the XMI writing saving all top level // model elements and because even if there was no empty project, by // creating a class, the undo mechanism in the project manager will // force the creation of an empty project. //        assertEquals(1, profileModels.size());",no,yes
+2011,argouml,WITHOUT_CLASSIFICATION,// TODO: This catch block needs to be narrower and do something // with the caught exception - tfm 20071120 // Ignore,no,yes
+2053,argouml,WITHOUT_CLASSIFICATION,// TODO: see if the new target has a TV that we can proxy,no,yes
+2066,argouml,WITHOUT_CLASSIFICATION,"/**     * Constructor.     * <p>     * TODO: Correct?     *     * @param nodes The UML elements, typically classifiers, to generate.     * @param inModel <code>true</code> if the path is in the model.     */",no,yes
+2087,argouml,WITHOUT_CLASSIFICATION,// TODO: We shouldn't need this as well as the above.,no,yes
+2130,argouml,WITHOUT_CLASSIFICATION,// TODO: constraints // TODO: required tags,no,yes
+2179,argouml,WITHOUT_CLASSIFICATION,// TODO: Defer most of this work if the panel isn't visible - tfm,no,yes
+2206,argouml,WITHOUT_CLASSIFICATION,"// TODO real numbers not yet supported //assertEquals(DefaultOclEvaluator.getInstance() //.evaluate(null, null, ""1.5""), 1.5);",no,yes
+2215,argouml,WITHOUT_CLASSIFICATION,"/** * Action to save a diagram as a GIF image in a supplied OutputStream. * * TODO: This requires Java 6 in its current state, so don't use. * * @author Tom Morris <tfmorris@gmail.com> */",no,yes
+2250,argouml,WITHOUT_CLASSIFICATION,"/**     * Return just the comment edges for a specific layer.     * TODO: Document: Diagram / layer?     *     * @param diagram The diagram.     * @return a {@link List} with the edges.     */",no,yes
+2302,argouml,WITHOUT_CLASSIFICATION,"// TODO: assumes public, user pref for default visibility?",no,yes
+2372,argouml,WITHOUT_CLASSIFICATION,// TODO: what about ObjectNode? //        return org.eclipse.uml2.uml.ObjectNode.class;        ,no,yes
+2404,argouml,WITHOUT_CLASSIFICATION,// TODO: gone from UML 2,no,yes
+2406,argouml,WITHOUT_CLASSIFICATION,"// TODO: Not exact, but close",no,yes
+2483,argouml,WITHOUT_CLASSIFICATION,"// TODO: Since there may be multiple top level elements in // a project, this should be using the default Namespace (currently // undefined) or something similar",no,yes
+2569,argouml,WITHOUT_CLASSIFICATION,// TODO: Removed from UML 2.x - phase out usage - tfm 20070530,no,yes
+2681,argouml,WITHOUT_CLASSIFICATION,"//TODO:{""org.argouml.ui"", ""org.argouml.cognitive.ui""},//fails due to subpackages //TODO:{""org.argouml.cognitive"", ""org.argouml.cognitive.critics""},",no,yes
+2686,argouml,WITHOUT_CLASSIFICATION,//TODO: different critic or special message for classes //that inherit all ops but define none of their own.,no,yes
+2710,argouml,WITHOUT_CLASSIFICATION,"/* TODO: MVW: I think this has to be:                 * clone.nameFig = (FigSingleLineText) cloneFig;                 * but have not the means to investigate,                 * since this code is not yet used.                 * Enable the menu-items for Copy/Paste to test...                 * BTW: In some other FigNodeModelElement                 * classes I see the same mistake. */",no,yes
+2782,argouml,WITHOUT_CLASSIFICATION,// TODO: This could just work off the names in the UML profile // TODO: It doesn't look like it matches what's in the UML 1.4 spec,no,yes
+2984,argouml,WITHOUT_CLASSIFICATION,"// TODO: For large lists, this is doing a linear search of literally thousands of elements",no,yes
+3044,argouml,WITHOUT_CLASSIFICATION,"// TODO: We don't currently have any settings that can change on a // per-fig basis, so we can just use the project/diagram defaults //        settings = new DiagramSettings(renderSettings);",no,yes
+3057,argouml,WITHOUT_CLASSIFICATION,// TODO: Look up class in truth table,no,yes
+3088,argouml,WITHOUT_CLASSIFICATION,"/** * Rule for Project->Root (Top level) Elements. *  * TODO: As currently implemented it returns all top level elements in  * the model repository, not just those in a given project.  Since we * only support a single project at a time currently, these are equivalent * but this will need to be enhanced with additional bookkeeping in  * Project when we support multiple open projects - tfm. * * TODO: I changed it to get the roots from the project. It was showing * the profiles that were loaded but were not applied to the current project * - maurelio1234. *  * @author Tom Morris <tfmorris@gmail.com> */",no,yes
+3257,argouml,WITHOUT_CLASSIFICATION,/* TODO: Should there really be () here? */,no,yes
+3263,argouml,WITHOUT_CLASSIFICATION,"/* TODO: Why is there a space before the ( here,          * and not in case of the operation name? */",no,yes
+3367,argouml,WITHOUT_CLASSIFICATION,// TODO: We could check that the contents of the files differ.,no,yes
+3569,argouml,WITHOUT_CLASSIFICATION,// TODO: Add referenceValue for tagged values  // which have a non-primitive type,no,yes
+3605,argouml,WITHOUT_CLASSIFICATION,// TODO: no Links in UML 2,no,yes
+3633,argouml,WITHOUT_CLASSIFICATION,// TODO: This is using the default platform character encoding // specifying an encoding will produce more predictable results,no,yes
+3761,argouml,WITHOUT_CLASSIFICATION,"//TODO: add logging, but this will never happen and is handled",no,yes
+3770,argouml,WITHOUT_CLASSIFICATION,"/*     * TODO: Support commentEdges.     * TODO: Support associations to self.     *     * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)     */",no,yes
+3893,argouml,WITHOUT_CLASSIFICATION,// TODO: ,no,yes
+3901,argouml,WITHOUT_CLASSIFICATION,// TODO:,no,yes
+3917,argouml,WITHOUT_CLASSIFICATION,// TODO:,no,yes
+3943,argouml,WITHOUT_CLASSIFICATION,// TODO: Signal -> Receptions association not navigable in this // direction,no,yes
+3955,argouml,WITHOUT_CLASSIFICATION,// TODO: Double check - tfm,no,yes
+3957,argouml,WITHOUT_CLASSIFICATION,// TODO: gone in UML 2,no,yes
+3959,argouml,WITHOUT_CLASSIFICATION,// TODO: Gone in UML 2,no,yes
+3961,argouml,WITHOUT_CLASSIFICATION,// TODO: Double check - tfm,no,yes
+3963,argouml,WITHOUT_CLASSIFICATION,// TODO: double check - tfm,no,yes
+3967,argouml,WITHOUT_CLASSIFICATION,// TODO: double check - tfm,no,yes
+3969,argouml,WITHOUT_CLASSIFICATION,// TODO: gone in UML 2,no,yes
+3971,argouml,WITHOUT_CLASSIFICATION,// TODO: changed for UML 2.x,no,yes
+3985,argouml,WITHOUT_CLASSIFICATION,"//        return ((RedefinableElement) handle).isRoot(); // TODO: One part of UML 2.1.1 spec says that this is as above, // but it appears to be gone - tfm",no,yes
+4005,argouml,WITHOUT_CLASSIFICATION,// TODO: Exception has been removed for UML 2.x // just return Signal for now - tfm,no,yes
+4009,argouml,WITHOUT_CLASSIFICATION,"// TODO: Not really the same thing, but close",no,yes
+4013,argouml,WITHOUT_CLASSIFICATION,// TODO: Gone in UML 2.x // Return place holder for now,no,yes
+4015,argouml,WITHOUT_CLASSIFICATION,// TODO: no separate SyncState in UML 2.1 - tfm,no,yes
+4047,argouml,WITHOUT_CLASSIFICATION,// TODO else => Exception !,no,yes
+4078,argouml,WITHOUT_CLASSIFICATION,// TODO: Get default output directory from user settings // Project p = ProjectManager.getManager().getCurrentProject(); // p.getProjectSettings().setGenerationOutputDir(path);,no,yes
+4090,argouml,WITHOUT_CLASSIFICATION,"/**     * @param item the todo item     * @param reason the reason TODO: Use it!     * @return <code>true</code> if the argument was a component of this list;     *         <code>false</code> otherwise     * @throws UnresolvableException unable to resolve     */",no,yes
+4106,argouml,WITHOUT_CLASSIFICATION,"/* TODO: Verify this.             * IIUC, then this triggers the CompountStateFig             * to draw itself correctly.             * Hence, there was a reason to wait this long             * to make the state concurrent. */",no,yes
+4144,argouml,WITHOUT_CLASSIFICATION,"//        prpTodo = createProperty(""label.todo-pane"", positions, TabToDo.class); //        prpProperties = //            createProperty(""label.properties-pane"", //                    positions, TabProps.class); //        prpDocumentation = //            createProperty(""label.documentation-pane"", //                    positions, TabDocumentation.class); //        prpStyle = //            createProperty(""label.style-pane"", //                    positions, TabStyle.class); //        prpSource = //            createProperty(""label.source-pane"", //                    positions, TabSrc.class); //        prpConstraints = //            createProperty(""label.constraints-pane"", //                    positions, TabConstraints.class); //        prpTaggedValues = //            createProperty(""label.tagged-values-pane"", //                    positions, TabTaggedValues.class); // //        Property[] propertyList = new Property[] { //            prpTodo, prpProperties, prpDocumentation, prpStyle, //	    prpSource, prpConstraints, prpTaggedValues, //        }; //        Arrays.sort(propertyList); // //        top.add(new JScrollPane(new PropertyTable( //						  propertyList, //						  paneColumnHeader, //						  positionColumnHeader)), //		BorderLayout.CENTER);",no,yes
+4186,argouml,WITHOUT_CLASSIFICATION,// TODO: isStatic in UML 2.x,no,yes
+4218,argouml,WITHOUT_CLASSIFICATION,"/** * This class represents all Diagrams within ArgoUML. * It is based upon the GEF Diagram.<p> * * It adds a namespace, and the capability * to delete itself when its namespace is deleted. <p> * * TODO: MVW: I am not sure of the following:<p> * The ""namespace"" of the diagram is e.g. used when creating new elements * that are shown on the diagram; they will have their namespace set * according this. It is NOT necessarily equal to the ""owner"". <p> * * MVW: I doubt all following: * The ""namespace"" of the diagram is e.g. used to register a listener * to the UML model, to be notified if this element is removed; * which will imply that this diagram has to be deleted, too. <p> * * Hence the namespace of e.g. a collaboration diagram should be the * represented classifier or, in case of a represented operation, the * classifier that owns this operation. * And the namespace of the statechart diagram should be * the namespace of its statemachine. */",no,yes
+4220,argouml,WITHOUT_CLASSIFICATION,"/**     * Constructor for a {@link FigClass} during file load.<p>     *     * Parent {@link org.argouml.uml.diagram.ui.FigNodeModelElement}     * will have created the main box {@link #getBigPort()} and its     * name {@link #getNameFig()} and stereotype     * (@link #getStereotypeFig()}. This constructor     * creates a box for the attributes and operations.<p>     *     * The properties of all these graphic elements are adjusted     * appropriately. The main boxes are all filled and have     * outlines.      * TODO: which is wrong, since the bigPort is filled, too.     *      * @param element model element to be represented by this fig.     * @param bounds rectangle describing bounds     * @param settings rendering settings     */",no,yes
+4272,argouml,WITHOUT_CLASSIFICATION,"/**     * TODO: The next text was copied - to adapt.     *      * Sets the target. If the old target is an UML Element, it also removes     * the model from the element listener list of the target. If the new target     * is an UML Element, the model is added as element listener to the     * new target. <p>     *     * This function is called when the user changes the target.      * Hence, this shall not result in any UML model changes.<p>     *      * This function looks a lot like the one in UMLComboBoxModel2.     * <p>     * As a possible future extension, we could allow listening to      * other model elements.     *      * @param theNewTarget the new target     */",no,yes
+4286,argouml,WITHOUT_CLASSIFICATION,"// TODO: the following fails due to the XMI writing saving all top level // model elements and because even if there was no empty project, by // creating a class, the undo mechanism in the project manager will // force the creation of an empty project. //        assertEquals(1, profileModels.size());",no,yes
+4316,argouml,WITHOUT_CLASSIFICATION,// to rupdate the diagram set the stimulus name again // TODO: Explain that this really works also in the // MDR case. Linus is a sceptic.,no,yes
+4442,argouml,WITHOUT_CLASSIFICATION,// TODO: Probably really want to cancel editing //((FigTextEditor) focusOwner).cancelEditing();,no,yes
+4456,argouml,WITHOUT_CLASSIFICATION,// TODO: We don't have any settings that can change per-fig currently // so we can just use the default settings; //        settings = new DiagramSettings(renderSettings);,no,yes
+4498,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+4536,argouml,WITHOUT_CLASSIFICATION,// TODO: Need named Tags and Constraints compartments here //        addFig(tagsFig); //        addFig(constraintsFig);,no,yes
+4568,argouml,WITHOUT_CLASSIFICATION,// TODO: Add Tags & Constraints //        addMenu.add(TargetManager.getInstance().getAddAttributeAction()); //        addMenu.add(TargetManager.getInstance().getAddOperationAction());,no,yes
+4574,argouml,WITHOUT_CLASSIFICATION,/* TODO: Check the name for validity. */,no,yes
+4585,argouml,WITHOUT_CLASSIFICATION,// TODO: constraints // TODO: required tags,no,yes
+4721,argouml,WITHOUT_CLASSIFICATION,/* TODO: This is the 2nd part of this method: */,no,yes
+4755,argouml,WITHOUT_CLASSIFICATION,"/**     * Used by the copy functions. Do not call this function directly.     * TODO: template parameters, default type     * TODO: constraining elements     * TODO: flows, dependencies, comments, bindings, contexts ???     * TODO: contents, residences ???     *     * @param source     *            the source me     * @param target     *            the target me     */",no,yes
+4822,argouml,WITHOUT_CLASSIFICATION,// TODO: Gone in UML 2.1 // It is now an InstanceSpecification with an  // Association as its classifier,no,yes
+4840,argouml,WITHOUT_CLASSIFICATION,"// TODO: In UML 2.0, ClassifierRole, AssociationRole, and // AssociationEndRole have been replaced by the internal // structure of the Collaboration",no,yes
+4842,argouml,WITHOUT_CLASSIFICATION,// TODO: Restructured in UML 2,no,yes
+4862,argouml,WITHOUT_CLASSIFICATION,// TODO: unimplemented //          return ((Property) handle).gets,no,yes
+4918,argouml,WITHOUT_CLASSIFICATION,"/* TODO: If a namespace with sub-classdiagrams is deleted, then {            confirmStr +=                Translator.localize(                    ""optionpane.remove-from-model-will-remove-subdiagram"");            doAsk = true;        }*/",no,yes
+5014,argouml,WITHOUT_CLASSIFICATION,"/** * Action to save a diagram as a GIF image in a supplied OutputStream. * * TODO: This requires Java 6 in its current state, so don't use. * * @author Tom Morris <tfmorris@gmail.com> */",no,yes
+5042,argouml,WITHOUT_CLASSIFICATION,"// TODO: We just need to get someone to re-render a single // line of text which represents the element here, but I'm // not sure how to do that. - tfm // TODO: Bob replies - we shouldn't be interested in this // event here. The FigFeature (or its notation) should be // listen for change and the FigFeature should be update // from that.",no,yes
+5196,argouml,WITHOUT_CLASSIFICATION,// TODO: All of the following can be broken if we have multiple // targets selected,no,yes
+5224,argouml,WITHOUT_CLASSIFICATION,"/**     * Test if the given namespace is a valid namespace to add the diagram to.     * TODO: This method was created to facilitate the merge     * of this class with ActionAddDiagram.     *     * @param ns the namespace to check     * @return Returns <code>true</code> if valid.     */",no,yes
+5233,argouml,WITHOUT_CLASSIFICATION,"// TODO: For large lists, this is doing a linear search of literally thousands of elements",no,yes
+5235,argouml,WITHOUT_CLASSIFICATION,/* TODO: Here too? */,no,yes
+5504,argouml,WITHOUT_CLASSIFICATION,"/** * Class to display graphics for a UML Link in a diagram. <p> *  * The underlined association name is shown next to the middle of the path. *  * TODO: Show more notation as described in the standard: * ""A rolename may be shown at each end of the link. An association  * name may be shown near the path. If present, it is underlined * to indicate an instance. Links do not have instance names,  * they take their identity from the instances that they relate. * Multiplicity is not shown for links because they are instances.  * Other association adornments (aggregation, composition,  * navigation) may be shown on the link ends."" */",no,yes
+5506,argouml,WITHOUT_CLASSIFICATION,//TODO: GenNavigableClasses?,no,yes
+5547,argouml,WITHOUT_CLASSIFICATION,/* TODO: Make use of the constants defined in the ToDoItem class! */,no,yes
+5552,argouml,WITHOUT_CLASSIFICATION,// Copy the todo items after the model and diagrams so that // any model elements or figs that the todo items refer to // will exist before creating critics.,no,yes
+5610,argouml,WITHOUT_CLASSIFICATION,"/**     * Used by the copy functions. Do not call this function directly.     * TODO: generalizations, specializations?     *     * @param source     *            the source generalizable element     * @param target     *            the target generalizable element     */",no,yes
+5628,argouml,WITHOUT_CLASSIFICATION,"/*     * TODO: All the ToDos in the doCopyFoo methods below are inherited from the     * NSUML implementation and do not reflect new issues. One additional thing     * which does need to be dealt with is the copying of any attributes which     * have been added since this code was implemented for UML 1.3.     */",no,yes
+5632,argouml,WITHOUT_CLASSIFICATION,"/**     * Used by the copy functions. Do not call this function directly.     * TODO: actions? instances? collaborations etc?     *     * @param source     *            the source classifier     * @param target     *            the target classifier     */",no,yes
+5633,argouml,WITHOUT_CLASSIFICATION,"//TODO: This should be the name of the designer that created //      the todoitem, not the current username!",no,yes
+5665,argouml,WITHOUT_CLASSIFICATION,// TODO: values,no,yes
+5812,argouml,WITHOUT_CLASSIFICATION,// TODO: Add double click listener ,no,yes
+5883,argouml,WITHOUT_CLASSIFICATION,// TODO: do all following steps // TODO: resolve item from ToDoList,no,yes
+5899,argouml,WITHOUT_CLASSIFICATION,//TODO:,no,yes
+5939,argouml,WITHOUT_CLASSIFICATION,//////////////////////////////////////////////////////////////// // TreeModel implementation - todo specific stuff,no,yes
+6073,argouml,WITHOUT_CLASSIFICATION,// TODO: This looks O(n^2),no,yes
+6075,argouml,WITHOUT_CLASSIFICATION,//TODO: make a new history item,no,yes
+6150,argouml,WITHOUT_CLASSIFICATION,// Get all classifiers in our model // TODO: We need the property panels to have some reference to the // project they belong to instead of using deprecated functionality,no,yes
+6205,argouml,WITHOUT_CLASSIFICATION,"/**     * TODO: should just be the directory to write.     */",no,yes
+6213,argouml,WITHOUT_CLASSIFICATION,// Adding a todo member removes any existing one.,no,yes
+6247,argouml,WITHOUT_CLASSIFICATION,"/** * Tab for the settings dialog that makes it possible to * select the modules that are to be enabled. * * TODO: Header for the table. * * @author Linus Tolke */",no,yes
+6261,argouml,WITHOUT_CLASSIFICATION,// TODO: huntForModulesFromJavaWebStart();,no,yes
+6347,argouml,WITHOUT_CLASSIFICATION,//TODO: initial value,no,yes
+6539,argouml,WITHOUT_CLASSIFICATION,/* TODO: For UML2: Check if the type of the TV is String. */,no,yes
+6587,argouml,WITHOUT_CLASSIFICATION,"/* TODO: If the next line trows an exception, then what                     * do we do with the remainder of the                     * parsed/to be parsed lines?                     */",no,yes
+6655,argouml,WITHOUT_CLASSIFICATION,/* TODO: Change the linked operation. */,no,yes
+6842,argouml,WITHOUT_CLASSIFICATION,"/** * Class to display graphics for a UML ObjectFlowState in a diagram.<p> * * The Fig of this modelElement may either represent the following UMLelements: * <p> * (1) an ObjectFlowState with a Classifier as type, or <p> * (2) an ObjectFlowState with a ClassifierInState as type. <p> * * In both cases (1) and (2), the Fig shows * the underlined name of the Classifier, * and in the latter case (2), it shows also the names of the states * of the ClassifierInState. <p> * * In the examples in the UML standard, this is written like<pre> *      PurchaseOrder *       [approved] * </pre> * i.e. in 2 lines. The first line is underlined, * to indicate that it is an instance (object).<p> * * The fact that the first line is underlined, and the 2nd not, is the * reason to implement them in 2 separate Figs.<p> * * TODO: Allow stereotypes to be shown. * * @author mvw */",no,yes
+6857,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize these,no,yes
+6940,argouml,WITHOUT_CLASSIFICATION,"/**     * Test creating modelelements from a given notation, and then      * re-generate the notation-string again, and check if they are equal.     * Some of these tests are not very usefulll,      * since they may fail on white space differences.      * TODO: White space should best be ignored.      */",no,yes
+7045,argouml,WITHOUT_CLASSIFICATION,/* TODO: Partly overlaps CrOppEndVsAttr. */,no,yes
+7141,argouml,WITHOUT_CLASSIFICATION,// TODO specifiedEnd??,no,yes
+7261,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize,no,yes
+7263,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize,no,yes
+7299,argouml,WITHOUT_CLASSIFICATION,"/** TODO: factor out     *     * @param rule the rule to be added     */",no,yes
+7328,argouml,WITHOUT_CLASSIFICATION,// TODO: The src_visibility tag doesn't appear to be created // anywhere by ArgoUML currently,no,yes
+7329,argouml,WITHOUT_CLASSIFICATION,// TODO - lets pass in Project as a constructor argument,no,yes
+7347,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize,no,yes
+7349,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize,no,yes
+7353,argouml,WITHOUT_CLASSIFICATION,// TODO: 10 and 120 were found by trial and error.  Calculate them.,no,yes
+7402,argouml,WITHOUT_CLASSIFICATION,"// TODO: The following can be used when we drop Java 5 support or // when an ImageIO GIF writer plugin is bundled //            cmd = new SaveGIFAction2(Translator.localize(""action.save-gif""));",no,yes
+7461,argouml,WITHOUT_CLASSIFICATION,"//TODO: tabs for class, state, usecase, help",no,yes
+7469,argouml,WITHOUT_CLASSIFICATION,// default tab todo,no,yes
+7473,argouml,WITHOUT_CLASSIFICATION,// default tab todo,no,yes
+7484,argouml,WITHOUT_CLASSIFICATION,"/*         * If center points are ""close enough"" we just adjust the endpoints         * of the line a little bit.  Otherwise we add a jog in the middle to         * deal with the offset.         *         * TODO: Epsilon is currently fixed, but could probably be computed         * dynamically as 10% of the width of the narrowest figure or some         * other value which is visually not noticeable.         */",no,yes
+7489,argouml,WITHOUT_CLASSIFICATION,// TODO: Quick return here for target == null? - tfm,no,yes
+7671,argouml,WITHOUT_CLASSIFICATION,// TODO: concatenate? - tfm // overwrite for now,no,yes
+7716,argouml,WITHOUT_CLASSIFICATION,"// TODO: assumes public, user pref for default visibility? //do I have to check the namespace here? (Toby)",no,yes
+7722,argouml,WITHOUT_CLASSIFICATION,"//TODO: qualifiers (e.g., const) //TODO: stereotypes...",no,yes
+7751,argouml,WITHOUT_CLASSIFICATION,// TODO: Localize,no,yes
+7776,argouml,WITHOUT_CLASSIFICATION,"/** * Dialog box to list all critics and allow editing of some of their * properties. <p> * * TODO: supported goals, critic network. */",no,yes
+7836,argouml,WITHOUT_CLASSIFICATION,"// Skip the 2 lines //<?xml version=""1.0"" encoding=""UTF-8"" ?> //<!DOCTYPE todo SYSTEM ""todo.dtd"" >",no,yes
+7994,argouml,WITHOUT_CLASSIFICATION,"// TODO: These should get replaced immediately by the creating // initialization code, but make sure we've got a default just in case.",no,yes
+8068,argouml,WITHOUT_CLASSIFICATION,"/** * To persist to and from zargo (zipped file) storage containing seperate * xmi, argo, plgml and todo zip entries. * @author Bob Tarling * TODO: Review use of this against ZargoFilePersister - Bob */",no,yes
+8122,argouml,WITHOUT_CLASSIFICATION,"/** * Implements the source path controller. * NOTE: If requested in the future this could be returned from the language * modules. * * TODO: Update this to use the UML 1.4 TagDefinition mechanism instead of * UML 1.3 String type tag types. The TagDefinition can be made more specific * so that it just applies to Components with a <<sourceModule>> stereotype * or something similar. - tfm *  * @author euluis * @since 0.17.1 */",no,yes
+8150,argouml,WITHOUT_CLASSIFICATION,"/** * This class is a temporary wrapper around the GEF UndoManager. * This will be changed when GEF is modified to create commands and * provide an observer interface for ArgoUML to receive them. * <p> * TODO: How does this relate to {@link org.argouml.kernel.DefaultUndoManager}? * * @author Bob Tarling */",no,yes
+8225,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8227,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8233,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8242,argouml,WITHOUT_CLASSIFICATION,"/** * A Fig designed to be the child of some FigNode or FigEdge to display the * stereotypes of the model element represented by the parent Fig. * Currently, multiple stereotypes are shown stacked one on top of the other, * each enclosed by guillemets.<p> * * The minimum width of this fig is the largest minimum width of its child * figs. The minimum height of this fig is the total minimum height of its child * figs.<p> * * The owner of this Fig is the UML element that is extended * with the stereotypes. We are listening to changes to the model: * addition and removal of stereotypes. <p> * * This fig supports showing one keyword * as the first ""stereotype"" in the list. <p> * * There is no way to remove a keyword fig, once added. <p> * * TODO: Allow for UML2 style display where all stereotypes are displayed in * the same guillemet pair and are delimited by commas. The style should be * changeable by calling getOrientation(Orientation). The swidget Orientation * class can be used for this. * @author Bob Tarling */",no,yes
+8243,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8245,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8247,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8249,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8251,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8253,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8255,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8274,argouml,WITHOUT_CLASSIFICATION,// Notify the user that the modules in the list that are selected // but not enabled were not possible to enable and that are not // selected that we cannot disable. // // Currently we just log this. // // TODO: We could eventually pop up some warning window. //,no,yes
+8279,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8281,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8282,argouml,WITHOUT_CLASSIFICATION,"/** * A subclass of JPanel that can act as a tab in the DetailsPane or * MultiEditorPane. Added functionality:<p> * * Spawning: When the tab is double-clicked, this JPanel will generate a * separate window of the same size and with the same contents. This is almost * like ""tearing off"" a tab.<p> * * TODO: Spawning of windows disabled in spawn()<p> * * Title: This JPanel keeps track of its own title.<p> * * Icon: This JPanel keeps track of its own icon; i.e. an arrow pointing to * the panel that it gives details of.<p> * * Orientation: This JPanel is Orientable.<p> * * Cloning: This JPanel may be cloned.<p> * * This class used to be named TabSpawnable. * Renamed since it is not a Tab, but a Panel, and being spawnable is * not any more its main purpose. */",no,yes
+8283,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8287,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8289,argouml,WITHOUT_CLASSIFICATION,// TODO: what?,no,yes
+8291,argouml,WITHOUT_CLASSIFICATION,// Todo: What?,no,yes
+8299,argouml,WITHOUT_CLASSIFICATION,// TODO: What?,no,yes
+8301,argouml,WITHOUT_CLASSIFICATION,// TODO: what?,no,yes
+8333,argouml,WITHOUT_CLASSIFICATION,// TODO: Needs localization,no,yes
+8483,argouml,WITHOUT_CLASSIFICATION,// TODO: The WFR doesn't restrict this to Classifiers - tfm,no,yes
+8485,argouml,WITHOUT_CLASSIFICATION,// TODO: The WFR doesn't restrict this to Classifiers - tfm,no,yes
+8509,argouml,WITHOUT_CLASSIFICATION,//TODO: different critic for packages consisting only //of references to elements of other packages?,no,yes
+8527,argouml,WITHOUT_CLASSIFICATION,//TODO: different critic or special message for classes //that inherit all ops but define none of their own.,no,yes
+8532,argouml,WITHOUT_CLASSIFICATION,// TODO: Probably really want to cancel editing //((FigTextEditor) focusOwner).cancelEditing();,no,yes
+8549,argouml,WITHOUT_CLASSIFICATION,// TODO: Comments are on Element in UML 2.x,no,yes
+8626,argouml,WITHOUT_CLASSIFICATION,// TODO: midpoints for side handles,no,yes
+8630,argouml,WITHOUT_CLASSIFICATION,// TODO: side handles,no,yes
+8642,argouml,WITHOUT_CLASSIFICATION,"/* TODO: We may return the following when the         * relocate() has been implemented.         */",no,yes
+8643,argouml,WITHOUT_CLASSIFICATION,"/* TODO: We may return something useful when the         * relocate() has been implemented. */",no,yes
+8674,argouml,WITHOUT_CLASSIFICATION,/* TODO: Do we need to clone the stereotype(s)? */,no,yes
+8679,argouml,WITHOUT_CLASSIFICATION,// TODO:?,no,yes
+8682,argouml,WITHOUT_CLASSIFICATION,"/* TODO: We may return the following when the         * relocate() has been implemented.         */",no,yes
+8684,argouml,WITHOUT_CLASSIFICATION,"/* TODO: We may return something useful when the         * relocate() has been implemented. */",no,yes
+8685,argouml,WITHOUT_CLASSIFICATION,// TODO: assumes public,no,yes
+8704,argouml,WITHOUT_CLASSIFICATION,// TODO:?,no,yes
+8709,argouml,WITHOUT_CLASSIFICATION,// TODO -> settings,no,yes
+8722,argouml,WITHOUT_CLASSIFICATION,// TODO: assumes public,no,yes
+8928,argouml,WITHOUT_CLASSIFICATION,// TODO: place comments near connected classes // TODO: place from middle towards outer edges? (or place largest // groups first),no,yes
+8929,argouml,WITHOUT_CLASSIFICATION,"//        boolean hasPackages = false; // TODO: move ""package in row"" to NodeRow",no,yes
+9039,argouml,WITHOUT_CLASSIFICATION,// TODO: get tip string from comment,no,yes
+9057,argouml,WITHOUT_CLASSIFICATION,"/** * Class to display a Stereotype declaration figure using * Classifier box notation.<p> * * TODO: This is just a place-holder right now! - tfm * This needs to show tags and constraints. */",no,yes
+9061,argouml,WITHOUT_CLASSIFICATION,"/* TODO: constraints, ... */",no,yes
+9101,argouml,WITHOUT_CLASSIFICATION,// TODO: set font?,no,yes
+9143,argouml,WITHOUT_CLASSIFICATION,// TODO: This doesn't do anything special with keywords. // They should probably go first.,no,yes
+9150,argouml,WITHOUT_CLASSIFICATION,//TODO: check!,no,yes
+9256,argouml,WITHOUT_CLASSIFICATION,// TODO: should update to size of diagram contents,no,yes
+9334,argouml,WITHOUT_CLASSIFICATION,"/**     * Clone this figure. After the base clone method has been called determine     * which child figs of the clone represent the name, stereotype and port.     * <p>     * TODO: enclosedFigs, encloser and eventSenders may also need to be cloned.     *     * @see java.lang.Object#clone()     * @return the cloned figure     */",no,yes
+9355,argouml,WITHOUT_CLASSIFICATION,// TODO: Should this not be an assert?,no,yes
+9371,argouml,WITHOUT_CLASSIFICATION,// TODO: State & Vertex are independent classes in UML 2.1,no,yes
+9377,argouml,WITHOUT_CLASSIFICATION,// TODO assert modelElement != null???,no,yes
+9379,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+9380,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+9381,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+9382,argouml,WITHOUT_CLASSIFICATION,"// TODO: Use per-project undo manager, not global",no,yes
+9412,argouml,WITHOUT_CLASSIFICATION,// TODO: Do nothing until code is reviewed,no,yes
+9440,argouml,WITHOUT_CLASSIFICATION,/* TODO: The UML does not seem to define this name. Or is it? */,no,yes

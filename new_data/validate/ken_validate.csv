@@ -1,573 +1,0 @@
-ID,Abstract,groundtruth,pre_label,code
-5434,// no item exists in table // -> nothing todo,no,yes,no
-8133,"// skip backup files. this is actually a workaround for the // cpp generator, which always creates backup files (it's a // bug).",no,yes,yes
-8354,// initialize new todoitem,no,yes,no
-8592,"//    private property	prptodo; //    private property	prpproperties; //    private property	prpdocumentation; //    private property	prpstyle; //    private property	prpsource; //    private property	prpconstraints; //    private property	prptaggedvalues;",no,yes,no
-8636,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     * org.argouml.cognitive.designer)     */",no,yes,no
-8654,"/*     * just returns false.     *     * @see org.argouml.cognitive.poster#canfixit(org.argouml.cognitive.todoitem)     */",no,yes,no
-8656,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8700,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8702,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8704,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8710,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8713,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-8722,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8728,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8730,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8734,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-8745,/* end class todobyoffender */,no,yes,no
-9078,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-9146,"/*     * @see org.argouml.cognitive.todoitem#deselect()     */",no,yes,no
-9168,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-9176,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-9209,// initialize the todolist,no,yes,no
-9254,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-9310,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-9316,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-9322,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-9342,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-9352,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-9362,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-9364,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-9420,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-9968,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-9975,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-10208,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-10294,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-10456,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-10484,"/*     * @see org.argouml.ui.clarifier#settodoitem(org.argouml.cognitive.todoitem)     */",no,yes,no
-10558,"/**     * @param item the todo item     * @param reason the reason todo: use it!     * @return <code>true</code> if the argument was a component of this list;     *         <code>false</code> otherwise     * @throws unresolvableexception unable to resolve     */",no,yes,no
-10612,"//        prptodo = createproperty(""label.todo-pane"", positions, tabtodo.class); //        prpproperties = //            createproperty(""label.properties-pane"", //                    positions, tabprops.class); //        prpdocumentation = //            createproperty(""label.documentation-pane"", //                    positions, tabdocumentation.class); //        prpstyle = //            createproperty(""label.style-pane"", //                    positions, tabstyle.class); //        prpsource = //            createproperty(""label.source-pane"", //                    positions, tabsrc.class); //        prpconstraints = //            createproperty(""label.constraints-pane"", //                    positions, tabconstraints.class); //        prptaggedvalues = //            createproperty(""label.tagged-values-pane"", //                    positions, tabtaggedvalues.class); // //        property[] propertylist = new property[] { //            prptodo, prpproperties, prpdocumentation, prpstyle, //	    prpsource, prpconstraints, prptaggedvalues, //        }; //        arrays.sort(propertylist); // //        top.add(new jscrollpane(new propertytable( //						  propertylist, //						  panecolumnheader, //						  positioncolumnheader)), //		borderlayout.center);",no,yes,no
-10678,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-10758,"/*     * @see org.argouml.ui.clarifier#settodoitem(org.argouml.cognitive.todoitem)     */",no,yes,no
-10808,"//        saveposition(prptodo, tabtodo.class); //        saveposition(prpproperties, tabprops.class); //        saveposition(prpdocumentation, tabdocumentation.class); //        saveposition(prpstyle, tabstyle.class); //        saveposition(prpsource, tabsrc.class); //        saveposition(prpconstraints, tabconstraints.class); //        saveposition(prptaggedvalues, tabtaggedvalues.class);",no,yes,no
-10816,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-10842,"//        loadposition(prptodo, tabtodo.class); //        loadposition(prpproperties, tabprops.class); //        loadposition(prpdocumentation, tabdocumentation.class); //        loadposition(prpstyle, tabstyle.class); //        loadposition(prpsource, tabsrc.class); //        loadposition(prpconstraints, tabconstraints.class); //        loadposition(prptaggedvalues, tabtaggedvalues.class);",no,yes,no
-10964,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-11544,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-11630,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11796,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11830,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-11848,"/*     * does not do anything.     *     * @see org.argouml.cognitive.poster#fixit(org.argouml.cognitive.todoitem,     * java.lang.object)     */",no,yes,no
-11860,"/*     * @see org.argouml.cognitive.poster#fixit(org.argouml.cognitive.todoitem, java.lang.object)     */",no,yes,no
-11904,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11906,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11910,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11912,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11914,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11920,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11922,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11924,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11928,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11930,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11940,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11942,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11944,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemschanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11948,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11952,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsadded(org.argouml.cognitive.todolistevent)     */",no,yes,no
-11960,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-12020,// copy the todo items after the model and diagrams so that // any model elements or figs that the todo items refer to // will exist before creating critics.,no,yes,no
-12074,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-12103,"// log.log(level.fine, ""predicate() returned true, creating todoitem"");",no,yes,no
-12203,"/* all tabs are added at the end, except a tabtodotarget: */",no,yes,no
-12229,"// history.thehistory.additemresolution(item, // ""no longer valid""); // ((todoitem)item).resolve(""no longer valid""); // notifyobservers(""removeelement"", item);",no,yes,no
-12415,/* end class todotreerenderer */,no,yes,no
-12419,/* end class todobydecision */,no,yes,no
-12457,// stop/start cleaning up invalid todoitems.,no,yes,no
-12499,// the target of description will always be set directly by tabtodo,no,yes,no
-12525,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-12527,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-12529,// only interrupt for one todoitem,no,yes,no
-12549,/* end class dismisstodoitemdialog */,no,yes,no
-12571,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-12573,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,no
-12604,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-12681,// adding a todo member removes any existing one.,no,yes,no
-12718,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-12944,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13170,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13184,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(     * java.lang.object, org.argouml.cognitive.designer)     */",no,yes,no
-13268,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13276,"/*     * @see org.argouml.cognitive.todoitem#select()     */",no,yes,no
-13292,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13318,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13328,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13346,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(object, designer)     */",no,yes,no
-13364,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13394,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13397,"//cat.debug(""added todoitem: "" + _headline);",no,yes,no
-13398,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13406,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13414,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13422,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13438,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13458,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13474,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13500,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13504,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13514,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13532,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13564,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13570,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13592,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13614,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13616,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13624,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13628,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13632,"/*     * @see org.argouml.cognitive.critics.critic#getwizardclass(org.argouml.cognitive.todoitem)     */",no,yes,no
-13638,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13680,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13692,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13738,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13752,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13760,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13782,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,no
-13792,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13816,"/*     * @see org.argouml.cognitive.critics.critic#todoitem(java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,no
-13852,"/*     * @see org.argouml.ui.clarifier#settodoitem(org.argouml.cognitive.todoitem)     */",no,yes,no
-14015,// create the todopane,no,yes,no
-14033,//designer.thedesigner.gettodolist().removeallelements();,no,yes,no
-14128,"/*     * @see org.argouml.cognitive.todolistlistener#todolistchanged(org.argouml.cognitive.todolistevent)     */",no,yes,no
-14304,"// skip the 2 lines //<?xml version=""1.0"" encoding=""utf-8"" ?> //<!doctype todo system ""todo.dtd"" >",no,yes,no
-14342,"/*     * @see org.argouml.cognitive.todolistlistener#todoitemsremoved(org.argouml.cognitive.todolistevent)     */",no,yes,no
-15333,"//cat.debug(""note: todoparser handlestarttag:"" + e.getname());",no,yes,no
-17271,//testcase/issetgenfeature.todo.override.javajetinc,no,yes,no
-17352,//class/setgenfeature.todo.override.javajetinc,no,yes,no
-17380,//class/basicsetgenfeature.todo.override.javajetinc,no,yes,no
-17386,//class/basicgetgenfeature.todo.override.javajetinc,no,yes,no
-17388,//class/implementedgenoperation.todo.override.javajetinc,no,yes,no
-17392,//class/issetgenfeature.todo.override.javajetinc,no,yes,no
-17396,//class/unsetgenfeature.todo.override.javajetinc,no,yes,no
-17414,//testcase/getgenfeature.todo.override.javajetinc,no,yes,no
-17418,//testcase/setgenfeature.todo.override.javajetinc,no,yes,no
-17420,//testcase/unsetgenfeature.todo.override.javajetinc,no,yes,no
-17639,//testcase/implementedgenoperation.todo.override.javajetinc,no,yes,no
-17853,//class/basicunsetgenfeature.todo.override.javajetinc,no,yes,no
-21268,// datasettodomainaxismap...,no,yes,no
-23455,"/* =========================================================== * jfreechart : a free chart library for the java(tm) platform * =========================================================== * * (c) copyright 2000-2014, by object refinery limited and contributors. * * project info:  http://www.jfree.org/jfreechart/index.html * * this library is free software; you can redistribute it and/or modify it * under the terms of the gnu lesser general public license as published by * the free software foundation; either version 2.1 of the license, or * (at your option) any later version. * * this library is distributed in the hope that it will be useful, but * without any warranty; without even the implied warranty of merchantability * or fitness for a particular purpose. see the gnu lesser general public * license for more details. * * you should have received a copy of the gnu lesser general public * license along with this library; if not, write to the free software * foundation, inc., 51 franklin street, fifth floor, boston, ma  02110-1301, * usa. * * [oracle and java are registered trademarks of oracle and/or its affiliates. * other names may be trademarks of their respective owners.] * * ----------------- * categoryplot.java * ----------------- * (c) copyright 2000-2014, by object refinery limited and contributors. * * original author:  david gilbert (for object refinery limited); * contributor(s):   jeremy bowman; *                   arnaud lelievre; *                   richard west, advanced micro devices, inc.; *                   ulrich voigt - patch 2686040; *                   peter kolb - patches 2603321 and 2809117; * * changes * ------- * 21-jun-2001 : removed redundant jfreechart parameter from constructors (dg); * 21-aug-2001 : added standard header. fixed dos encoding problem (dg); * 18-sep-2001 : updated header (dg); * 15-oct-2001 : data source classes moved to com.jrefinery.data.* (dg); * 22-oct-2001 : renamed datasource.java --> dataset.java etc. (dg); * 23-oct-2001 : changed intro and trail gaps on bar plots to use percentage of *               available space rather than a fixed number of units (dg); * 12-dec-2001 : changed constructors to protected (dg); * 13-dec-2001 : added tooltips (dg); * 16-jan-2002 : increased maximum intro and trail gap percents, plus added *               some argument checking code.  thanks to taoufik romdhane for *               suggesting this (dg); * 05-feb-2002 : added accessor methods for the tooltip generator, incorporated *               alpha-transparency for plot and subclasses (dg); * 06-mar-2002 : updated import statements (dg); * 14-mar-2002 : renamed barplot.java --> categoryplot.java, and changed code *               to use the categoryitemrenderer interface (dg); * 22-mar-2002 : dropped the getcategories() method (dg); * 23-apr-2002 : moved the dataset from the jfreechart class to the plot *               class (dg); * 29-apr-2002 : new methods to support printing values at the end of bars, *               contributed by jeremy bowman (dg); * 11-may-2002 : new methods for label visibility and overlaid plot support, *               contributed by jeremy bowman (dg); * 06-jun-2002 : removed the tooltip generator, this is now stored with the *               renderer.  moved constants into the categoryplotconstants *               interface.  updated javadoc comments (dg); * 10-jun-2002 : overridden datasetchanged() method to update the upper and *               lower bound on the range axis (if necessary), updated *               javadocs (dg); * 25-jun-2002 : removed redundant imports (dg); * 20-aug-2002 : changed the constructor for marker (dg); * 28-aug-2002 : added listener notification to setdomainaxis() and *               setrangeaxis() (dg); * 23-sep-2002 : added getlegenditems() method and fixed errors reported by *               checkstyle (dg); * 28-oct-2002 : changes to the categorydataset interface (dg); * 05-nov-2002 : base dataset is now tabledataset not categorydataset (dg); * 07-nov-2002 : renamed labelxxx as valuelabelxxx (dg); * 18-nov-2002 : added grid settings for both domain and range axis (previously *               these were set in the axes) (dg); * 19-nov-2002 : added axis location parameters to constructor (dg); * 17-jan-2003 : moved to com.jrefinery.chart.plot package (dg); * 14-feb-2003 : fixed bug in auto-range calculation for secondary axis (dg); * 26-mar-2003 : implemented serializable (dg); * 02-may-2003 : moved render() method up from subclasses. added secondary *               range markers. added an attribute to control the dataset *               rendering order.  added a drawannotations() method.  changed *               the axis location from an int to an axislocation (dg); * 07-may-2003 : merged horizontalcategoryplot and verticalcategoryplot into *               this class (dg); * 02-jun-2003 : removed check for range axis compatibility (dg); * 04-jul-2003 : added a domain gridline position attribute (dg); * 21-jul-2003 : moved drawingsupplier to plot superclass (dg); * 19-aug-2003 : added equals() method and implemented cloneable (dg); * 01-sep-2003 : fixed bug 797466 (no change event when secondary dataset *               changes) (dg); * 02-sep-2003 : fixed bug 795209 (wrong dataset checked in render2 method) and *               790407 (initialise method) (dg); * 08-sep-2003 : added internationalization via use of properties *               resourcebundle (rfe 690236) (al); * 08-sep-2003 : fixed bug (wrong secondary range axis being used).  changed *               valueaxis api (dg); * 10-sep-2003 : fixed bug in setrangeaxis() method (dg); * 15-sep-2003 : fixed two bugs in serialization, implemented *               publiccloneable (dg); * 23-oct-2003 : added event notification for changes to renderer (dg); * 26-nov-2003 : fixed bug (849645) in clearrangemarkers() method (dg); * 03-dec-2003 : modified draw method to accept anchor (dg); * 21-jan-2004 : update for renamed method in valueaxis (dg); * 10-mar-2004 : fixed bug in axis range calculation when secondary renderer is *               stacked (dg); * 12-may-2004 : added fixed legend items (dg); * 19-may-2004 : added check for null legend item from renderer (dg); * 02-jun-2004 : updated the datasetrenderingorder class (dg); * 05-nov-2004 : renamed getdatasetsmappedtorangeaxis() *               --> datasetsmappedtorangeaxis(), and ensured that returned *               list doesn't contain null datasets (dg); * 12-nov-2004 : implemented new zoomable interface (dg); * 07-jan-2005 : renamed getrangeextent() --> findrangebounds() in *               categoryitemrenderer (dg); * 04-may-2005 : fixed serialization of range markers (dg); * 05-may-2005 : updated draw() method parameters (dg); * 20-may-2005 : added setdomainaxes() and setrangeaxes() methods, as per *               rfe 1183100 (dg); * 01-jun-2005 : upon deserialization, register plot as a listener with its *               axes, dataset(s) and renderer(s) - see patch 1209475 (dg); * 02-jun-2005 : added support for domain markers (dg); * 06-jun-2005 : fixed equals() method for use with gradientpaint (dg); * 09-jun-2005 : added setrenderers(), as per rfe 1183100 (dg); * 16-jun-2005 : added getdomainaxiscount() and getrangeaxiscount() methods, to *               match xyplot (see rfe 1220495) (dg); * ------------- jfreechart 1.0.x --------------------------------------------- * 11-jan-2006 : added configurerangeaxes() to rendererchanged(), since the *               renderer might influence the axis range (dg); * 27-jan-2006 : added various null argument checks (dg); * 18-aug-2006 : added getdatasetcount() method, plus a fix for bug drawing *               category labels, thanks to adriaan joubert (1277726) (dg); * 05-sep-2006 : added markerchangeevent support (dg); * 30-oct-2006 : added getdomainaxisindex(), datasetsmappedtodomainaxis() and *               getcategoriesforaxis() methods (dg); * 22-nov-2006 : fire plotchangeevent from setcolumnrenderingorder() and *               setrowrenderingorder() (dg); * 29-nov-2006 : fix for bug 1605207 (intervalmarker exceeds bounds of data *               area) (dg); * 26-feb-2007 : fix for bug 1669218 (setdomainaxislocation() notify argument *               ignored) (dg); * 13-mar-2007 : added null argument checks for setrangecrosshairpaint() and *               setrangecrosshairstroke(), fixed clipping for *               annotations (dg); * 07-jun-2007 : override drawbackground() for new gradientpaint handling (dg); * 10-jul-2007 : added getrangeaxisindex(valueaxis) method (dg); * 24-sep-2007 : implemented new zoom methods (dg); * 25-oct-2007 : added some argument checks (dg); * 05-nov-2007 : applied patch 1823697, by richard west, for removal of domain *               and range markers (dg); * 14-nov-2007 : added missing event notifications (dg); * 25-mar-2008 : added new methods with optional notification - see patch *               1913751 (dg); * 07-apr-2008 : fixed npe in removedomainmarker() and *               removerangemarker() (dg); * 23-apr-2008 : fixed equals() and clone() methods (dg); * 26-jun-2008 : fixed crosshair support (dg); * 10-jul-2008 : fixed outline visibility for 3d renderers (dg); * 12-aug-2008 : added renderercount() method (dg); * 25-nov-2008 : added facility to map datasets to multiples axes (dg); * 15-dec-2008 : cleaned up grid drawing methods (dg); * 18-dec-2008 : use resourcebundlewrapper - see patch 1607918 by *               jess thrysoee (dg); * 21-jan-2009 : added rangeminorgridlinesvisible flag (dg); * 18-mar-2009 : modified anchored zoom behaviour (dg); * 19-mar-2009 : implemented pannable interface - see patch 2686040 (dg); * 19-mar-2009 : added entity support - see patch 2603321 by peter kolb (dg); * 24-jun-2009 : implemented annotationchangelistener (see patch 2809117 by *               pk) (dg); * 06-jul-2009 : fix for cloning of renderers - see bug 2817504 (dg) * 10-jul-2009 : added optional drop shadow generator (dg); * 27-sep-2011 : fixed annotation import (dg); * 18-oct-2011 : fixed tooltip offset with shadow generator (dg); * 20-nov-2011 : initialise shadow generator as null (dg); * 02-jul-2013 : use paramchecks (dg); * 12-sep-2013 : check for key_suppress_shadow_generation rendering hint (dg); * 10-mar-2014 : updated javadocs for issue #1123 (dg); * 09-apr-2014 : remove use of objectlist (dg); *  */",no,yes,no
-23659,// images considered equal only if they're the same object // todo: is there a way to do a better test?,no,yes,no
-25719,"// length check is a hack.  we should not be reeiving """" as a filename ever. ",no,yes,no
-25993,// add (potentially) overridden names to the key. // todo: see note above re: optimizations,no,yes,no
-46645,"//	private componenttuplizerfactory componenttuplizerfactory; todo : hhh-3517 and hhh-1907 //	private bytecodeprovider bytecodeprovider;",no,yes,no
-50748,// i18n[updatecontrollerimpl.prompttodownloadavailableupdatesmsg=there are updates available. // do you want to download them now?],no,yes,no
-52059,// i18n[updatecontrollerimpl.prompttodownloadavailableupdatestitle=updates available],no,yes,no
-57678,"//log.warn(""debug"",ex); // e.g. javax.naming.sizelimitexceededexception: [ldap: error code 4 - sizelimit exceeded]; remaining name '' //                                                123456789012345678901 // todo: tidy this up",no,yes,no
-365,"// todo i18n ""close"" button",no,yes,yes
-931,"// todo (@author fdietz): this should be changed into a ""real"" window",no,yes,yes
-935,"// todo i18n ""close"" button",no,yes,yes
-969,"// todo i18n ""help"" button",no,yes,yes
-1560,// fixme r.setpos();,no,yes,yes
-1564,"// todo i18n ""help"" button",no,yes,yes
-1596,// only import vevent and vtodo for now,no,yes,yes
-1730,"// todo: re-enable feature, the following code violates our // design, accessing folders is only allowed in command.execute()",no,yes,yes
-3086,"// if folder is message folder // ->todo (@author fdietz):  there should be an interface, instead of the abstractmessagefolder // class",no,yes,yes
-3132,"/*	 * determine what day of week the first day of the month falls on. it's too	 * bad we have to resort to this hack; the java api provides no means of	 * doing this any other way.	 */",no,yes,yes
-3437,// todo,no,yes,yes
-3439,// todo,no,yes,yes
-4100,// fixme r.setpos();,no,yes,yes
-4440,"// todo i18n ""attachments"" label",no,yes,yes
-4820,// todo,no,yes,yes
-4834,// todo,no,yes,yes
-6076,// hack to ensure charset is set correctly at start-up,no,yes,yes
-7917,/* owner related todo items: */,no,yes,yes
-7919,/* fig related todo items: */,no,yes,yes
-7931,// todo: update setting,no,yes,yes
-7956,"/**     * private utility routine to work out the (positive) x coordinate of a     * point on an oval, given the radii and y coordinate.<p>     * todo: use this to calculate the separator lines!     *     * @param a  radius in x direction     * @param b  radius in y direction     * @param y  y coordinate     * @return   positive x coordinate for the given y coordinate     */",no,yes,yes
-7969,//todo: does this help?,no,yes,yes
-7981,// todo: assumes public,no,yes,yes
-7990,//todo: associationrole,no,yes,yes
-8000,// todo -> settings,no,yes,yes
-8036,"// todo: use per-project undo manager, not global",no,yes,yes
-8040,// todo: we should be able to just call renderingchanged on the child // figs here instead of doing an updateoperations...,no,yes,yes
-8107,// todo: this is using the default platform character encoding // specifying an encoding will produce more predictable results,no,yes,yes
-8131,// todo: the last argument (recursive flag) should be a // selectable option,no,yes,yes
-8134,"// todo: the following is carried over from setowner, but probably // isn't needed //        renderingchanged(); // it does the following (add as needed): //        updatenametext(); //        updatestereotypetext(); //        updatestereotypeicon(); //        updatebounds(); //        damage();",no,yes,yes
-8135,// todo: this is using the default platform character // encoding.  specifying an encoding will produce more // predictable results,no,yes,yes
-8137,// todo: get saved default directory // outputdirectorycombobox.getmodel().setselecteditem(saveddir);,no,yes,yes
-8150,// todo: changed from uml 1.4,no,yes,yes
-8162,"// todo: use per-project undo manager, not global",no,yes,yes
-8164,// todo: should be improved so that it's recognized whether there is something selected that can actually be generated // nothing selected in the diagram,no,yes,yes
-8207,// todo: get the list of extended settings from the current // language importer and add those too,no,yes,yes
-8237,// todo: add filename ?,no,yes,yes
-8281,// todo: this seems to be called at startup only so no check so far,no,yes,yes
-8285,"/*|  //removed to workaround problems with autosplit                     ocleditor.optionmask_autosplit*/",no,yes,yes
-8286,"/**     * addonly_command determines a changeability kind.     * todo: removed from uml 2.x.  phase out of ui - tfm - 20070529     */",no,yes,yes
-8337,// todo: why is this ignored? - tfm - 20070110,no,yes,yes
-8365,// todo: i18n // don't use the empty string for this or it won't show in the list,no,yes,yes
-8367,/* todo: here too? */,no,yes,yes
-8369,/* todo: here too? */,no,yes,yes
-8423,// todo: this seems to be called at startup only so no check so far,no,yes,yes
-8436,"// todo: the following cleans up left overs from previous tests, but, // preferably we shouldn't have to do this...",no,yes,yes
-8446,"// todo: user defined profile support untested currently //        + ""\t\t<userdefined>\n"" //        + ""\t\t\t<filename>\n"" //        + ""foo.profile\n"" //        + ""</filename>\n"" //        + ""\t\t\t<model>\n"" //        + ""foo.profile.package\n"" //        + ""\t\t\t</model>\n"" //        + ""\t\t</userdefined>\n""",no,yes,yes
-8466,//todo: we should also test that the object //have been removed from their namespace. //collection c = model.getfacade().getownedelements(p.getroot());,no,yes,yes
-8468,"// todo: the following fails due to the xmi writing saving all top level // model elements and because even if there was no empty project, by // creating a class, the undo mechanism in the project manager will // force the creation of an empty project. //        assertequals(1, profilemodels.size());",no,yes,yes
-8479,// todo: this catch block needs to be narrower and do something // with the caught exception - tfm 20071120 // ignore,no,yes,yes
-8521,// todo: see if the new target has a tv that we can proxy,no,yes,yes
-8534,"/**     * constructor.     * <p>     * todo: correct?     *     * @param nodes the uml elements, typically classifiers, to generate.     * @param inmodel <code>true</code> if the path is in the model.     */",no,yes,yes
-8555,// todo: we shouldn't need this as well as the above.,no,yes,yes
-8598,// todo: constraints // todo: required tags,no,yes,yes
-8647,// todo: defer most of this work if the panel isn't visible - tfm,no,yes,yes
-8674,"// todo real numbers not yet supported //assertequals(defaultoclevaluator.getinstance() //.evaluate(null, null, ""1.5""), 1.5);",no,yes,yes
-8683,"/** * action to save a diagram as a gif image in a supplied outputstream. * * todo: this requires java 6 in its current state, so don't use. * * @author tom morris <tfmorris@gmail.com> */",no,yes,yes
-8718,"/**     * return just the comment edges for a specific layer.     * todo: document: diagram / layer?     *     * @param diagram the diagram.     * @return a {@link list} with the edges.     */",no,yes,yes
-8770,"// todo: assumes public, user pref for default visibility?",no,yes,yes
-8840,// todo: what about objectnode? //        return org.eclipse.uml2.uml.objectnode.class;,no,yes,yes
-8872,// todo: gone from uml 2,no,yes,yes
-8874,"// todo: not exact, but close",no,yes,yes
-8951,"// todo: since there may be multiple top level elements in // a project, this should be using the default namespace (currently // undefined) or something similar",no,yes,yes
-9037,// todo: removed from uml 2.x - phase out usage - tfm 20070530,no,yes,yes
-9149,"//todo:{""org.argouml.ui"", ""org.argouml.cognitive.ui""},//fails due to subpackages //todo:{""org.argouml.cognitive"", ""org.argouml.cognitive.critics""},",no,yes,yes
-9154,//todo: different critic or special message for classes //that inherit all ops but define none of their own.,no,yes,yes
-9178,"/* todo: mvw: i think this has to be:                 * clone.namefig = (figsinglelinetext) clonefig;                 * but have not the means to investigate,                 * since this code is not yet used.                 * enable the menu-items for copy/paste to test...                 * btw: in some other fignodemodelelement                 * classes i see the same mistake. */",no,yes,yes
-9211,// add a todoitem,no,yes,yes
-9220,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,yes
-9241,// this test calls todolist.addelement which requires the // model.  we are able to get away with using the mock model.,no,yes,yes
-9242,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,yes
-9250,// todo: this could just work off the names in the uml profile // todo: it doesn't look like it matches what's in the uml 1.4 spec,no,yes,yes
-9378,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,yes
-9384,"/*     * @see org.argouml.cognitive.poster#stillvalid(     *      org.argouml.cognitive.todoitem, org.argouml.cognitive.designer)     */",no,yes,yes
-9452,"// todo: for large lists, this is doing a linear search of literally thousands of elements",no,yes,yes
-9512,"// todo: we don't currently have any settings that can change on a // per-fig basis, so we can just use the project/diagram defaults //        settings = new diagramsettings(rendersettings);",no,yes,yes
-9525,// todo: look up class in truth table,no,yes,yes
-9556,"/** * rule for project->root (top level) elements. *  * todo: as currently implemented it returns all top level elements in  * the model repository, not just those in a given project.  since we * only support a single project at a time currently, these are equivalent * but this will need to be enhanced with additional bookkeeping in  * project when we support multiple open projects - tfm. * * todo: i changed it to get the roots from the project. it was showing * the profiles that were loaded but were not applied to the current project * - maurelio1234. *  * @author tom morris <tfmorris@gmail.com> */",no,yes,yes
-9725,/* todo: should there really be () here? */,no,yes,yes
-9731,"/* todo: why is there a space before the ( here,          * and not in case of the operation name? */",no,yes,yes
-9835,// todo: we could check that the contents of the files differ.,no,yes,yes
-10037,// todo: add referencevalue for tagged values  // which have a non-primitive type,no,yes,yes
-10073,// todo: no links in uml 2,no,yes,yes
-10101,// todo: this is using the default platform character encoding // specifying an encoding will produce more predictable results,no,yes,yes
-10229,"//todo: add logging, but this will never happen and is handled",no,yes,yes
-10238,"/*     * todo: support commentedges.     * todo: support associations to self.     *     * @see java.awt.event.actionlistener#actionperformed(java.awt.event.actionevent)     */",no,yes,yes
-10361,// todo:,no,yes,yes
-10369,// todo:,no,yes,yes
-10385,// todo:,no,yes,yes
-10411,// todo: signal -> receptions association not navigable in this // direction,no,yes,yes
-10423,// todo: double check - tfm,no,yes,yes
-10425,// todo: gone in uml 2,no,yes,yes
-10427,// todo: gone in uml 2,no,yes,yes
-10429,// todo: double check - tfm,no,yes,yes
-10431,// todo: double check - tfm,no,yes,yes
-10435,// todo: double check - tfm,no,yes,yes
-10437,// todo: gone in uml 2,no,yes,yes
-10439,// todo: changed for uml 2.x,no,yes,yes
-10453,"//        return ((redefinableelement) handle).isroot(); // todo: one part of uml 2.1.1 spec says that this is as above, // but it appears to be gone - tfm",no,yes,yes
-10473,// todo: exception has been removed for uml 2.x // just return signal for now - tfm,no,yes,yes
-10477,"// todo: not really the same thing, but close",no,yes,yes
-10481,// todo: gone in uml 2.x // return place holder for now,no,yes,yes
-10483,// todo: no separate syncstate in uml 2.1 - tfm,no,yes,yes
-10515,// todo else => exception !,no,yes,yes
-10546,// todo: get default output directory from user settings // project p = projectmanager.getmanager().getcurrentproject(); // p.getprojectsettings().setgenerationoutputdir(path);,no,yes,yes
-10574,"/* todo: verify this.             * iiuc, then this triggers the compountstatefig             * to draw itself correctly.             * hence, there was a reason to wait this long             * to make the state concurrent. */",no,yes,yes
-10654,// todo: isstatic in uml 2.x,no,yes,yes
-10686,"/** * this class represents all diagrams within argouml. * it is based upon the gef diagram.<p> * * it adds a namespace, and the capability * to delete itself when its namespace is deleted. <p> * * todo: mvw: i am not sure of the following:<p> * the ""namespace"" of the diagram is e.g. used when creating new elements * that are shown on the diagram; they will have their namespace set * according this. it is not necessarily equal to the ""owner"". <p> * * mvw: i doubt all following: * the ""namespace"" of the diagram is e.g. used to register a listener * to the uml model, to be notified if this element is removed; * which will imply that this diagram has to be deleted, too. <p> * * hence the namespace of e.g. a collaboration diagram should be the * represented classifier or, in case of a represented operation, the * classifier that owns this operation. * and the namespace of the statechart diagram should be * the namespace of its statemachine. */",no,yes,yes
-10688,"/**     * constructor for a {@link figclass} during file load.<p>     *     * parent {@link org.argouml.uml.diagram.ui.fignodemodelelement}     * will have created the main box {@link #getbigport()} and its     * name {@link #getnamefig()} and stereotype     * (@link #getstereotypefig()}. this constructor     * creates a box for the attributes and operations.<p>     *     * the properties of all these graphic elements are adjusted     * appropriately. the main boxes are all filled and have     * outlines.      * todo: which is wrong, since the bigport is filled, too.     *      * @param element model element to be represented by this fig.     * @param bounds rectangle describing bounds     * @param settings rendering settings     */",no,yes,yes
-10740,"/**     * todo: the next text was copied - to adapt.     *      * sets the target. if the old target is an uml element, it also removes     * the model from the element listener list of the target. if the new target     * is an uml element, the model is added as element listener to the     * new target. <p>     *     * this function is called when the user changes the target.      * hence, this shall not result in any uml model changes.<p>     *      * this function looks a lot like the one in umlcomboboxmodel2.     * <p>     * as a possible future extension, we could allow listening to      * other model elements.     *      * @param thenewtarget the new target     */",no,yes,yes
-10754,"// todo: the following fails due to the xmi writing saving all top level // model elements and because even if there was no empty project, by // creating a class, the undo mechanism in the project manager will // force the creation of an empty project. //        assertequals(1, profilemodels.size());",no,yes,yes
-10784,// to rupdate the diagram set the stimulus name again // todo: explain that this really works also in the // mdr case. linus is a sceptic.,no,yes,yes
-10910,// todo: probably really want to cancel editing //((figtexteditor) focusowner).cancelediting();,no,yes,yes
-10924,// todo: we don't have any settings that can change per-fig currently // so we can just use the default settings; //        settings = new diagramsettings(rendersettings);,no,yes,yes
-10966,"// todo: use per-project undo manager, not global",no,yes,yes
-11004,// todo: need named tags and constraints compartments here //        addfig(tagsfig); //        addfig(constraintsfig);,no,yes,yes
-11036,// todo: add tags & constraints //        addmenu.add(targetmanager.getinstance().getaddattributeaction()); //        addmenu.add(targetmanager.getinstance().getaddoperationaction());,no,yes,yes
-11042,/* todo: check the name for validity. */,no,yes,yes
-11053,// todo: constraints // todo: required tags,no,yes,yes
-11189,/* todo: this is the 2nd part of this method: */,no,yes,yes
-11223,"/**     * used by the copy functions. do not call this function directly.     * todo: template parameters, default type     * todo: constraining elements     * todo: flows, dependencies, comments, bindings, contexts ???     * todo: contents, residences ???     *     * @param source     *            the source me     * @param target     *            the target me     */",no,yes,yes
-11290,// todo: gone in uml 2.1 // it is now an instancespecification with an  // association as its classifier,no,yes,yes
-11308,"// todo: in uml 2.0, classifierrole, associationrole, and // associationendrole have been replaced by the internal // structure of the collaboration",no,yes,yes
-11310,// todo: restructured in uml 2,no,yes,yes
-11330,// todo: unimplemented //          return ((property) handle).gets,no,yes,yes
-11386,"/* todo: if a namespace with sub-classdiagrams is deleted, then {            confirmstr +=                translator.localize(                    ""optionpane.remove-from-model-will-remove-subdiagram"");            doask = true;        }*/",no,yes,yes
-11466,"/*     * @see org.argouml.cognitive.critics.critic#todoitem( java.lang.object,     *      org.argouml.cognitive.designer)     */",no,yes,yes
-11482,"/** * action to save a diagram as a gif image in a supplied outputstream. * * todo: this requires java 6 in its current state, so don't use. * * @author tom morris <tfmorris@gmail.com> */",no,yes,yes
-11510,"// todo: we just need to get someone to re-render a single // line of text which represents the element here, but i'm // not sure how to do that. - tfm // todo: bob replies - we shouldn't be interested in this // event here. the figfeature (or its notation) should be // listen for change and the figfeature should be update // from that.",no,yes,yes
-11664,// todo: all of the following can be broken if we have multiple // targets selected,no,yes,yes
-11692,"/**     * test if the given namespace is a valid namespace to add the diagram to.     * todo: this method was created to facilitate the merge     * of this class with actionadddiagram.     *     * @param ns the namespace to check     * @return returns <code>true</code> if valid.     */",no,yes,yes
-11701,"// todo: for large lists, this is doing a linear search of literally thousands of elements",no,yes,yes
-11703,/* todo: here too? */,no,yes,yes
-11972,"/** * class to display graphics for a uml link in a diagram. <p> *  * the underlined association name is shown next to the middle of the path. *  * todo: show more notation as described in the standard: * ""a rolename may be shown at each end of the link. an association  * name may be shown near the path. if present, it is underlined * to indicate an instance. links do not have instance names,  * they take their identity from the instances that they relate. * multiplicity is not shown for links because they are instances.  * other association adornments (aggregation, composition,  * navigation) may be shown on the link ends."" */",no,yes,yes
-11974,//todo: gennavigableclasses?,no,yes,yes
-12015,/* todo: make use of the constants defined in the todoitem class! */,no,yes,yes
-12078,"/**     * used by the copy functions. do not call this function directly.     * todo: generalizations, specializations?     *     * @param source     *            the source generalizable element     * @param target     *            the target generalizable element     */",no,yes,yes
-12096,"/*     * todo: all the todos in the docopyfoo methods below are inherited from the     * nsuml implementation and do not reflect new issues. one additional thing     * which does need to be dealt with is the copying of any attributes which     * have been added since this code was implemented for uml 1.3.     */",no,yes,yes
-12100,"/**     * used by the copy functions. do not call this function directly.     * todo: actions? instances? collaborations etc?     *     * @param source     *            the source classifier     * @param target     *            the target classifier     */",no,yes,yes
-12101,"//todo: this should be the name of the designer that created //      the todoitem, not the current username!",no,yes,yes
-12133,// todo: values,no,yes,yes
-12280,// todo: add double click listener,no,yes,yes
-12351,// todo: do all following steps // todo: resolve item from todolist,no,yes,yes
-12367,//todo:,no,yes,yes
-12403,//////////////////////////////////////////////////////////////// // todolistlistener implementation,no,yes,yes
-12407,//////////////////////////////////////////////////////////////// // treemodel implementation - todo specific stuff,no,yes,yes
-12541,// todo: this looks o(n^2),no,yes,yes
-12543,//todo: make a new history item,no,yes,yes
-12618,// get all classifiers in our model // todo: we need the property panels to have some reference to the // project they belong to instead of using deprecated functionality,no,yes,yes
-12673,"/**     * todo: should just be the directory to write.     */",no,yes,yes
-12715,"/** * tab for the settings dialog that makes it possible to * select the modules that are to be enabled. * * todo: header for the table. * * @author linus tolke */",no,yes,yes
-12729,// todo: huntformodulesfromjavawebstart();,no,yes,yes
-12815,//todo: initial value,no,yes,yes
-13007,/* todo: for uml2: check if the type of the tv is string. */,no,yes,yes
-13055,"/* todo: if the next line trows an exception, then what                     * do we do with the remainder of the                     * parsed/to be parsed lines?                     */",no,yes,yes
-13123,/* todo: change the linked operation. */,no,yes,yes
-13310,"/** * class to display graphics for a uml objectflowstate in a diagram.<p> * * the fig of this modelelement may either represent the following umlelements: * <p> * (1) an objectflowstate with a classifier as type, or <p> * (2) an objectflowstate with a classifierinstate as type. <p> * * in both cases (1) and (2), the fig shows * the underlined name of the classifier, * and in the latter case (2), it shows also the names of the states * of the classifierinstate. <p> * * in the examples in the uml standard, this is written like<pre> *      purchaseorder *       [approved] * </pre> * i.e. in 2 lines. the first line is underlined, * to indicate that it is an instance (object).<p> * * the fact that the first line is underlined, and the 2nd not, is the * reason to implement them in 2 separate figs.<p> * * todo: allow stereotypes to be shown. * * @author mvw */",no,yes,yes
-13325,// todo: localize these,no,yes,yes
-13408,"/**     * test creating modelelements from a given notation, and then      * re-generate the notation-string again, and check if they are equal.     * some of these tests are not very usefulll,      * since they may fail on white space differences.      * todo: white space should best be ignored.      */",no,yes,yes
-13513,/* todo: partly overlaps croppendvsattr. */,no,yes,yes
-13609,// todo specifiedend??,no,yes,yes
-13729,// todo: localize,no,yes,yes
-13731,// todo: localize,no,yes,yes
-13767,"/** todo: factor out     *     * @param rule the rule to be added     */",no,yes,yes
-13796,// todo: the src_visibility tag doesn't appear to be created // anywhere by argouml currently,no,yes,yes
-13797,// todo - lets pass in project as a constructor argument,no,yes,yes
-13815,// todo: localize,no,yes,yes
-13817,// todo: localize,no,yes,yes
-13821,// todo: 10 and 120 were found by trial and error.  calculate them.,no,yes,yes
-13870,"// todo: the following can be used when we drop java 5 support or // when an imageio gif writer plugin is bundled //            cmd = new savegifaction2(translator.localize(""action.save-gif""));",no,yes,yes
-13929,"//todo: tabs for class, state, usecase, help",no,yes,yes
-13937,// default tab todo,no,yes,yes
-13941,// default tab todo,no,yes,yes
-13952,"/*         * if center points are ""close enough"" we just adjust the endpoints         * of the line a little bit.  otherwise we add a jog in the middle to         * deal with the offset.         *         * todo: epsilon is currently fixed, but could probably be computed         * dynamically as 10% of the width of the narrowest figure or some         * other value which is visually not noticeable.         */",no,yes,yes
-13957,// todo: quick return here for target == null? - tfm,no,yes,yes
-14139,// todo: concatenate? - tfm // overwrite for now,no,yes,yes
-14184,"// todo: assumes public, user pref for default visibility? //do i have to check the namespace here? (toby)",no,yes,yes
-14190,"//todo: qualifiers (e.g., const) //todo: stereotypes...",no,yes,yes
-14219,// todo: localize,no,yes,yes
-14244,"/** * dialog box to list all critics and allow editing of some of their * properties. <p> * * todo: supported goals, critic network. */",no,yes,yes
-14462,"// todo: these should get replaced immediately by the creating // initialization code, but make sure we've got a default just in case.",no,yes,yes
-14536,"/** * to persist to and from zargo (zipped file) storage containing seperate * xmi, argo, plgml and todo zip entries. * @author bob tarling * todo: review use of this against zargofilepersister - bob */",no,yes,yes
-14590,"/** * implements the source path controller. * note: if requested in the future this could be returned from the language * modules. * * todo: update this to use the uml 1.4 tagdefinition mechanism instead of * uml 1.3 string type tag types. the tagdefinition can be made more specific * so that it just applies to components with a <<sourcemodule>> stereotype * or something similar. - tfm *  * @author euluis * @since 0.17.1 */",no,yes,yes
-14618,"/** * this class is a temporary wrapper around the gef undomanager. * this will be changed when gef is modified to create commands and * provide an observer interface for argouml to receive them. * <p> * todo: how does this relate to {@link org.argouml.kernel.defaultundomanager}? * * @author bob tarling */",no,yes,yes
-14693,// todo: what?,no,yes,yes
-14695,// todo: what?,no,yes,yes
-14701,// todo: what?,no,yes,yes
-14710,"/** * a fig designed to be the child of some fignode or figedge to display the * stereotypes of the model element represented by the parent fig. * currently, multiple stereotypes are shown stacked one on top of the other, * each enclosed by guillemets.<p> * * the minimum width of this fig is the largest minimum width of its child * figs. the minimum height of this fig is the total minimum height of its child * figs.<p> * * the owner of this fig is the uml element that is extended * with the stereotypes. we are listening to changes to the model: * addition and removal of stereotypes. <p> * * this fig supports showing one keyword * as the first ""stereotype"" in the list. <p> * * there is no way to remove a keyword fig, once added. <p> * * todo: allow for uml2 style display where all stereotypes are displayed in * the same guillemet pair and are delimited by commas. the style should be * changeable by calling getorientation(orientation). the swidget orientation * class can be used for this. * @author bob tarling */",no,yes,yes
-14711,// todo: what?,no,yes,yes
-14713,// todo: what?,no,yes,yes
-14715,// todo: what?,no,yes,yes
-14717,// todo: what?,no,yes,yes
-14719,// todo: what?,no,yes,yes
-14721,// todo: what?,no,yes,yes
-14723,// todo: what?,no,yes,yes
-14742,// notify the user that the modules in the list that are selected // but not enabled were not possible to enable and that are not // selected that we cannot disable. // // currently we just log this. // // todo: we could eventually pop up some warning window. //,no,yes,yes
-14747,// todo: what?,no,yes,yes
-14749,// todo: what?,no,yes,yes
-14750,"/** * a subclass of jpanel that can act as a tab in the detailspane or * multieditorpane. added functionality:<p> * * spawning: when the tab is double-clicked, this jpanel will generate a * separate window of the same size and with the same contents. this is almost * like ""tearing off"" a tab.<p> * * todo: spawning of windows disabled in spawn()<p> * * title: this jpanel keeps track of its own title.<p> * * icon: this jpanel keeps track of its own icon; i.e. an arrow pointing to * the panel that it gives details of.<p> * * orientation: this jpanel is orientable.<p> * * cloning: this jpanel may be cloned.<p> * * this class used to be named tabspawnable. * renamed since it is not a tab, but a panel, and being spawnable is * not any more its main purpose. */",no,yes,yes
-14751,// todo: what?,no,yes,yes
-14755,// todo: what?,no,yes,yes
-14757,// todo: what?,no,yes,yes
-14759,// todo: what?,no,yes,yes
-14767,// todo: what?,no,yes,yes
-14769,// todo: what?,no,yes,yes
-14801,// todo: needs localization,no,yes,yes
-14951,// todo: the wfr doesn't restrict this to classifiers - tfm,no,yes,yes
-14953,// todo: the wfr doesn't restrict this to classifiers - tfm,no,yes,yes
-14977,//todo: different critic for packages consisting only //of references to elements of other packages?,no,yes,yes
-14995,//todo: different critic or special message for classes //that inherit all ops but define none of their own.,no,yes,yes
-15000,// todo: probably really want to cancel editing //((figtexteditor) focusowner).cancelediting();,no,yes,yes
-15017,// todo: comments are on element in uml 2.x,no,yes,yes
-15094,// todo: midpoints for side handles,no,yes,yes
-15098,// todo: side handles,no,yes,yes
-15110,"/* todo: we may return the following when the         * relocate() has been implemented.         */",no,yes,yes
-15111,"/* todo: we may return something useful when the         * relocate() has been implemented. */",no,yes,yes
-15142,/* todo: do we need to clone the stereotype(s)? */,no,yes,yes
-15147,// todo:?,no,yes,yes
-15150,"/* todo: we may return the following when the         * relocate() has been implemented.         */",no,yes,yes
-15152,"/* todo: we may return something useful when the         * relocate() has been implemented. */",no,yes,yes
-15153,// todo: assumes public,no,yes,yes
-15172,// todo:?,no,yes,yes
-15177,// todo -> settings,no,yes,yes
-15190,// todo: assumes public,no,yes,yes
-15396,// todo: place comments near connected classes // todo: place from middle towards outer edges? (or place largest // groups first),no,yes,yes
-15397,"//        boolean haspackages = false; // todo: move ""package in row"" to noderow",no,yes,yes
-15507,// todo: get tip string from comment,no,yes,yes
-15525,"/** * class to display a stereotype declaration figure using * classifier box notation.<p> * * todo: this is just a place-holder right now! - tfm * this needs to show tags and constraints. */",no,yes,yes
-15529,"/* todo: constraints, ... */",no,yes,yes
-15569,// todo: set font?,no,yes,yes
-15611,// todo: this doesn't do anything special with keywords. // they should probably go first.,no,yes,yes
-15618,//todo: check!,no,yes,yes
-15724,// todo: should update to size of diagram contents,no,yes,yes
-15802,"/**     * clone this figure. after the base clone method has been called determine     * which child figs of the clone represent the name, stereotype and port.     * <p>     * todo: enclosedfigs, encloser and eventsenders may also need to be cloned.     *     * @see java.lang.object#clone()     * @return the cloned figure     */",no,yes,yes
-15823,// todo: should this not be an assert?,no,yes,yes
-15839,// todo: state & vertex are independent classes in uml 2.1,no,yes,yes
-15845,// todo assert modelelement != null???,no,yes,yes
-15847,"// todo: use per-project undo manager, not global",no,yes,yes
-15848,"// todo: use per-project undo manager, not global",no,yes,yes
-15849,"// todo: use per-project undo manager, not global",no,yes,yes
-15850,"// todo: use per-project undo manager, not global",no,yes,yes
-15880,// todo: do nothing until code is reviewed,no,yes,yes
-15908,/* todo: the uml does not seem to define this name. or is it? */,no,yes,yes
-16382,// todo,no,yes,yes
-17207,//class/getgenfeature.todo.override.javajetinc,no,yes,yes
-17304,// todo,no,yes,yes
-20659,"// fixme: add setbasestroke(stroke, boolean) ?",no,yes,yes
-21457,"// fixme: add setbasestroke(stroke, boolean) ?",no,yes,yes
-21499,"// fixme: add setbasetooltipgenerator(categorytooltipgenerator, boolean) ?",no,yes,yes
-22454,"// fixme: add setbaseitemlabelgenerator(categoryitemlabelgenerator, //            boolean) ?",no,yes,yes
-22520,"// fixme: add setseriestooltipgenerator(int, categorytooltipgenerator, //            boolean) ?",no,yes,yes
-22652,// fixme: calculate xx0,no,yes,yes
-22734,//todo private boolean fillzoomrectangle = true;,no,yes,yes
-22843,"// fixme: add setbasepaint(int, paint, boolean)?",no,yes,yes
-22917,// fixme //this.image = serialutilities.readimage(stream);,no,yes,yes
-22920,"// fixme //serialutilities.writeimage(this.image, stream);",no,yes,yes
-23236,// fixme,no,yes,yes
-23760,// fixme: calculate xxleft and xxright,no,yes,yes
-23822,"// fixme: add setseriesoutlinestroke(int, stroke, boolean) ?",no,yes,yes
-23842,"// fixme: add setseriesoutlinepaint(int, paint, boolean)?",no,yes,yes
-23845,"// fixme: add setbaseitemlabelpaint(paint, boolean) ?",no,yes,yes
-23876,"// fixme: add setbaseoutlinestroke(stroke, boolean) ?",no,yes,yes
-23918,"// fixme: add setseriesshape(int, shape, boolean) ?",no,yes,yes
-23931,"// fixme: add setseriespaint(int, paint, boolean)?",no,yes,yes
-23933,"// fixme: add setbasepaint(int, paint, boolean)?",no,yes,yes
-23939,"// fixme: add setseriesstroke(int, stroke, boolean) ?",no,yes,yes
-23943,"// fixme: add setseriespaint(int, paint, boolean)?",no,yes,yes
-23944,"// fixme: add setbaseshape(shape, boolean) ?",no,yes,yes
-23945,"// fixme: add setbaseoutlinepaint(paint, boolean)?",no,yes,yes
-23948,"// fixme: add setseriesitemlabelgenerator(int, categoryitemlabelgenerator, //            boolean)",no,yes,yes
-23954,"// fixme: add setbaseitemlabelfont(font, boolean) ?",no,yes,yes
-23957,"// fixme: add setseriesitemlabelpaint(int, paint, boolean) ?",no,yes,yes
-23959,"// fixme: add setseriesitemlabelfont(int, font, boolean) ?",no,yes,yes
-24012,// todo getseriesshape(n).getbounds().height / 2;,no,yes,yes
-24018,// todo getseriesshape(n).getbounds().width / 2;,no,yes,yes
-24062,"// fixme: add setseriesoutlinepaint(int, paint, boolean)?",no,yes,yes
-24076,"// fixme: add setbaseoutlinepaint(paint, boolean)?",no,yes,yes
-24087,"// fixme: add setseriesshape(int, shape, boolean) ?",no,yes,yes
-24091,"// fixme: add setbaseoutlinestroke(stroke, boolean) ?",no,yes,yes
-24093,"// fixme: add setseriesstroke(int, stroke, boolean) ?",no,yes,yes
-24097,"// fixme: add setseriesoutlinestroke(int, stroke, boolean) ?",no,yes,yes
-24101,"// fixme: add setbaseshape(shape, boolean) ?",no,yes,yes
-24110,// fixme:,no,yes,yes
-25349,"// todo: ruby logic is somewhat more complicated here, see comments after",no,yes,yes
-25443,"// done // done // done // nothing to do for 1.8 // done // done // done // done // done // done // done? // done // done // done // done // done // done // done // done // done // done // done //            case definednode: return builddefined(node, m); // incomplete // done // done // done // done // done // done // done // done //            case ensurenode: return buildensurenode(node, m); // deferred // done // done // done // done //            case flipnode: return buildflip(node, m); // sss fixme: what code generates this ast? // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done // done? // done // done // done // done // done // done -- partially //            case opelementasgnnode: return buildopelementasgn(node, m); // deferred sss fixme: what code generates this ast? // done //            case postexenode: return buildpostexe(node, m); // deferred //            case preexenode: return buildpreexe(node, m); // deferred // done?? // done",no,yes,yes
-25691,// fixme: what is correct 'recv' argument? // (this does produce the desired behavior),no,yes,yes
-26000,// todo: varargs?,no,yes,yes
-26006,// todo: varargs?,no,yes,yes
-26031,"// todo: it's not clear to me why, in floatingdecimal, the // ""slop"" calculation performed above for positive exponents // isn't used for negative exponents as well. will find out...",no,yes,yes
-26079,// todo: this is where we would want to do precision checks to see // if it's non-destructive to coerce a given type into the target // integral primitive,no,yes,yes
-26219,// todo: varargs?,no,yes,yes
-26280,"// all errors to sysread should be systemcallerrors, but on a closed stream // ruby returns an ioerror.  java throws same exception for all errors so // we resort to this hack...",no,yes,yes
-26379,// ignore; job was cancelled // fixme: is this ok?,no,yes,yes
-26536,// fixme: jruby-3604,no,yes,yes
-26588,// todo: 1.9 rb_enc_symname_p,no,yes,yes
-26609,"/** * represents the the dynamic portion of scoping information.  the variablevalues are the * values of assigned local or block variables.  the staticscope identifies which sort of * scope this is (block or local). *  * properties of dynamic scopes: * 1. static and dynamic scopes have the same number of names to values * 2. size of variables (and thus names) is determined during parsing.  so those structured do *    not need to change * * fixme: when creating dynamic scopes we sometimes accidentally pass in extra parents.  this * is harmless (other than wasting memory), but we should not do that.  we can fix this in two * ways: * 1. fix all callers * 2. check parent that is passed in and make if new instance is local, then its parent is not local */",no,yes,yes
-26678,"/**      * nested class whose instances act as thunks reacting to to_str method     * called from (exception#to_str, exception#message)     * mri equivalent: rb_cnameerrormesg, class name: ""message"", construction method: ""!"",     * to_str implementation: ""name_err_mesg_to_str""     *     * todo: this class should not be lookupable     */",no,yes,yes
-26747,// todo: make it 16 now ? // must be power of 2!,no,yes,yes
-26836,// todo: varargs?,no,yes,yes
-26838,// todo: varargs?,no,yes,yes
-26875,// sss fixme: can this ever be null?,no,yes,yes
-26913,// todo: varargs?,no,yes,yes
-27046,// todo: keep cr // todo: rb_str_splice_0,no,yes,yes
-27190,// todo: read_check from mri,no,yes,yes
-27213,// todo: read into buffer using all the fread logic //        int read = openfile.getmainstream().fread(buffer);,no,yes,yes
-27228,"// all errors to sysread should be systemcallerrors, but on a closed stream // ruby returns an ioerror.  java throws same exception for all errors so // we resort to this hack...",no,yes,yes
-27236,// fixme: process options,no,yes,yes
-27246,// todo: rb_usascii_str_new2,no,yes,yes
-27281,// fixme warning,no,yes,yes
-27284,//fixme warning,no,yes,yes
-27352,// todo: why this: .setresult();,no,yes,yes
-27363,// fixme: temporarily disabling because this fires way too much running rails tests. jruby-518,no,yes,yes
-27503,"// todo: ruby logic is somewhat more complicated here, see comments after",no,yes,yes
-27579,// todo: varargs?,no,yes,yes
-28100,// fixme: jruby-3604,no,yes,yes
-28414,// todo: varargs?,no,yes,yes
-28786,// fixme: peek('u') utf8 stuff for 1.9,no,yes,yes
-28793,// fixme: old mac format strings?,no,yes,yes
-28801,// fixme: old mac format strings?,no,yes,yes
-28813,// todo: fd_cloexec is mysterious and we are not sure how constantine should include this. // we did it here for now,no,yes,yes
-28973,// fixme: temporarily disabling because this fires way too much running rails tests. jruby-518,no,yes,yes
-28986,// fixme: temporarily disabling because this fires way too much running rails tests. jruby-518,no,yes,yes
-28994,"// fixme: dstr,evstr,str: warning ""string literal in condition""",no,yes,yes
-29129,// todo assuming case is a fixnum,no,yes,yes
-31658,"//todo test on other versions of weblogic //todo add more attributes to the task, to take care of all jspc options //todo test on unix",no,yes,yes
-31784,// set the default values if not specified //@todo should be moved to the test class instead.,no,yes,yes
-31788,// checkstyle:visibilitymodifier off - bc //todo: if dealing with default cl need to parse out <enter description here>,no,yes,yes
-33327,//todo: use antlr to parse the grammar file to do this.,no,yes,yes
-35272,"/**    * parse a conditional section.    * [63] conditionalsect ::= includesect || ignoresect    * [64] includesect ::= '<![' %'include' '[' (%markupdecl*)* ']]>'    * [65] ignoresect ::= '<![' %'ignore' '[' ignoresectcontents* ']]>'    * [66] ignoresectcontents ::= ((skiplit | comment | pi) -(char* ']]>'))    *                           | ('<![' ignoresectcontents* ']]>')    *                           | (char - (']' | [<'""]))    *                           | ('<!' (char - ('-' | '[')))    * *note: the '<![' has already been read.    * *todo: verify that i am handling ignoresectcontents right.    */",no,yes,yes
-36465,/* m+ discarded by key event workaround! */,no,yes,yes
-38663,//{{{ instance variables // this is a bad hack,no,yes,yes
-44539,//todo: check this....,no,yes,yes
-44626,// todo : move this to sf per hhh-3517; also see hhh-1907 and componentmetamodel,no,yes,yes
-44791,// todo: skip formulas?,no,yes,yes
-44801,"//todo: eventually, rowidname[j]",no,yes,yes
-44833,"//	private componenttuplizerfactory componenttuplizerfactory; todo : hhh-3517 and hhh-1907",no,yes,yes
-44885,// todo : shouldnt inserts be expectations.none?,no,yes,yes
-44934,"// if a composite key, use ""( (foo = ? and bar = ?) or (foo = ? and bar = ?) )"" for batching //todo: unnecessary for databases with ansi-style joins",no,yes,yes
-45115,//todo!,no,yes,yes
-45379,//todo!,no,yes,yes
-45427,//todo!!!,no,yes,yes
-45453,//todo,no,yes,yes
-45473,//todo!!!!!!!,no,yes,yes
-45514,//todo!!!!!!!,no,yes,yes
-46156,//todo:,no,yes,yes
-46414,// todo:,no,yes,yes
-46642,"// todo : for 4.0 //	private static final logger log = loggerfactory.getlogger( sqlstatementlogger.class ); // this is the legacy logging 'category'...",no,yes,yes
-46913,//todo: we could just return all false...,no,yes,yes
-46919,//todo: we could just return all false...,no,yes,yes
-46984,"//if there is a user-specified loader, return that //todo: filters!?",no,yes,yes
-46994,//todo: something with formulas...,no,yes,yes
-48349,"// this fixes the issue where the tree is getting constructed prior to // the oracle plugin expanders being registered.(users, sessions, // instances nodes have no children until the tree is refreshed). even // though this is a hack, it doesn't seem to negatively impact // performance even when loading all schemas.",no,yes,yes
-48394,"/*		* for oracle 10g we could say something like : 		* 		* ""where xmlserialize(content "" + _coldef.getlabel() +"") like '<value>'""		* 		* this doesn't appear to work on oracle 9i at the moment, so we will		* avoid using this column in any where clause if the value is non-null,		* which is what the superclass implementation does.		* 		* todo: find a way to do this for both versions or split this behavior		* so that it works on 10g and is disabled on 9i.		*/",no,yes,yes
-48645,// todo,no,yes,yes
-49146,// todo,no,yes,yes
-49163,// todo,no,yes,yes
-49176,// todo,no,yes,yes
-49189,// todo,no,yes,yes
-49204,// todo,no,yes,yes
-49215,// todo,no,yes,yes
-49222,// todo,no,yes,yes
-49237,// todo,no,yes,yes
-49247,// todo,no,yes,yes
-49332,// todo,no,yes,yes
-49371,"// todo: columns, tables",no,yes,yes
-49378,"//todo:			setfont(style.createstyledfont(getfont()));",no,yes,yes
-49431,// todo move to new standard location and rewrite test to be less static,no,yes,yes
-49725,// todo,no,yes,yes
-49958,// todo,no,yes,yes
-51077,// todo: tell the user that the selected destination schema is  // the same as the source schema. //monitor.showmessagedialog(...),no,yes,yes
-51178,// mysql requires myisam storage engine for spatial and fulltext indexes.  don't test them  // for now.  see the todo in the mysqldialect for getcreateindexsql.,no,yes,yes
-52235,// todo,no,yes,yes
-52417,"// do not use axion's bigint data type. // i get the following exception in my test: // org.axiondb.axionexception: // invalid value ""3074478078827346"" for column // (bigint_type_table).bigint_column, expected numeric(20,10) : // data exception: numeric value out of range // can someone please tell me why axion expects big integers to be limited // to 20 precision and 10 scale?(integers should have scale == 0, right?) // so an axion bigint is limited to just 20 digits to the left of the // decimal point. // todo: consider filing a bug report against axion build m3. // 38 is the maximum precision for axion's numeric type.",no,yes,yes
-52594,// todo,no,yes,yes
-53150,// todo,no,yes,yes
-53188,// todo,no,yes,yes
-53447,// todo,no,yes,yes
-53709,// todo: check to be sure that the source and destination schemas are // different. abort if they are the same and inform the user.,no,yes,yes
-55112,"// could time this // res.sampleend(); // if sampleend() is not called, elapsed time will remain zero // todo distinguish errors better //$non-nls-1$",no,yes,yes
-55241,"// if there are no arguments, we can send a file as the body of the request // todo: needs a multiple file upload scenerio",no,yes,yes
-55263,// todo ?? (jmetertreenode) selectednode.clone();,no,yes,yes
-55770,// todo - charset?,no,yes,yes
-55989,// todo - charset?,no,yes,yes
-56058,// todo - charset?,no,yes,yes
-56060,// todo - charset?,no,yes,yes
-56679,// check that other encoding is not the current encoding // todo - charset?,no,yes,yes
-56725,// first write the start multipart file // todo - charset?,no,yes,yes
-56729,// retrieve the formatted data using the same encoding used to create it // todo - charset? // write the actual file content,no,yes,yes
-56795,// todo - charset?,no,yes,yes
-57631,// todo - charset?,no,yes,yes
-57633,// todo - charset?,no,yes,yes
-58009,// todo charset ?,no,yes,yes
-58394,// needs to be volatile as may be referenced from multiple threads // todo see if this can be made final somehow,no,yes,yes
-58396,// todo - charset?,no,yes,yes
-58500,// todo - charset?,no,yes,yes
-58514,// todo - charset?,no,yes,yes
-58615,// todo charset ?,no,yes,yes
-58958,// todo - charset?,no,yes,yes
-58984,// todo - charset?,no,yes,yes
-59387,"// most browsers use iso-8859-1 as default encoding, even if spec says utf-8 // todo - charset?",no,yes,yes
-59538,// todo - charset?,no,yes,yes
-59540,// todo - charset?,no,yes,yes
-59937,//ok // todo ??,no,yes,yes
-60558,"// todo charset ? // get the first line, and see if it is xml",no,yes,yes
-60690,// todo timestamp == 0 means either not yet initialised or no stamp available (e.g. when loading a results file),no,yes,yes
-60707,//ok // todo ??,no,yes,yes
-60712,// todo ?? //ok //ok,no,yes,yes
-61383,"// if there are no arguments, we can send a file as the body of the request // todo: needs a multiple file upload scenerio",no,yes,yes
-61447,// todo charset ?,no,yes,yes
-61449,// todo charset ?,no,yes,yes
-61476,// todo - charset?,no,yes,yes
-61815,// todo - charset?,no,yes,yes
-62086,// todo - charset?,no,yes,yes
-62088,// todo,no,yes,yes
-62089,// todo,no,yes,yes
-62239,// todo charset ?,no,yes,yes
-62245,// todo charset ? // $non-nls-1$,no,yes,yes
-62246,// todo charset ? // $non-nls-1$,no,yes,yes
-62262,// todo charset ?,no,yes,yes

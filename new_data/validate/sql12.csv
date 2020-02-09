@@ -1,0 +1,28 @@
+ID,projectname,classification,Abstract,label,easy_code,validate
+1346,sql12,WITHOUT_CLASSIFICATION,"// This fixes the issue where the tree is getting constructed prior to // the Oracle plugin expanders being registered.(USERS, SESSIONS, // INSTANCES nodes have no children until the tree is refreshed). Even // though this is a hack, it doesn't seem to negatively impact // performance even when loading all schemas.",no,yes,yes
+1391,sql12,WITHOUT_CLASSIFICATION,"/*		* For Oracle 10g we could say something like : 		* 		* ""where XMLSERIALIZE(CONTENT "" + _colDef.getLabel() +"") like '<value>'""		* 		* This doesn't appear to work on Oracle 9i at the moment, so we will		* avoid using this column in any where clause if the value is non-null,		* which is what the superclass implementation does.		* 		* TODO: Find a way to do this for both versions or split this behavior		* so that it works on 10g and is disabled on 9i.		*/",no,yes,yes
+1642,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2143,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2160,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2173,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2186,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2201,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2212,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2219,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2234,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2244,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2329,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2368,sql12,WITHOUT_CLASSIFICATION,"// TODO: columns, tables",no,yes,yes
+2375,sql12,WITHOUT_CLASSIFICATION,"//TODO:			setFont(style.createStyledFont(getFont()));",no,yes,yes
+2428,sql12,WITHOUT_CLASSIFICATION,// TODO move to new standard location and rewrite test to be less static,no,yes,yes
+2722,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+2955,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+4074,sql12,WITHOUT_CLASSIFICATION,// TODO: tell the user that the selected destination schema is  // the same as the source schema. //monitor.showMessageDialog(...)            ,no,yes,yes
+4175,sql12,WITHOUT_CLASSIFICATION,// MySQL requires MyISAM storage engine for spatial and fulltext indexes.  Don't test them  // for now.  See the TODO in the MySQLDialect for getCreateIndexSQL.,no,yes,yes
+5232,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+5414,sql12,WITHOUT_CLASSIFICATION,"// Do not use Axion's bigint data type. // I get the following exception in my test: // org.axiondb.AxionException: // Invalid value ""3074478078827346"" for column // (BIGINT_TYPE_TABLE).BIGINT_COLUMN, expected numeric(20,10) : // data exception: numeric value out of range // Can someone please tell me why Axion expects big integers to be limited // to 20 precision and 10 scale?(Integers should have scale == 0, right?) // So an Axion bigint is limited to just 20 digits to the left of the // decimal point. // TODO: consider filing a bug report against Axion build M3. // 38 is the maximum precision for Axion's numeric type.",no,yes,yes
+5591,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+6147,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+6185,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+6444,sql12,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+6706,sql12,WITHOUT_CLASSIFICATION,// TODO: check to be sure that the source and destination schemas are // different. Abort if they are the same and inform the user.,no,yes,yes

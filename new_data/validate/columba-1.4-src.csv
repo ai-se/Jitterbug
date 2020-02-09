@@ -1,0 +1,18 @@
+ID,projectname,classification,Abstract,label,easy_code,validate
+365,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO i18n ""Close"" button",no,yes,yes
+931,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO (@author fdietz): this should be changed into a ""real"" window",no,yes,yes
+935,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO i18n ""Close"" button",no,yes,yes
+969,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO i18n ""Help"" button",no,yes,yes
+1560,columba-1.4-src,WITHOUT_CLASSIFICATION,// FIXME r.setPos();,no,yes,yes
+1564,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO i18n ""Help"" button",no,yes,yes
+1730,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO: re-enable feature, the following code violates our // design, accessing folders is only allowed in Command.execute()",no,yes,yes
+3086,columba-1.4-src,WITHOUT_CLASSIFICATION,"// if folder is message folder // ->TODO (@author fdietz):  there should be an interface, instead of the AbstractMessageFolder // class",no,yes,yes
+3132,columba-1.4-src,WITHOUT_CLASSIFICATION,"/*	 * Determine what day of week the first day of the month falls on. It's too	 * bad we have to resort to this hack; the Java API provides no means of	 * doing this any other way.	 */",no,yes,yes
+3437,columba-1.4-src,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+3439,columba-1.4-src,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+4100,columba-1.4-src,WITHOUT_CLASSIFICATION,// FIXME r.setPos();,no,yes,yes
+4440,columba-1.4-src,WITHOUT_CLASSIFICATION,"// TODO i18n ""attachments"" label",no,yes,yes
+4820,columba-1.4-src,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+4834,columba-1.4-src,WITHOUT_CLASSIFICATION,// TODO,no,yes,yes
+5434,columba-1.4-src,WITHOUT_CLASSIFICATION,// no item exists in table // -> nothing todo,no,yes,no
+6076,columba-1.4-src,WITHOUT_CLASSIFICATION,// Hack to ensure charset is set correctly at start-up,no,yes,yes

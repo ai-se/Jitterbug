@@ -1,0 +1,16 @@
+ID,projectname,classification,Abstract,label,easy_code
+462,emf-2.4.1,WITHOUT_CLASSIFICATION,// TODO,no,yes
+1287,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/getGenFeature.todo.override.javajetinc,no,yes
+1351,emf-2.4.1,WITHOUT_CLASSIFICATION,//TestCase/isSetGenFeature.todo.override.javajetinc,no,yes
+1384,emf-2.4.1,WITHOUT_CLASSIFICATION,// TODO,no,yes
+1432,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/setGenFeature.todo.override.javajetinc,no,yes
+1460,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/basicSetGenFeature.todo.override.javajetinc,no,yes
+1466,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/basicGetGenFeature.todo.override.javajetinc,no,yes
+1468,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/implementedGenOperation.todo.override.javajetinc,no,yes
+1472,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/isSetGenFeature.todo.override.javajetinc,no,yes
+1476,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/unsetGenFeature.todo.override.javajetinc,no,yes
+1494,emf-2.4.1,WITHOUT_CLASSIFICATION,//TestCase/getGenFeature.todo.override.javajetinc,no,yes
+1498,emf-2.4.1,WITHOUT_CLASSIFICATION,//TestCase/setGenFeature.todo.override.javajetinc,no,yes
+1500,emf-2.4.1,WITHOUT_CLASSIFICATION,//TestCase/unsetGenFeature.todo.override.javajetinc,no,yes
+1719,emf-2.4.1,WITHOUT_CLASSIFICATION,//TestCase/implementedGenOperation.todo.override.javajetinc,no,yes
+1933,emf-2.4.1,WITHOUT_CLASSIFICATION,//Class/basicUnsetGenFeature.todo.override.javajetinc,no,yes

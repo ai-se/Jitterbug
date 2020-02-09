@@ -1,0 +1,43 @@
+ID,projectname,classification,Abstract,label,easy_code
+894,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"// Could time this // res.sampleEnd(); // if sampleEnd() is not called, elapsed time will remain zero // TODO distinguish errors better //$NON-NLS-1$",no,yes
+1023,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"// If there are no arguments, we can send a file as the body of the request // TODO: needs a multiple file upload scenerio",no,yes
+1045,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO ?? (JMeterTreeNode) selectedNode.clone();,no,yes
+1552,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+1771,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+1840,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+1842,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+2461,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// Check that other encoding is not the current encoding // TODO - charset?,no,yes
+2507,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// First write the start multipart file // TODO - charset?,no,yes
+2511,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// Retrieve the formatted data using the same encoding used to create it // TODO - charset? // Write the actual file content,no,yes
+2577,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+3413,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+3415,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+3460,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"//log.warn(""DEBUG"",ex); // e.g. javax.naming.SizeLimitExceededException: [LDAP: error code 4 - Sizelimit Exceeded]; remaining name '' //                                                123456789012345678901 // TODO: tidy this up",no,yes
+3791,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes
+4176,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// Needs to be volatile as may be referenced from multiple threads // TODO see if this can be made final somehow,no,yes
+4178,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+4282,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+4296,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+4397,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes
+4740,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+4766,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+5169,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"// Most browsers use ISO-8859-1 as default encoding, even if spec says UTF-8 // TODO - charset?",no,yes
+5320,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+5322,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+5719,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,//OK // TODO ??,no,yes
+6340,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"// TODO Charset ? // Get the first line, and see if it is XML",no,yes
+6472,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO timeStamp == 0 means either not yet initialised or no stamp available (e.g. when loading a results file),no,yes
+6489,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,//OK // TODO ??,no,yes
+6494,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO ?? //OK //OK,no,yes
+7165,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,"// If there are no arguments, we can send a file as the body of the request // TODO: needs a multiple file upload scenerio",no,yes
+7229,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes
+7231,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes
+7258,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+7597,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+7868,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO - charset?,no,yes
+7870,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO,no,yes
+7871,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO,no,yes
+8021,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes
+8027,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ? // $NON-NLS-1$,no,yes
+8028,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ? // $NON-NLS-1$,no,yes
+8044,apache-jmeter-2.10,WITHOUT_CLASSIFICATION,// TODO Charset ?,no,yes

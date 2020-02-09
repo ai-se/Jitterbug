@@ -1,5 +1,13 @@
-,,columba,argouml,emf,jfreechart,jruby,ant,jEdit,GA,sql,jmeter
-Precision,Uncorrected,91,85,69,72,93,89,95,94,85,87
-Precision,Corrected,99,100,100,100,100,100,100,100,100,100
-Recall,Uncorrected,87,88,33,47,90,24,21,74,54,75
-Recall,Corrected,88,90,41,55,90,27,22,75,58,77
+Ground Truth,Metrics,Treatment,sql12,apache-jmeter-2.10,emf-2.4.1,apache-ant-1.7.0,argouml,hibernate-distribution-3.3.2.GA,jEdit-4.2,jfreechart-1.0.19,columba-1.4-src,jruby-1.4.0
+Corrected,Precision,Easy,1,1,1,1,1,1,1,1,0.99,1
+,Precision,MAT,1,1,1,0.96,0.99,0.99,0.85,1,0.99,1
+,Recall,Easy,0.58,0.77,0.41,0.27,0.9,0.75,0.22,0.55,0.88,0.9
+,Recall,MAT,0.58,0.77,0.38,0.49,0.9,0.74,0.19,0.55,0.87,0.91
+,F1,Easy,0.74,0.87,0.58,0.42,0.94,0.86,0.37,0.71,0.93,0.95
+,F1,MAT,0.73,0.87,0.55,0.65,0.94,0.85,0.31,0.71,0.93,0.95
+Original,Precision,Easy,0.85,0.87,0.69,0.89,0.85,0.94,0.95,0.72,0.91,0.93
+,Precision,MAT,0.85,0.87,0.67,0.9,0.85,0.94,0.81,0.72,0.91,0.92
+,Recall,Easy,0.54,0.75,0.33,0.24,0.88,0.74,0.21,0.47,0.87,0.52
+,Recall,MAT,0.54,0.75,0.29,0.47,0.88,0.73,0.19,0.46,0.86,0.9
+,F1,Easy,0.66,0.8,0.44,0.38,0.87,0.83,0.35,0.57,0.89,0.67
+,F1,MAT,0.66,0.8,0.4,0.62,0.86,0.82,0.3,0.56,0.88,0.91
