@@ -65,7 +65,7 @@ tech-debt$ cd src
  ```
 ### RQ2
 #### RQ2.1
- - Test Hard, TM, and other supervised learners on every target project with "easy to find" SATDs removed, save APFD results as [rest_APFD_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/rest_APFD_Hard.csv), AUC results as [rest_AUC_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/rest_AUC_Hard.csv), and dump results as [rest_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/rest_result.pickle):
+ - Test Hard, TM, and other supervised learners on every target project with "easy to find" SATDs removed, save results (rest_\*.csv) to the [results](https://github.com/ai-se/tech-debt/tree/master/results/) directory, and dump results as [rest_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/rest_result.pickle):
  ```
  src$ python main.py rest_results
  ```
@@ -79,7 +79,7 @@ tech-debt$ cd src
  src$ python main.py estimate_results
  ```
 ### RQ3
- - Test Diamond, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD_Hard.csv), AUC results as [overall_AUC_Hard.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC_Hard.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
+ - Test Diamond, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD.csv), AUC results as [overall_AUC.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
  ```
  src$ python main.py overall_results
  ```
