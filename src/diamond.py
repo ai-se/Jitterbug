@@ -73,10 +73,10 @@ class Diamond(object):
         T_rec = 0.9
         while True:
             pos, neg, total = self.hard.get_numbers()
-            try:
-                print("%d, %d, %d" %(pos,pos+neg, self.hard.est_num))
-            except:
-                print("%d, %d" %(pos,pos+neg))
+            # try:
+            #     print("%d, %d, %d" %(pos,pos+neg, self.hard.est_num))
+            # except:
+            #     print("%d, %d" %(pos,pos+neg))
 
             if pos + neg >= total:
                 break

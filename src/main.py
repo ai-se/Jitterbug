@@ -31,21 +31,14 @@ def parse(path = "../data/"):
         df = df[["ID","projectname","classification","Abstract","label",]]
         df.to_csv("../new_data/original/"+file, line_terminator="\r\n", index=False)
 
-def load_csv(path="../new_data/original/"):
-    data={}
-    for file in listdir(path):
-        if file==".DS_Store":
-            continue
-        df = pd.read_csv(path+file)
-        data[file.split(".csv")[0]] = df
-    return data
-
 def find_patterns(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
     diamond = Diamond(data,target)
     patterns = diamond.find_patterns()
+    print("Patterns:")
     print(patterns)
-    print(diamond.easy.precs)
+    print("Precisions on training set:")
+    print({p: diamond.easy.precs[i] for i,p in enumerate(patterns)})
 
 def validate_ground_truth(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
@@ -65,7 +58,6 @@ def summarize_validate(input = "../new_data/validate/",output="../results/"):
     df = pd.DataFrame(data=result,columns=columns)
     df.to_csv(output+"validate_sum.csv", line_terminator="\r\n", index=False)
 
-
 def correct_ground_truth(validated="../new_data/validate/", output="../new_data/corrected/"):
     data = load_csv(path="../new_data/original/")
     data_validated = load_csv(path=validated)
@@ -79,7 +71,8 @@ def correct_ground_truth(validated="../new_data/validate/", output="../new_data/
         print(project)
         print(ratio)
 
-def Easy_results(input="../new_data/corrected/",output="../results/"):
+def Easy_results(source="corrected",output="../results/"):
+    input = "../new_data/"+source+"/"
     data=load_csv(path=input)
     results = {"Metrics":["Precision","Recall","F1"]}
     for target in data:
@@ -94,9 +87,10 @@ def Easy_results(input="../new_data/corrected/",output="../results/"):
         f1 = 2*prec*rec/(prec+rec)
         results[target]=[prec,rec,f1]
     df = pd.DataFrame(data=results,columns=["Metrics"]+data.keys())
-    df.to_csv(output+"step1_Easy_corrected.csv", line_terminator="\r\n", index=False)
+    df.to_csv(output+"step1_Easy_"+source+".csv", line_terminator="\r\n", index=False)
 
-def MAT_results(input="../new_data/corrected/",output="../results/"):
+def MAT_results(source="corrected",output="../results/"):
+    input = "../new_data/"+source+"/"
     data=load_csv(path=input)
     results = {"Metrics":["Precision","Recall","F1"]}
     for target in data:
@@ -110,7 +104,7 @@ def MAT_results(input="../new_data/corrected/",output="../results/"):
         f1 = 2*prec*rec/(prec+rec)
         results[target]=[prec,rec,f1]
     df = pd.DataFrame(data=results,columns=["Metrics"]+data.keys())
-    df.to_csv(output+"step1_MAT_corrected.csv", line_terminator="\r\n", index=False)
+    df.to_csv(output+"step1_MAT_"+source+".csv", line_terminator="\r\n", index=False)
 
 def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
     treatments = ["LR","DT","RF","SVM","NB","TM"]
@@ -168,36 +162,35 @@ def overall_results(seed=0,input="../new_data/corrected/",output="../results/"):
         APFDs[target] = []
         AUCs[target] = []
 
-        # stats = two_step_Diamond(data,target,seed=seed)
-        # APFDs[target].append(stats["APFD"])
-        # AUCs[target].append(stats["AUC"])
-        # results[target]["Diamond"] = stats
-        #
-        # stats = two_step_Easy(data,target,seed=seed)
-        # APFDs[target].append(stats["APFD"])
-        # AUCs[target].append(stats["AUC"])
-        # results[target]["Easy+RF"] = stats
+        stats = two_step_Diamond(data,target,seed=seed)
+        APFDs[target].append(stats["APFD"])
+        AUCs[target].append(stats["AUC"])
+        results[target]["Diamond"] = stats
+
+        stats = two_step_Easy(data,target,seed=seed)
+        APFDs[target].append(stats["APFD"])
+        AUCs[target].append(stats["AUC"])
+        results[target]["Easy+RF"] = stats
 
         stats = Diamond_hard(data,target,est=False,seed=seed).eval()
-        set_trace()
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Hard"] = stats
 
-        # stats = two_step_MAT(data,target,seed=seed)
-        # APFDs[target].append(stats["APFD"])
-        # AUCs[target].append(stats["AUC"])
-        # results[target]["MAT+RF"] = stats
-        #
-        # stats = supervised_model(data,target, model = "RF",seed=seed)
-        # APFDs[target].append(stats["APFD"])
-        # AUCs[target].append(stats["AUC"])
-        # results[target]["RF"] = stats
-        #
-        # stats = supervised_model(data,target, model = "TM",seed=seed)
-        # APFDs[target].append(stats["APFD"])
-        # AUCs[target].append(stats["AUC"])
-        # results[target]["TM"] = stats
+        stats = two_step_MAT(data,target,seed=seed)
+        APFDs[target].append(stats["APFD"])
+        AUCs[target].append(stats["AUC"])
+        results[target]["MAT+RF"] = stats
+
+        stats = supervised_model(data,target, model = "RF",seed=seed)
+        APFDs[target].append(stats["APFD"])
+        AUCs[target].append(stats["AUC"])
+        results[target]["RF"] = stats
+
+        stats = supervised_model(data,target, model = "TM",seed=seed)
+        APFDs[target].append(stats["APFD"])
+        AUCs[target].append(stats["AUC"])
+        results[target]["TM"] = stats
 
     pd.DataFrame(APFDs,columns=columns).to_csv(output+"overall_APFD.csv", line_terminator="\r\n", index=False)
     pd.DataFrame(AUCs,columns=columns).to_csv(output+"overall_AUC.csv", line_terminator="\r\n", index=False)
@@ -235,6 +228,14 @@ def plot_recall_cost(which = "overall"):
 
 # utils
 
+def load_csv(path="../new_data/original/"):
+    data={}
+    for file in listdir(path):
+        if file==".DS_Store":
+            continue
+        df = pd.read_csv(path+file)
+        data[file.split(".csv")[0]] = df
+    return data
 
 def supervised_model(data, target, model = "RF", seed = 0):
     np.random.seed(seed)
