@@ -13,8 +13,7 @@ tech-debt$ python
 >>> nltk.download('punkt')
 tech-debt$ cd src
 ```
-### RQ1
-#### RQ1.1
+### RQ1: How to find the strong patterns of the "easy to find" SATDs in Step 1?
  - Prepare data:
  ```
  src$ python main.py parse
@@ -41,7 +40,7 @@ tech-debt$ cd src
  ```
  src$ python main.py MAT_results original
  ```
-#### RQ1.2
+#### Can the ground truth be wrong?
  - Find conflicting labels (GT=no AND Easy=yes), save as csv files under the [conflicts](https://github.com/ai-se/tech-debt/tree/master/new_data/conflicts) directory:
  ```
  src$ python main.py validate_ground_truth
@@ -63,8 +62,7 @@ tech-debt$ cd src
  ```
  src$ python main.py MAT_results corrected
  ```
-### RQ2
-#### RQ2.1
+### RQ2: How to better find the "hard to find" SATDs with less human effort in Step 2?
  - Test Hard, TM, and other supervised learners on every target project with "easy to find" SATDs removed, save results (rest_\*.csv) to the [results](https://github.com/ai-se/tech-debt/tree/master/results/) directory, and dump results as [rest_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/rest_result.pickle):
  ```
  src$ python main.py rest_results
@@ -73,12 +71,12 @@ tech-debt$ cd src
  ```
  src$ python main.py plot_recall_cost rest
  ```
-#### RQ2.2
+#### When to stop Hard in Step 2?
  - Use estimator to stop at 90% recall, plot curves to [figures_est](https://github.com/ai-se/tech-debt/tree/master/figures_est) directory:
  ```
  src$ python main.py estimate_results
  ```
-### RQ3
+### RQ3: Overall how does Diamond perform?
  - Test Diamond, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD.csv), AUC results as [overall_AUC.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
  ```
  src$ python main.py overall_results
