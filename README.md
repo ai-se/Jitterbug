@@ -7,7 +7,7 @@
 ## Experiments
 ### Setup
 ```
-tech-debt$ pip install requirements.txt
+tech-debt$ pip install -r requirements.txt
 tech-debt$ python
 >>> import nltk
 >>> nltk.download('punkt')
