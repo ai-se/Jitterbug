@@ -19,7 +19,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import SGDClassifier
 from supervised_models import *
 
-class Diamond(object):
+class Jitterbug(object):
     def __init__(self,data,target):
         self.uncertain_thres = 0
         self.target = target
@@ -535,7 +535,7 @@ class MAT(Easy):
         self.patterns = ["todo","fixme","hack","xxx"]
         self.pattern_ids = [self.voc.tolist().index(x) for x in self.patterns]
 
-class MAT_Two_Step(Diamond):
+class MAT_Two_Step(Jitterbug):
     def __init__(self,data,target):
         self.uncertain_thres = 0
         self.target = target

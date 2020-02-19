@@ -2,7 +2,7 @@ from __future__ import division, print_function
 
 
 import numpy as np
-from diamond import *
+from jitterbug import *
 from supervised_models import TM,SVM,RF,DT,NB,LR
 
 
@@ -33,19 +33,19 @@ def parse(path = "../data/"):
 
 def find_patterns(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
-    diamond = Diamond(data,target)
-    patterns = diamond.find_patterns()
+    Jitterbug = Jitterbug(data,target)
+    patterns = Jitterbug.find_patterns()
     print("Patterns:")
     print(patterns)
     print("Precisions on training set:")
-    print({p: diamond.easy.precs[i] for i,p in enumerate(patterns)})
+    print({p: Jitterbug.easy.precs[i] for i,p in enumerate(patterns)})
 
 def validate_ground_truth(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
-    diamond = Diamond(data,target)
-    patterns = diamond.find_patterns()
-    diamond.easy_code(patterns)
-    diamond.output_conflicts(output="../new_data/conflicts/")
+    Jitterbug = Jitterbug(data,target)
+    patterns = Jitterbug.find_patterns()
+    Jitterbug.easy_code(patterns)
+    Jitterbug.output_conflicts(output="../new_data/conflicts/")
 
 def summarize_validate(input = "../new_data/validate/",output="../results/"):
     data=load_csv(input)
@@ -76,11 +76,11 @@ def Easy_results(source="corrected",output="../results/"):
     data=load_csv(path=input)
     results = {"Metrics":["Precision","Recall","F1"]}
     for target in data:
-        diamond = Diamond(data,target)
-        patterns = diamond.find_patterns()
+        Jitterbug = Jitterbug(data,target)
+        patterns = Jitterbug.find_patterns()
         print(patterns)
-        print(diamond.easy.precs)
-        stats = diamond.test_patterns(output=True)
+        print(Jitterbug.easy.precs)
+        stats = Jitterbug.test_patterns(output=True)
         stats["t"] = len(data[target][data[target]["label"]=="yes"])
         prec = float(stats['tp'])/stats['p']
         rec = float(stats['tp'])/stats['t']
@@ -130,8 +130,8 @@ def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
         APFD_result[target] = []
         AUC_result[target] = []
         for model in treatments[:-1]:
-            diamond = Diamond_hard(data,target,model=model,seed=seed)
-            stats = diamond.eval()
+            Jitterbug = Jitterbug_hard(data,target,model=model,seed=seed)
+            stats = Jitterbug.eval()
             APFD_result[target].append(stats['APFD'])
             AUC_result[target].append(stats['AUC'])
             if model=="RF":
@@ -147,32 +147,32 @@ def estimate_results(seed=0,model="RF",input="../new_data/rest/"):
     data=load_csv(path=input)
     # Hard Results
     for target in data:
-        read = Diamond_hard(data,target,est=True,model=model,seed=seed)
+        read = Jitterbug_hard(data,target,est=True,model=model,seed=seed)
         read.hard.plot()
 
 
 def overall_results(seed=0,input="../new_data/corrected/",output="../results/"):
     data=load_csv(path=input)
     columns = ["Treatment"] + data.keys()
-    APFDs = {"Treatment":["Diamond","Easy+RF","Hard","MAT+RF","TM","RF"]}
-    AUCs = {"Treatment":["Diamond","Easy+RF","Hard","MAT+RF","TM","RF"]}
+    APFDs = {"Treatment":["Jitterbug","Easy+RF","Hard","MAT+RF","TM","RF"]}
+    AUCs = {"Treatment":["Jitterbug","Easy+RF","Hard","MAT+RF","TM","RF"]}
     results = {}
     for target in data:
         results[target]={}
         APFDs[target] = []
         AUCs[target] = []
 
-        stats = two_step_Diamond(data,target,seed=seed)
+        stats = two_step_Jitterbug(data,target,seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
-        results[target]["Diamond"] = stats
+        results[target]["Jitterbug"] = stats
 
         stats = two_step_Easy(data,target,seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Easy+RF"] = stats
 
-        stats = Diamond_hard(data,target,est=False,seed=seed).eval()
+        stats = Jitterbug_hard(data,target,est=False,seed=seed).eval()
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Hard"] = stats
@@ -247,21 +247,21 @@ def supervised_model(data, target, model = "RF", seed = 0):
     result = clf.eval()
     return result
 
-def Diamond_hard(data, target, est = False, model = "RF", seed = 0):
+def Jitterbug_hard(data, target, est = False, model = "RF", seed = 0):
     np.random.seed(seed)
-    diamond=Diamond(data,target)
-    diamond.ML_hard(model=model, est=est)
-    return diamond
+    Jitterbug=Jitterbug(data,target)
+    Jitterbug.ML_hard(model=model, est=est)
+    return Jitterbug
 
 
-def two_step_Diamond(data, target, model = "RF", seed = 0):
+def two_step_Jitterbug(data, target, model = "RF", seed = 0):
     np.random.seed(seed)
-    diamond=Diamond(data,target)
-    diamond.find_patterns()
-    diamond.easy_code()
-    diamond.test_patterns()
-    diamond.ML_hard(model = model)
-    stats = diamond.eval()
+    Jitterbug=Jitterbug(data,target)
+    Jitterbug.find_patterns()
+    Jitterbug.easy_code()
+    Jitterbug.test_patterns()
+    Jitterbug.ML_hard(model = model)
+    stats = Jitterbug.eval()
     return stats
 
 def two_step_MAT(data, target, model = "RF", seed = 0):
