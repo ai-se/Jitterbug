@@ -76,8 +76,8 @@ tech-debt$ cd src
  ```
  src$ python main.py estimate_results
  ```
-### RQ3: Overall how does Diamond perform?
- - Test Diamond, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD.csv), AUC results as [overall_AUC.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
+### RQ3: Overall how does Jitterbug perform?
+ - Test Jitterbug, Easy+RF, Hard, MAT+RF, TM, RF on every target project, save APFD results as [overall_APFD.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_APFD.csv), AUC results as [overall_AUC.csv](https://github.com/ai-se/tech-debt/tree/master/results/overall_AUC.csv), and dump results as [overall_result.pickle](https://github.com/ai-se/tech-debt/tree/master/dump/overall_result.pickle):
  ```
  src$ python main.py overall_results
  ```
