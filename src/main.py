@@ -1,21 +1,17 @@
 from __future__ import division, print_function
 
 
-import numpy as np
 from jitterbug import *
 from supervised_models import TM,SVM,RF,DT,NB,LR
 
 
 import matplotlib.pyplot as plt
 from os import listdir
-import random
 
 from collections import Counter
 
-from sk import rdivDemo
 import pandas as pd
 from demos import cmd
-from pdb import set_trace
 
 try:
    import cPickle as pickle
@@ -33,19 +29,19 @@ def parse(path = "../data/"):
 
 def find_patterns(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
-    Jitterbug = Jitterbug(data,target)
-    patterns = Jitterbug.find_patterns()
+    jitterbug = Jitterbug(data,target)
+    patterns = jitterbug.find_patterns()
     print("Patterns:")
     print(patterns)
     print("Precisions on training set:")
-    print({p: Jitterbug.easy.precs[i] for i,p in enumerate(patterns)})
+    print({p: jitterbug.easy.precs[i] for i,p in enumerate(patterns)})
 
 def validate_ground_truth(target='apache-ant-1.7.0'):
     data=load_csv(path="../new_data/original/")
-    Jitterbug = Jitterbug(data,target)
-    patterns = Jitterbug.find_patterns()
-    Jitterbug.easy_code(patterns)
-    Jitterbug.output_conflicts(output="../new_data/conflicts/")
+    jitterbug = Jitterbug(data,target)
+    patterns = jitterbug.find_patterns()
+    jitterbug.easy_code(patterns)
+    jitterbug.output_conflicts(output="../new_data/conflicts/")
 
 def summarize_validate(input = "../new_data/validate/",output="../results/"):
     data=load_csv(input)
@@ -76,11 +72,11 @@ def Easy_results(source="corrected",output="../results/"):
     data=load_csv(path=input)
     results = {"Metrics":["Precision","Recall","F1"]}
     for target in data:
-        Jitterbug = Jitterbug(data,target)
-        patterns = Jitterbug.find_patterns()
+        jitterbug = Jitterbug(data,target)
+        patterns = jitterbug.find_patterns()
         print(patterns)
-        print(Jitterbug.easy.precs)
-        stats = Jitterbug.test_patterns(output=True)
+        print(jitterbug.easy.precs)
+        stats = jitterbug.test_patterns(output=True)
         stats["t"] = len(data[target][data[target]["label"]=="yes"])
         prec = float(stats['tp'])/stats['p']
         rec = float(stats['tp'])/stats['t']
@@ -130,8 +126,8 @@ def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
         APFD_result[target] = []
         AUC_result[target] = []
         for model in treatments[:-1]:
-            Jitterbug = Jitterbug_hard(data,target,model=model,seed=seed)
-            stats = Jitterbug.eval()
+            jitterbug = Jitterbug_hard(data,target,model=model,seed=seed)
+            stats = jitterbug.eval()
             APFD_result[target].append(stats['APFD'])
             AUC_result[target].append(stats['AUC'])
             if model=="RF":
@@ -249,19 +245,19 @@ def supervised_model(data, target, model = "RF", seed = 0):
 
 def Jitterbug_hard(data, target, est = False, model = "RF", seed = 0):
     np.random.seed(seed)
-    Jitterbug=Jitterbug(data,target)
-    Jitterbug.ML_hard(model=model, est=est)
-    return Jitterbug
+    jitterbug=Jitterbug(data,target)
+    jitterbug.ML_hard(model=model, est=est)
+    return jitterbug
 
 
 def two_step_Jitterbug(data, target, model = "RF", seed = 0):
     np.random.seed(seed)
-    Jitterbug=Jitterbug(data,target)
-    Jitterbug.find_patterns()
-    Jitterbug.easy_code()
-    Jitterbug.test_patterns()
-    Jitterbug.ML_hard(model = model)
-    stats = Jitterbug.eval()
+    jitterbug=Jitterbug(data,target)
+    jitterbug.find_patterns()
+    jitterbug.easy_code()
+    jitterbug.test_patterns()
+    jitterbug.ML_hard(model = model)
+    stats = jitterbug.eval()
     return stats
 
 def two_step_MAT(data, target, model = "RF", seed = 0):

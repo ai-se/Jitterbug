@@ -1,22 +1,10 @@
 from __future__ import print_function, division
-import pickle
-from pdb import set_trace
-import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer
-import csv
-from collections import Counter
-from sklearn import tree
+
 import matplotlib.pyplot as plt
 import time
-import os
-from sklearn import preprocessing
+
 import pandas as pd
-from scipy.spatial import distance
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import SGDClassifier
+
 from supervised_models import *
 
 class Jitterbug(object):

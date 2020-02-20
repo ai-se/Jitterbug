@@ -7,10 +7,8 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 from collections import Counter
-from pdb import set_trace
 import re
 
 from sklearn.feature_extraction.text import TfidfVectorizer
