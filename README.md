@@ -1,4 +1,16 @@
-# Identifying Self-Admitted Technical Debts with Jitterbug: A Two-step Approach
+# [Identifying Self-Admitted Technical Debts with Jitterbug: A Two-step Approach](https://arxiv.org/abs/2002.11049)
+
+Cite as:
+``` 
+@misc{yu2020identifying,
+    title={Identifying Self-Admitted Technical Debts with Jitterbug: A Two-step Approach},
+    author={Zhe Yu and Fahmid Morshed Fahid and Huy Tu and Tim Menzies},
+    year={2020},
+    eprint={2002.11049},
+    archivePrefix={arXiv},
+    primaryClass={cs.SE}
+}
+```
 
 ## Data
  - [Original](https://github.com/ai-se/tech-debt/tree/master/data) from Maldonado and Shihab "Detecting and quantifying different types of self-admitted  technical  debt," in 2015 IEEE 7th InternationalWorkshop on Managing Technical Debt (MTD). IEEE, 2015, pp. 9–15.
