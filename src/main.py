@@ -146,8 +146,6 @@ def estimate_results(seed=0,T_rec=0.90,model="RF",input="../new_data/rest/"):
     data=load_csv(path=input)
     # Hard Results
     for target in data:
-        if target!="jfreechart-1.0.19":
-            continue
         jitterbug = Jitterbug_hard(data,target,est=True,T_rec=T_rec,model=model,seed=seed)
         jitterbug.hard.plot(T_rec=T_rec)
 

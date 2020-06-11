@@ -9,7 +9,7 @@ from supervised_models import *
 from pdb import set_trace
 class Jitterbug(object):
     def __init__(self,data,target):
-        self.uncertain_thres = 0
+        self.uncertain_thres = 10
         self.target = target
         self.data = data
         self.rest = self.data.copy()
@@ -382,7 +382,6 @@ class Hard(object):
                  'figure.autolayout': True, 'figure.figsize': (16, 8)}
 
         plt.rcParams.update(paras)
-
 
         t = float(self.get_allpos())
         n = float(len(self.body["label"][:self.newpart]))
