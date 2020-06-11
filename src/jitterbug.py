@@ -6,7 +6,7 @@ import time
 import pandas as pd
 
 from supervised_models import *
-
+from pdb import set_trace
 class Jitterbug(object):
     def __init__(self,data,target):
         self.uncertain_thres = 0
@@ -29,7 +29,7 @@ class Jitterbug(object):
     def easy_code(self):
         content = []
         for target in self.data:
-            content += [c.decode("utf8","ignore").lower() for c in self.data[target]["Abstract"]]
+            content += [c.lower() for c in self.data[target]["Abstract"]]
         csr_mat = self.easy.tfer.transform(content)
 
         indices = {}
@@ -54,11 +54,10 @@ class Jitterbug(object):
             conflicts = x[x["easy_code"]=="yes"][x["label"]=="no"]
             conflicts.to_csv(output+project+".csv", line_terminator="\r\n", index=False)
 
-    def ML_hard(self, model = "RF", est = False):
+    def ML_hard(self, model = "RF", est = False, T_rec = 0.9):
         self.hard=Hard(model=model, est=est)
         self.hard.create(self.rest, self.target)
         step = 10
-        T_rec = 0.9
         while True:
             pos, neg, total = self.hard.get_numbers()
             # try:
@@ -89,6 +88,17 @@ class Jitterbug(object):
         fp = self.easy.stats_test['p'] - tp
         tn = n - fp
         fn = t - tp
+
+        # for stopping at target recall
+        hard_tp = self.hard.record['pos'][-1]
+        hard_p = self.hard.record['x'][-1]
+        all_tp = hard_tp+tp
+        all_fp = fp+hard_p-hard_tp
+        prec = all_tp / float(all_fp+all_tp)
+        rec = all_tp / float(t)
+        f1 = 2*prec*rec/(prec+rec)
+        ######################
+
         cost = 0
         costs = [cost]
         tps = [tp]
@@ -123,7 +133,7 @@ class Jitterbug(object):
         auc = self.AUC(tpr,fpr)
         apfd = self.AUC(tpr,costr)
 
-        return {"AUC":auc, "APFD":apfd, "TPR":tpr, "CostR":costr, "FPR":fpr}
+        return {"AUC":auc, "APFD":apfd, "TPR":tpr, "CostR":costr, "FPR":fpr, "Precision": prec, "Recall": rec, "F1": f1}
 
     def AUC(self,ys,xs):
         assert len(ys)==len(xs), "Size must match."
@@ -144,11 +154,6 @@ class Jitterbug(object):
 
 
 
-
-
-
-
-
 class Hard(object):
     def __init__(self,model="RF", est=False):
         self.step = 10
@@ -164,27 +169,17 @@ class Hard(object):
         elif model == "SVM":
             self.model = SGDClassifier(class_weight="balanced")
 
-
-
-
-
     def create(self,data,target):
         self.record={"x":[],"pos":[],'est':[]}
         self.body={}
         self.est=[]
         self.est_num = 0
-
-
-
         self.target = target
         self.loadfile(data[target])
-
         self.create_old(data)
         self.preprocess()
 
         return self
-
-
 
     def loadfile(self,data):
         self.body = data
@@ -206,14 +201,10 @@ class Hard(object):
 
         self.body = pd.concat(bodies,ignore_index = True)
 
-
-
-
     def get_numbers(self):
         total = len(self.body["code"][:self.newpart])
         pos = Counter(self.body["code"][:self.newpart])["yes"]
         neg = Counter(self.body["code"][:self.newpart])["no"]
-
 
         try:
             tmp=self.record['x'][-1]
@@ -229,19 +220,18 @@ class Hard(object):
 
 
     def preprocess(self):
-        content0 = [c.decode("utf8", "ignore") for c in self.body["Abstract"][self.newpart:]]
-        content = [c.decode("utf8","ignore") for c in self.body["Abstract"]]
+        content0 = self.body["Abstract"][self.newpart:]
+        content = self.body["Abstract"]
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,sublinear_tf=False,decode_error="ignore")
         tfer.fit(content0)
         self.csr_mat = tfer.transform(content)
-        self.voc = np.array(tfer.vocabulary_.keys())[np.argsort(tfer.vocabulary_.values())]
+        self.voc = np.array(list(tfer.vocabulary_.keys()))[np.argsort(list(tfer.vocabulary_.values()))]
 
         return
 
     ## Train model ##
     def train(self):
-
 
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
         self.model.fit(self.csr_mat[sample], self.body["code"][sample])
@@ -313,9 +303,6 @@ class Hard(object):
         self.body["time"][ids] =times
 
     def estimate_curve(self):
-        import random
-
-
 
         def prob_sample(probs):
             order = np.argsort(probs)[::-1]
@@ -332,8 +319,6 @@ class Hard(object):
                     can = []
             return sample
 
-
-
         ###############################################
         clf = LogisticRegression(penalty='l2', fit_intercept=True, class_weight="balanced")
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
@@ -342,17 +327,13 @@ class Hard(object):
         prob = clf.decision_function(self.csr_mat[:self.newpart])
         prob2 = np.array([[p] for p in prob])
 
-
-
         y = np.array([1 if x == 'yes' else 0 for x in self.body['code'][:self.newpart]])
         y0 = np.copy(y)
 
         all = range(len(y))
 
-
         pos_num_last = Counter(y0)[1]
         if pos_num_last<10:
-            pos_at = list(clf.classes_).index("yes")
             return 0, []
         pos_origin = pos_num_last
         old_pos = pos_num_last - Counter(self.body["code"][:self.newpart])["yes"]
@@ -367,16 +348,11 @@ class Hard(object):
             pos_at = list(es.classes_).index(1)
             pre = es.predict_proba(prob2[self.pool])[:, pos_at]
 
-
-
-
             y = np.copy(y0)
 
             sample = prob_sample(pre)
             for x in self.pool[sample]:
                 y[x] = 1
-
-
 
             pos_num = Counter(y)[1]
 
@@ -388,19 +364,15 @@ class Hard(object):
                 life = lifes
             pos_num_last = pos_num
 
-
         esty = pos_num - old_pos
         pre = es.predict_proba(prob2)[:, pos_at]
-
 
         return esty, pre
 
     def get_allpos(self):
         return Counter(self.body["label"][:self.newpart])["yes"]
 
-    def plot(self):
-        T_rec = 0.9
-
+    def plot(self, T_rec = 0.9):
         font = {'family': 'normal',
                 'weight': 'bold',
                 'size': 20}
@@ -420,6 +392,7 @@ class Hard(object):
         costr = np.array(self.record["x"])/n
         tpr = np.array(self.record["pos"])/t
         estr = np.array(self.record["est"])/t
+
         for i,rec in enumerate(tpr):
             if estr[i]>0 and rec >= estr[i]*T_rec:
                 break
@@ -428,6 +401,7 @@ class Hard(object):
         plt.plot(costr[:i+1], estr[:i+1],'--',label='Estimation')
         plt.plot(costr[:i+1], [1.0]*(i+1),'-.',label='100% Recall')
         plt.plot(costr[:i+1], [T_rec]*(i+1),':',label=str(int(T_rec*100))+'% Recall')
+
         plt.ylim(0,1.5)
         plt.legend()
         plt.xlabel("Cost")
@@ -435,7 +409,6 @@ class Hard(object):
         plt.close(fig)
         print(self.target)
         print((tpr[-1],costr[-1]))
-
 
 
 class Easy(object):
@@ -449,10 +422,10 @@ class Easy(object):
         for project in data:
             if project==target:
                 continue
-            self.x_content += [c.decode("utf8","ignore").lower() for c in data[project]["Abstract"]]
+            self.x_content += [c.lower() for c in data[project]["Abstract"]]
             self.x_label += [c for c in data[project]["label"]]
         self.x_label = np.array(self.x_label)
-        self.y_content = [c.decode("utf8","ignore").lower() for c in data[target]["Abstract"]]
+        self.y_content = [c.lower() for c in data[target]["Abstract"]]
         self.y_label = [c for c in data[target]["label"]]
 
     def preprocess(self):
@@ -461,7 +434,7 @@ class Easy(object):
                                sublinear_tf=False, decode_error="ignore")
         self.train_data = self.tfer.fit_transform(self.x_content)
         self.test_data = self.tfer.transform(self.y_content)
-        self.voc = np.array(self.tfer.vocabulary_.keys())[np.argsort(self.tfer.vocabulary_.values())]
+        self.voc = np.array(list(self.tfer.vocabulary_.keys()))[np.argsort(list(self.tfer.vocabulary_.values()))]
 
     def find_patterns(self):
         left_train = range(self.train_data.shape[0])

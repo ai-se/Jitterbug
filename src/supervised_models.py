@@ -34,9 +34,9 @@ class Treatment():
         for project in self.data:
             if project==self.target:
                 self.y_label += [c for c in self.data[project]["label"]]
-                self.y_content += [c.decode("utf8","ignore") for c in self.data[project]["Abstract"]]
+                self.y_content += [c for c in self.data[project]["Abstract"]]
             else:
-                self.x_content += [c.decode("utf8","ignore") for c in self.data[project]["Abstract"]]
+                self.x_content += [c for c in self.data[project]["Abstract"]]
                 self.x_label += [c for c in self.data[project]["label"]]
 
         tfer = TfidfVectorizer(lowercase=True, analyzer="word", norm=None, use_idf=False, smooth_idf=False,
@@ -45,7 +45,7 @@ class Treatment():
         self.test_data = tfer.transform(self.y_content)
 
         ascend = np.argsort(tfer.vocabulary_.values())
-        self.voc = [tfer.vocabulary_.keys()[i] for i in ascend]
+        self.voc = [list(tfer.vocabulary_.keys())[i] for i in ascend]
 
 
 
@@ -213,10 +213,10 @@ class TM(Treatment):
         self.x_label = []
         for key in self.data:
             if key == self.target:
-                self.y_content = [re.sub(r'[^a-zA-Z]', ' ', c.decode("utf8","ignore")) for c in self.data[key]["Abstract"]]
+                self.y_content = [re.sub(r'[^a-zA-Z]', ' ', c) for c in self.data[key]["Abstract"]]
                 self.y_label = self.data[key]["label"].tolist()
             else:
-                self.x_content.append([re.sub(r'[^a-zA-Z]', ' ', c.decode("utf8","ignore")) for c in self.data[key]["Abstract"]])
+                self.x_content.append([re.sub(r'[^a-zA-Z]', ' ', c) for c in self.data[key]["Abstract"]])
                 self.x_label.append(self.data[key]["label"].tolist())
         self.probs = np.array([0]*len(self.y_label))
 
@@ -230,7 +230,7 @@ class TM(Treatment):
                                    sublinear_tf=False, stop_words="english", decode_error="ignore")
             X = tfer.fit_transform(content)
             X[X != 0] = 1
-            keys = np.array(tfer.vocabulary_.keys())[np.argsort(tfer.vocabulary_.values())]
+            keys = np.array(list(tfer.vocabulary_.keys()))[np.argsort(list(tfer.vocabulary_.values()))]
 
             poses = np.where(np.array(self.x_label[i])=="yes")[0]
             N = X.shape[0]
