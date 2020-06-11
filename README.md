@@ -19,11 +19,11 @@ Cite as:
 ## Experiments
 ### Setup
 ```
-tech-debt$ pip install -r requirements.txt
-tech-debt$ python
+Jitterbug$ pip install -r requirements.txt
+Jitterbug$ python
 >>> import nltk
 >>> nltk.download('punkt')
-tech-debt$ cd src
+Jitterbug$ cd src
 ```
 ### RQ1: How to find the strong patterns of the "easy to find" SATDs in Step 1?
  - Prepare data:
