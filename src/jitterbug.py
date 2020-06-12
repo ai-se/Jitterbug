@@ -97,6 +97,7 @@ class Jitterbug(object):
         prec = all_tp / float(all_fp+all_tp)
         rec = all_tp / float(t)
         f1 = 2*prec*rec/(prec+rec)
+        last_cost=hard_p/(t+n)
         ######################
 
         cost = 0
@@ -133,7 +134,7 @@ class Jitterbug(object):
         auc = self.AUC(tpr,fpr)
         apfd = self.AUC(tpr,costr)
 
-        return {"AUC":auc, "APFD":apfd, "TPR":tpr, "CostR":costr, "FPR":fpr, "Precision": prec, "Recall": rec, "F1": f1}
+        return {"AUC":auc, "APFD":apfd, "TPR":tpr, "CostR":costr, "FPR":fpr, "Precision": prec, "Recall": rec, "F1": f1, "Cost": last_cost}
 
     def AUC(self,ys,xs):
         assert len(ys)==len(xs), "Size must match."

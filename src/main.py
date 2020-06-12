@@ -146,6 +146,8 @@ def estimate_results(seed=0,T_rec=0.90,model="RF",input="../new_data/rest/"):
     data=load_csv(path=input)
     # Hard Results
     for target in data:
+        if target!="jfreechart-1.0.19":
+            continue
         jitterbug = Jitterbug_hard(data,target,est=True,T_rec=T_rec,model=model,seed=seed)
         jitterbug.hard.plot(T_rec=T_rec)
 
@@ -206,9 +208,8 @@ def stopping_results(which="corrected",seed=0,input="../new_data/",output="../re
     for target in data:
         result[target] = []
         stats = two_step_Jitterbug(data,target, est = True, T_rec=0.9, seed=seed)
-        for metric in result["Metrics"][:-1]:
+        for metric in result["Metrics"]:
             result[target].append(stats[metric])
-        result[target].append(stats["CostR"][-1])
     pd.DataFrame(result,columns=columns).to_csv(output+"stopping_0.9_"+which+".csv", line_terminator="\r\n", index=False)
     end = time.time()
     run_time = time.strftime("%H:%M:%S", time.gmtime(end-start))
@@ -264,7 +265,7 @@ def supervised_model(data, target, model = "RF", seed = 0):
     result = clf.eval()
     return result
 
-def Jitterbug_hard(data, target, est = False, T_rec=0.95, model = "RF", seed = 0):
+def Jitterbug_hard(data, target, est = False, T_rec=0.90, model = "RF", seed = 0):
     np.random.seed(seed)
     jitterbug=Jitterbug(data,target)
     jitterbug.ML_hard(model=model, est=est, T_rec=T_rec)
