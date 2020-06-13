@@ -393,14 +393,10 @@ class Hard(object):
         tpr = np.array(self.record["pos"])/t
         estr = np.array(self.record["est"])/t
 
-        for i,rec in enumerate(tpr):
-            if estr[i]>0 and rec >= estr[i]*T_rec:
-                break
-
-        plt.plot(costr[:i+1], tpr[:i+1],label='Recall')
-        plt.plot(costr[:i+1], estr[:i+1],'--',label='Estimation')
-        plt.plot(costr[:i+1], [1.0]*(i+1),'-.',label='100% Recall')
-        plt.plot(costr[:i+1], [T_rec]*(i+1),':',label=str(int(T_rec*100))+'% Recall')
+        plt.plot(costr, tpr,label='Recall')
+        plt.plot(costr, estr,'--',label='Estimation')
+        plt.plot(costr, [1.0]*len(tpr),'-.',label='100% Recall')
+        plt.plot(costr, [T_rec]*len(tpr),':',label=str(int(T_rec*100))+'% Recall')
 
         plt.ylim(0,1.5)
         plt.legend()
