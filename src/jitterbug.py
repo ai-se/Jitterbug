@@ -71,8 +71,7 @@ class Jitterbug(object):
             a,b,c,d =self.hard.train()
 
             if self.hard.est_num>0 and pos >=self.hard.est_num*T_rec:
-                break
-
+                    break
             if pos<self.uncertain_thres:
                 self.hard.code_batch(a[:step])
             else:
@@ -236,6 +235,8 @@ class Hard(object):
 
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
         self.model.fit(self.csr_mat[sample], self.body["code"][sample])
+        # new_sample = sample[np.argsort(self.body['time'][sample])[::-1][:self.step]]
+        # self.model.partial_fit(self.csr_mat[new_sample], self.body["code"][new_sample])
 
         if self.enable_est:
             self.est_num, self.est = self.estimate_curve()

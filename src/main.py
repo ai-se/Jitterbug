@@ -198,8 +198,6 @@ def overall_results(seed=0,input="../new_data/corrected/",output="../results/"):
 
 
 def stopping_results(which="corrected",seed=0,input="../new_data/",output="../results/"):
-    import time
-    start = time.time()
     data=load_csv(path=input+which+"/")
     columns = ["Metrics"] + list(data.keys())
     result = {"Metrics":["Precision","Recall","F1","Cost"]}
@@ -209,9 +207,7 @@ def stopping_results(which="corrected",seed=0,input="../new_data/",output="../re
         for metric in result["Metrics"]:
             result[target].append(stats[metric])
     pd.DataFrame(result,columns=columns).to_csv(output+"stopping_0.9_"+which+".csv", line_terminator="\r\n", index=False)
-    end = time.time()
-    run_time = time.strftime("%H:%M:%S", time.gmtime(end-start))
-    print(run_time)
+
 
 
 def plot_recall_cost(which = "overall"):
@@ -273,9 +269,11 @@ def Jitterbug_hard(data, target, est = False, T_rec=0.90, model = "RF", seed = 0
 def two_step_Jitterbug(data, target, model = "RF", est = False, T_rec = 0.9, seed = 0):
     np.random.seed(seed)
     jitterbug=Jitterbug(data,target)
+
     jitterbug.find_patterns()
     jitterbug.easy_code()
     jitterbug.test_patterns()
+
     jitterbug.ML_hard(model = model, est = est, T_rec = T_rec)
     stats = jitterbug.eval()
     return stats
