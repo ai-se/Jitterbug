@@ -398,6 +398,7 @@ class Hard(object):
         plt.plot(costr, estr,'--',label='Estimation')
         plt.plot(costr, [1.0]*len(tpr),'-.',label='100% Recall')
         plt.plot(costr, [T_rec]*len(tpr),':',label=str(int(T_rec*100))+'% Recall')
+        plt.grid()
 
         plt.ylim(0,1.5)
         plt.legend()

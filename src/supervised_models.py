@@ -60,8 +60,8 @@ class Treatment():
             self.probs = self.model.predict_proba(self.test_data)[:,pos_at]
         except:
             self.probs = self.model.decision_function(self.test_data)
-            if list(self.model.classes_).index("yes"):
-                self.probs = self.probs[::-1]
+            if pos_at==0:
+                self.probs = -self.probs
 
 
     def confusion(self,decisions):

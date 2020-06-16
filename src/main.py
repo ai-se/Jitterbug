@@ -102,6 +102,17 @@ def MAT_results(source="corrected",output="../results/"):
     df = pd.DataFrame(data=results,columns=["Metrics"]+list(data.keys()))
     df.to_csv(output+"step1_MAT_"+source+".csv", line_terminator="\r\n", index=False)
 
+def fitness_pattern(pattern='xxx'):
+    data=load_csv(path="../new_data/original/")
+    fitness = {}
+    for target in data:
+        jitterbug = Jitterbug(data,target)
+        p_id = list(jitterbug.easy.voc).index(pattern)
+        poses = np.where(np.array(jitterbug.easy.y_label)== "yes")[0]
+        count_tp = np.array(np.sum(jitterbug.easy.test_data[poses], axis=0))[0][p_id]
+        count_p = np.array(np.sum(jitterbug.easy.test_data, axis=0))[0][p_id]
+        fitness[target] = np.nan_to_num(count_tp * (count_tp / count_p) ** 3)
+    print(fitness)
 
 
 
@@ -139,7 +150,7 @@ def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
     AUC_result["Treatment"] = treatments[:-1]
     pd.DataFrame(APFD_result,columns=columns).to_csv(output+"rest_APFD_Hard.csv", line_terminator="\r\n", index=False)
     pd.DataFrame(AUC_result,columns=columns).to_csv(output+"rest_AUC_Hard.csv", line_terminator="\r\n", index=False)
-    with open("../dump/rest_result.pickle","w") as f:
+    with open("../dump/rest_result.pickle","wb") as f:
         pickle.dump(to_dump,f)
 
 def estimate_results(seed=0,T_rec=0.90,model="RF",input="../new_data/rest/"):
@@ -193,7 +204,7 @@ def overall_results(seed=0,input="../new_data/corrected/",output="../results/"):
 
     pd.DataFrame(APFDs,columns=columns).to_csv(output+"overall_APFD.csv", line_terminator="\r\n", index=False)
     pd.DataFrame(AUCs,columns=columns).to_csv(output+"overall_AUC.csv", line_terminator="\r\n", index=False)
-    with open("../dump/overall_result.pickle","w") as f:
+    with open("../dump/overall_result.pickle","wb") as f:
         pickle.dump(results,f)
 
 
@@ -212,7 +223,7 @@ def stopping_results(which="corrected",seed=0,input="../new_data/",output="../re
 
 def plot_recall_cost(which = "overall"):
     path = "../dump/"+which+"_result.pickle"
-    with open(path,"r") as f:
+    with open(path,"rb") as f:
         results = pickle.load(f)
     font = {'family': 'normal',
             'weight': 'bold',
@@ -224,7 +235,7 @@ def plot_recall_cost(which = "overall"):
 
     plt.rcParams.update(paras)
 
-    lines = ['-',':','--','-.',(0, (5, 10)),(0, (3, 5, 1, 5, 1, 5))]
+    lines = ['-',':','--','-.','x','v']
 
     for project in results:
         fig = plt.figure()
@@ -233,6 +244,7 @@ def plot_recall_cost(which = "overall"):
         plt.legend()
         plt.ylabel("Recall")
         plt.xlabel("Cost")
+        plt.grid()
         plt.savefig("../figures_"+which+"/" + project + ".png")
         plt.close(fig)
 
