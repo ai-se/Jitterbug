@@ -98,5 +98,13 @@ Jitterbug$ cd src
  ```
  src$ python main.py plot_recall_cost overall
  ```
- 
+#### How does Jitterbug perform when targeting at finding 90% hard to find SATDs?
+Collect precision, recall, F1, and cost results of Jitterbug on the original dataset. Save results as [stopping_0.9_original.csv](https://github.com/ai-se/Jitterbug/blob/master/results/stopping_0.9_original.csv).
+ ```
+ src$ python main.py stopping_results original
+ ```
+Collect precision, recall, F1, and cost results of Jitterbug on the corrected dataset. Save results as [stopping_0.9_corrected.csv](https://github.com/ai-se/Jitterbug/blob/master/results/stopping_0.9_corrected.csv).
+ ```
+ src$ python main.py stopping_results corrected
+ ```
  
