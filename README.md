@@ -23,6 +23,7 @@ Jitterbug$ pip install -r requirements.txt
 Jitterbug$ python
 >>> import nltk
 >>> nltk.download('punkt')
+>>> nltk.download('wordnet')
 Jitterbug$ cd src
 ```
 ### RQ1: How to find the strong patterns of the "easy to find" SATDs in Step 1?
