@@ -1,6 +1,6 @@
 from __future__ import division, print_function
 
-
+from datetime import timedelta
 from jitterbug import *
 from supervised_models import TM,SVM,RF,DT,NB,LR
 
@@ -12,11 +12,13 @@ from collections import Counter
 
 import pandas as pd
 from demos import cmd
-from pdb import set_trace
 try:
    import cPickle as pickle
 except:
    import pickle
+import warnings
+warnings.filterwarnings('ignore')
+
 
 def parse(path = "../data/"):
     for file in listdir(path):
@@ -146,12 +148,13 @@ def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
             AUC_result[target].append(stats['AUC'])
             if model=="RF":
                 to_dump[target]["Hard"] = stats
+    with open("../dump/rest_result.pickle","wb") as f:
+        pickle.dump(to_dump,f)
     APFD_result["Treatment"] = treatments[:-1]
     AUC_result["Treatment"] = treatments[:-1]
     pd.DataFrame(APFD_result,columns=columns).to_csv(output+"rest_APFD_Hard.csv", line_terminator="\r\n", index=False)
     pd.DataFrame(AUC_result,columns=columns).to_csv(output+"rest_AUC_Hard.csv", line_terminator="\r\n", index=False)
-    with open("../dump/rest_result.pickle","wb") as f:
-        pickle.dump(to_dump,f)
+
 
 def estimate_results(seed=0,T_rec=0.90,model="RF",input="../new_data/rest/"):
     data=load_csv(path=input)
@@ -172,40 +175,73 @@ def overall_results(seed=0,input="../new_data/corrected/",output="../results/"):
         APFDs[target] = []
         AUCs[target] = []
 
+        print(target)
+        start = time.time()
+
         stats = two_step_Jitterbug(data,target,seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Jitterbug"] = stats
+
+        end = time.time()
+        print("Jitterbug")
+        print(str(timedelta(seconds=end-start)))
+        start = end
 
         stats = two_step_Easy(data,target,seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Easy+RF"] = stats
 
+        end = time.time()
+        print("Easy+RF")
+        print(str(timedelta(seconds=end - start)))
+        start = end
+
         stats = Jitterbug_hard(data,target,est=False,seed=seed).eval()
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["Hard"] = stats
+
+        end = time.time()
+        print("Hard")
+        print(str(timedelta(seconds=end - start)))
+        start = end
 
         stats = two_step_MAT(data,target,seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["MAT+RF"] = stats
 
+        end = time.time()
+        print("MAT+RF")
+        print(str(timedelta(seconds=end - start)))
+        start = end
+
         stats = supervised_model(data,target, model = "RF",seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["RF"] = stats
+
+        end = time.time()
+        print("RF")
+        print(str(timedelta(seconds=end - start)))
+        start = end
 
         stats = supervised_model(data,target, model = "TM",seed=seed)
         APFDs[target].append(stats["APFD"])
         AUCs[target].append(stats["AUC"])
         results[target]["TM"] = stats
 
-    pd.DataFrame(APFDs,columns=columns).to_csv(output+"overall_APFD.csv", line_terminator="\r\n", index=False)
-    pd.DataFrame(AUCs,columns=columns).to_csv(output+"overall_AUC.csv", line_terminator="\r\n", index=False)
+        end = time.time()
+        print("TM")
+        print(str(timedelta(seconds=end - start)))
+
     with open("../dump/overall_result.pickle","wb") as f:
         pickle.dump(results,f)
+    pd.DataFrame(APFDs,columns=columns).to_csv(output+"overall_APFD.csv", line_terminator="\r\n", index=False)
+    pd.DataFrame(AUCs,columns=columns).to_csv(output+"overall_AUC.csv", line_terminator="\r\n", index=False)
+
 
 
 def stopping_results(which="corrected",seed=0,input="../new_data/",output="../results/"):
@@ -224,7 +260,7 @@ def stopping_results(which="corrected",seed=0,input="../new_data/",output="../re
 def plot_recall_cost(which = "overall"):
     path = "../dump/"+which+"_result.pickle"
     with open(path,"rb") as f:
-        results = pickle.load(f)
+        results = pickle.load(f, encoding="bytes")
     font = {'family': 'normal',
             'weight': 'bold',
             'size': 20}
@@ -235,17 +271,17 @@ def plot_recall_cost(which = "overall"):
 
     plt.rcParams.update(paras)
 
-    lines = ['-',':','--','-.','x','v']
+    lines = [':','-','--',(0,(4,2,1,2)),(0,(3,2)),(0,(2,1,1,1))]
 
     for project in results:
         fig = plt.figure()
         for i,treatment in enumerate(results[project]):
-            plt.plot(results[project][treatment]["CostR"], results[project][treatment]["TPR"], label=treatment, linestyle=lines[i])
+            plt.plot(results[project][treatment][b"CostR"], results[project][treatment][b"TPR"], linestyle = lines[i], label=treatment.decode())
         plt.legend()
         plt.ylabel("Recall")
         plt.xlabel("Cost")
         plt.grid()
-        plt.savefig("../figures_"+which+"/" + project + ".png")
+        plt.savefig("../figures_"+which+"/" + project.decode() + ".png")
         plt.close(fig)
 
 
