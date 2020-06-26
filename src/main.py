@@ -148,6 +148,7 @@ def rest_results(seed=0,input="../new_data/rest/",output="../results/"):
             AUC_result[target].append(stats['AUC'])
             if model=="RF":
                 to_dump[target]["Hard"] = stats
+
     with open("../dump/rest_result.pickle","wb") as f:
         pickle.dump(to_dump,f)
     APFD_result["Treatment"] = treatments[:-1]
@@ -260,7 +261,8 @@ def stopping_results(which="corrected",seed=0,input="../new_data/",output="../re
 def plot_recall_cost(which = "overall"):
     path = "../dump/"+which+"_result.pickle"
     with open(path,"rb") as f:
-        results = pickle.load(f, encoding="bytes")
+        results = pickle.load(f)
+
     font = {'family': 'normal',
             'weight': 'bold',
             'size': 20}
@@ -271,17 +273,17 @@ def plot_recall_cost(which = "overall"):
 
     plt.rcParams.update(paras)
 
-    lines = [':','-','--',(0,(4,2,1,2)),(0,(3,2)),(0,(2,1,1,1))]
+    lines = ['-',':','--',(0,(4,2,1,2)),(0,(3,2)),(0,(2,1,1,1))]
 
     for project in results:
         fig = plt.figure()
         for i,treatment in enumerate(results[project]):
-            plt.plot(results[project][treatment][b"CostR"], results[project][treatment][b"TPR"], linestyle = lines[i], label=treatment.decode())
+            plt.plot(results[project][treatment]["CostR"], results[project][treatment]["TPR"], linestyle = lines[i], label=treatment)
         plt.legend()
         plt.ylabel("Recall")
         plt.xlabel("Cost")
         plt.grid()
-        plt.savefig("../figures_"+which+"/" + project.decode() + ".png")
+        plt.savefig("../figures_"+which+"/" + project + ".png")
         plt.close(fig)
 
 
