@@ -49,11 +49,48 @@ class Jitterbug(object):
             self.rest[project]=self.data[project][self.data[project]["easy_code"]=="no"]
             start=end
 
+    def output_target(self, path):
+        target_easy = self.data[self.target][self.data[self.target]["easy_code"] == "yes"]
+        target_rest = self.rest[self.target]
+        target_easy.to_csv(path + self.target + "_easy.csv", line_terminator="\r\n", index=False)
+        target_rest.to_csv(path + self.target + "_rest.csv", line_terminator="\r\n", index=False)
+
     def output_conflicts(self,output="../new_data/conflicts/"):
         for project in self.data:
             x = self.data[project]
             conflicts = x[x["easy_code"]=="yes"][x["label"]=="no"]
             conflicts.to_csv(output+project+".csv", line_terminator="\r\n", index=False)
+
+    def apply_hard(self, model = "RF", est = False):
+        self.hard = Hard(model=model, est=est)
+        self.hard.create(self.rest, self.target)
+
+    def query_hard(self, tmp = "../httpd/http_query.csv", output = "../httpd/httpd_rest.csv", batch_size = 10):
+        try:
+            coded = pd.read_csv(tmp)
+            for i in range(len(coded)):
+                self.hard.body["code"].loc[:self.hard.newpart-1][self.hard.body["ID"][:self.hard.newpart] == coded["ID"][i]] = coded["code"][i]
+                self.hard.body["time"].loc[:self.hard.newpart-1][self.hard.body["ID"][:self.hard.newpart] == coded["ID"][i]] = time.time()
+        except:
+            pass
+        pos, neg, total = self.hard.get_numbers()
+        try:
+            print("%d, %d, %d" %(pos,pos+neg, self.hard.est_num))
+        except:
+            print("%d, %d" %(pos,pos+neg))
+        if pos + neg >= total:
+            return
+        a, b, c, d = self.hard.train()
+        if pos < self.uncertain_thres:
+            sample = a[:batch_size]
+        else:
+            sample = c[:batch_size]
+        self.hard.body.loc[sample].to_csv(tmp, line_terminator="\r\n", index=False)
+        df_yes = self.hard.body.loc[:self.hard.newpart-1].loc[self.hard.body["code"][:self.hard.newpart]=="yes"]
+        df_no = self.hard.body.loc[:self.hard.newpart-1].loc[self.hard.body["code"][:self.hard.newpart]=="no"]
+        df_ignore = self.hard.body.loc[:self.hard.newpart-1].loc[self.hard.body["code"][:self.hard.newpart]=="undetermined"]
+        pd.concat([df_yes,df_no,df_ignore], ignore_index=True).to_csv(output, line_terminator="\r\n", index=False)
+
 
     def ML_hard(self, model = "RF", est = False, T_rec = 0.9):
         self.hard=Hard(model=model, est=est)
@@ -233,7 +270,6 @@ class Hard(object):
 
     ## Train model ##
     def train(self):
-
         sample = np.where(np.array(self.body['code']) != "undetermined")[0]
         self.model.fit(self.csr_mat[sample], self.body["code"][sample])
         # new_sample = sample[np.argsort(self.body['time'][sample])[::-1][:self.step]]

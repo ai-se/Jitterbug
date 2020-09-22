@@ -1,0 +1,783 @@
+ID,projectname,classification,Abstract,label,easy_code
+549,httpd,UNKNOWN,/* @@@ FIXME: should we deal with STOP signals as well? */,undetermined,yes
+607,httpd,UNKNOWN,/* Dirty hack to bring the window to the foreground */,undetermined,yes
+611,httpd,UNKNOWN,/* Dirty hack to bring the window to the foreground */,undetermined,yes
+648,httpd,UNKNOWN,"/*
+ * TODO: Move this to an appropriate include file and possibly prefix it
+ * with AP_.
+ */",undetermined,yes
+663,httpd,UNKNOWN,"/* FIXME: memory leak, albeit a small one */",undetermined,yes
+665,httpd,UNKNOWN,"/*  FIXME: is this the right place to call this?
+     *  It doesn't appear to be
+     */",undetermined,yes
+724,httpd,UNKNOWN,/* TODO: this crap belongs in http_core */,undetermined,yes
+836,httpd,UNKNOWN,/* TODO: ap_configtestonly */,undetermined,yes
+842,httpd,UNKNOWN,"/* hack. Prefix a "" if it is a msg; as that is what
+             * http_protocol.c relies on to distinguish between
+             * a msg and a (local) path.
+             */",undetermined,yes
+880,httpd,UNKNOWN,"/* FIXME: There's another feature waiting to happen here -- since you
+        can now put multiple addresses/names on a single <VirtualHost>
+        you might want to use it to group common definitions and then
+        define other ""subhosts"" with their individual differences.  But
+        personally I'd rather just do it with a macro preprocessor. -djg */",undetermined,yes
+914,httpd,UNKNOWN,"/* TODO: RlimitFoo should all be part of mod_cgi, not in the core */",undetermined,yes
+915,httpd,UNKNOWN,/* TODO: ListenBacklog in MPM */,undetermined,yes
+952,httpd,UNKNOWN,/* FIXME: I suspect we can eliminate the need for these do_nothings - Ben */,undetermined,yes
+978,httpd,UNKNOWN,/* FIXME: Is this the right thing to do in the core? */,undetermined,yes
+1030,httpd,UNKNOWN,/* TODO: make_sock is just begging and screaming for APR abstraction */,undetermined,yes
+1062,httpd,UNKNOWN,"/* TODO: set protocol defaults per-Port, eg 25=smtp */",undetermined,yes
+1171,httpd,UNKNOWN,"/* This is a hack until we finish the code so that it only reads
+         * the config file once and just operates on the tree already in
+         * memory.  rbb
+         */",undetermined,yes
+1175,httpd,UNKNOWN,"/* This ugly little hack pulls any function referenced in exports.c into
+ * the web server.  exports.c is generated during the build, and it
+ * has all of the APR functions specified by the apr/apr.exports and
+ * apr-util/aprutil.exports files.
+ */",undetermined,yes
+1289,httpd,UNKNOWN,"/* Found one, so call ourselves again to get the next line.
+             *
+             * FIXME: If the folding line is completely blank, should we
+             * stop folding?  Does that require also looking at the next
+             * char?
+             */",undetermined,yes
+1386,httpd,UNKNOWN,"/* ### TODO: if the total output is large, put all the strings
+     * ### into a single brigade, rather than flushing each time we
+     * ### fill the buffer
+     */",undetermined,yes
+1477,httpd,UNKNOWN,"/* TODO: provide users an option that an internal/external
+                 * redirect is required here?  We need to walk the URI and
+                 * filename in tandem to properly correlate these.
+                 */",undetermined,yes
+1562,httpd,UNKNOWN,"/*
+ * ToDo:
+ * This function should be renamed to cleanup_shared
+ * and it should handle cleaning up a scoreboard shared
+ * between processes using any form of IPC (file, shared memory
+ * segment, etc.). Leave it as is now because it is being used
+ * by various MPMs.
+ */",undetermined,yes
+1567,httpd,UNKNOWN,"/* ToDo: This function should be made to handle setting up
+ * a scoreboard shared between processes using any IPC technique,
+ * not just a shared memory segment
+ */",undetermined,yes
+2245,httpd,UNKNOWN,"/* TODO. We should be able to replace this entire function body
+	 * with
+	 *		ap_expr_yypop_buffer_state();
+	 *		ap_expr_yypush_buffer_state(new_buffer);
+     */",undetermined,yes
+2380,httpd,UNKNOWN,/* TODO: support perl's after/before */,undetermined,yes
+2381,httpd,UNKNOWN,/* FIXME: fix these simplminded delims */,undetermined,yes
+2385,httpd,UNKNOWN,"/* If it's a substitution, we need the replacement string
+     * TODO: possible future enhancement - support other parsing
+     * in the replacement string.
+     */",undetermined,yes
+2394,httpd,UNKNOWN,/* FIXME - should we do more to handle error? */,undetermined,yes
+2669,httpd,UNKNOWN,"/* TODO: Switch to a system where threads reuse the results from earlier
+       poll calls - manoj */",undetermined,yes
+2670,httpd,UNKNOWN,/* TODO: requests_this_child should be synchronized - aaron */,undetermined,yes
+2850,httpd,UNKNOWN,"/* Get the local & remote address
+             * TODO; error check
+             */",undetermined,yes
+3009,httpd,UNKNOWN,"/* Initialize shared static objects.
+     * TODO: Put config related statics into an sconf structure.
+     */",undetermined,yes
+3067,httpd,UNKNOWN,/* Todo; clear up statics */,undetermined,yes
+3401,httpd,UNKNOWN,"/*
+ Todo list
+ - Enforce MaxRequestWorkers somehow
+*/",undetermined,yes
+3719,httpd,UNKNOWN,"/*
+     * TODO: The atomics expect unsigned whereas we're using signed.
+     *       Need to double check that they work as expected or else
+     *       rework how we determine blocked.
+     */",undetermined,yes
+3723,httpd,UNKNOWN,/* See TODO in ap_queue_info_set_idle() */,undetermined,yes
+3725,httpd,UNKNOWN,/* See TODO in ap_queue_info_set_idle() */,undetermined,yes
+4076,httpd,UNKNOWN,"/*
+     * TODO: determine somewhere we can safely shove out diagnostics
+     *       (when enabled) at this late stage in the game:
+     * CRYPTO_mem_leaks_fp(stderr);
+     */",undetermined,yes
+4210,httpd,UNKNOWN,"/*
+     * XXX: wonder if this is still needed, this is old todo doc.
+     * (see http://www.psy.uq.edu.au/~ftp/Crypto/ssleay/TODO.html)
+     */",undetermined,yes
+4242,httpd,UNKNOWN,"/* ``MY HACK: This universe.
+                                  Just one little problem:
+                                  core keeps dumping.''
+                                            -- Unknown    */",undetermined,yes
+4348,httpd,UNKNOWN,"/* Protected from truncation, readbytes < MAX_SIZE_T
+         * FIXME: No, it's *not* protected.  -- jre */",undetermined,yes
+4449,httpd,UNKNOWN,"/*
+         * Now we force the SSL renegotiation by sending the Hello Request
+         * message to the client. Here we have to do a workaround: Actually
+         * OpenSSL returns immediately after sending the Hello Request (the
+         * intent AFAIK is because the SSL/TLS protocol says it's not a must
+         * that the client replies to a Hello Request). But because we insist
+         * on a reply (anything else is an error for us) we have to go to the
+         * ACCEPT state manually. Using SSL_set_accept_state() doesn't work
+         * here because it resets too much of the connection.  So we set the
+         * state explicitly and continue the handshake manually.
+         */",undetermined,yes
+4486,httpd,UNKNOWN,/* XXX Uses 256-bit key for now. TODO: support other sizes. */,undetermined,yes
+4518,httpd,UNKNOWN,"/* TODO: Do we need a temp pool here, or are we always shutting down? */",undetermined,yes
+4570,httpd,UNKNOWN,/* TODO: allow flags configuration. */,undetermined,yes
+4878,httpd,UNKNOWN,"/**
+ *  Maximum length of a DER encoded session.
+ *  FIXME: There is no define in OpenSSL, but OpenSSL uses 1024*10,
+ *         so this value should be ok. Although we have no warm feeling.
+ */",undetermined,yes
+4892,httpd,UNKNOWN,/* TODO: potential optimization; _timeout members as apr_interval_time_t */,undetermined,yes
+4963,httpd,UNKNOWN,"/*
+         * TODO: Error check the below... What error makes
+         * sense if the restore fails? Any?
+         */",undetermined,yes
+5127,httpd,UNKNOWN,"/**
+ * Clean out expired sessions.
+ *
+ * TODO: We need to figure out a way to clean out expired sessions from the database.
+ * The monitor hook doesn't help us that much, as we have no handle into the
+ * server, and so we need to come up with a way to do this safely.
+ */",undetermined,yes
+5138,httpd,UNKNOWN,/* TODO handle housekeeping */,undetermined,yes
+5449,httpd,UNKNOWN,/* TODO: Add the rest of dynamic worker data */,undetermined,yes
+5451,httpd,UNKNOWN,/* TODO */,undetermined,yes
+5508,httpd,UNKNOWN,"/* FIXME
+ * ProxyPassReverse and friends are documented as working inside
+ * <Location>.  But in fact they never have done in the case of
+ * more than one <Location>, because the server_conf can't see it.
+ * We need to move them to the per-dir config.
+ * Discussed in February 2005:
+ * http://marc.theaimsgroup.com/?l=apache-httpd-dev&m=110726027118798&w=2
+ */",undetermined,yes
+5719,httpd,UNKNOWN,/* TODO: offset of BALANCER_PREFIX ?? */,undetermined,yes
+5748,httpd,UNKNOWN,/* TODO: Implement as provider! */,undetermined,yes
+5779,httpd,UNKNOWN,"/* Manages the loadfactors and member status
+ *   The balancer, worker and nonce are obtained from
+ *   the request args (?b=...&w=...&nonce=....).
+ *   All other params are pulled from any POST
+ *   data that exists.
+ * TODO:
+ *   /.../<whatever>/balancer/worker/nonce
+ */",undetermined,yes
+5805,httpd,UNKNOWN,"/*
+ * This handles Netscape CONNECT method secure proxy requests.
+ * A connection is opened to the specified host and data is
+ * passed through between the WWW site and the browser.
+ *
+ * This code is based on the INTERNET-DRAFT document
+ * ""Tunneling SSL Through a WWW Proxy"" currently at
+ * http://www.mcom.com/newsref/std/tunneling_ssl.html.
+ *
+ * If proxyhost and proxyport are set, we send a CONNECT to
+ * the specified proxy..
+ *
+ * FIXME: this doesn't log the number of bytes sent, but
+ *        that may be okay, since the data is supposed to
+ *        be transparent. In fact, this doesn't log at all
+ *        yet. 8^)
+ * FIXME: doesn't check any headers initally sent from the
+ *        client.
+ * FIXME: should allow authentication, but hopefully the
+ *        generic proxy authentication is good enough.
+ * FIXME: no check for r->assbackwards, whatever that is.
+ */",undetermined,yes
+5818,httpd,UNKNOWN,"/*
+     * At this point we have a list of one or more IP addresses of
+     * the machine to connect to. If configured, reorder this
+     * list so that the ""best candidate"" is first try. ""best
+     * candidate"" could mean the least loaded server, the fastest
+     * responding server, whatever.
+     *
+     * For now we do nothing, ie we get DNS round robin.
+     * XXX FIXME
+     */",undetermined,yes
+5826,httpd,UNKNOWN,"/* FIXME: Error checking ignored.
+     */",undetermined,yes
+5878,httpd,UNKNOWN,/* TODO: Should probably clean up this logging a bit... */,undetermined,yes
+5899,httpd,UNKNOWN,/* TODO: In APR 2.x: Extend apr_sockaddr_t to possibly be a path !!! */,undetermined,yes
+5945,httpd,UNKNOWN,"/* basedir is either """", or ""/%2f"" for the ""squid %2f hack"" */",undetermined,yes
+5956,httpd,UNKNOWN,/* Add a link to the root directory (if %2f hack was used) */,undetermined,yes
+6030,httpd,UNKNOWN,/* TODO: see if ftp could use determine_connection */,undetermined,yes
+6099,httpd,UNKNOWN,/* FIXME: Check PASV against RFC1123 */,undetermined,yes
+6102,httpd,UNKNOWN,/* FIXME: Only supports IPV4 - fix in RFC2428 */,undetermined,yes
+6109,httpd,UNKNOWN,/* FIXME: Sent PORT here */,undetermined,yes
+6118,httpd,UNKNOWN,"/* IPV6 FIXME:
+ * The EPRT command replaces PORT where both IPV4 and IPV6 is supported. The first
+ * number (1,2) indicates the protocol type. Examples:
+ *   EPRT |1|132.235.1.2|6275|
+ *   EPRT |2|1080::8:800:200C:417A|5282|
+ */",undetermined,yes
+6146,httpd,UNKNOWN,/* FIXME: Handle range requests - send REST */,undetermined,yes
+6178,httpd,UNKNOWN,"/* If an encoding has been set by mistake, delete it.
+     * @@@ FIXME (e.g., for ftp://user@host/file*.tar.gz,
+     * @@@        the encoding is currently set to x-gzip)
+     */",undetermined,yes
+6319,httpd,UNKNOWN,"/* FIXME: refine this to be able to specify per-response-status
+             * policies and maybe also add option to bail out with 502
+             */",undetermined,yes
+6322,httpd,UNKNOWN,"/*@@@FIXME:
+                 * At this point in response processing of a 0.9 response,
+                 * we don't know yet whether data is binary or not.
+                 * mod_charset_lite will get control later on, so it cannot
+                 * decide on the conversion of this buffer full of data.
+                 * However, chances are that we are not really talking to an
+                 * HTTP/0.9 server, but to some different protocol, therefore
+                 * the best guess IMHO is to always treat the buffer as ""text/x"":
+                 */",undetermined,yes
+6504,httpd,UNKNOWN,/* FIXME: This needs to be able to deal with IPv6 */,undetermined,yes
+6525,httpd,UNKNOWN,/* XXX FIXME: conf->noproxies->elts is part of an opaque structure */,undetermined,yes
+6528,httpd,UNKNOWN,"/*
+     * XXX FIXME: Make sure this handled the ambiguous case of the :<PORT>
+     * after the hostname
+     * XXX FIXME: Ensure the /uri component is a case sensitive match
+     */",undetermined,yes
+6589,httpd,UNKNOWN,/* TODO: recycle direct worker */,undetermined,yes
+6601,httpd,UNKNOWN,"/*
+     * Figure out if our passed in proxy_conn_rec has a usable
+     * address cached.
+     *
+     * TODO: Handle this much better... 
+     *
+     * XXX: If generic workers are ever address-reusable, we need 
+     *      to check host and port on the conn and be careful about
+     *      spilling the cached addr from the worker.
+     */",undetermined,yes
+6639,httpd,UNKNOWN,/* TODO: See if this will break FTP */,undetermined,yes
+6788,httpd,UNKNOWN,"/*
+ * mod_expires.c
+ * version 0.0.11
+ * status beta
+ *
+ * Andrew Wilson <Andrew.Wilson@cm.cf.ac.uk> 26.Jan.96
+ *
+ * This module allows you to control the form of the Expires: header
+ * that Apache issues for each access.  Directives can appear in
+ * configuration files or in .htaccess files so expiry semantics can
+ * be defined on a per-directory basis.
+ *
+ * DIRECTIVE SYNTAX
+ *
+ * Valid directives are:
+ *
+ *     ExpiresActive on | off
+ *     ExpiresDefault <code><seconds>
+ *     ExpiresByType type/encoding <code><seconds>
+ *
+ * Valid values for <code> are:
+ *
+ *     'M'      expires header shows file modification date + <seconds>
+ *     'A'      expires header shows access time + <seconds>
+ *
+ *              [I'm not sure which of these is best under different
+ *              circumstances, I guess it's for other people to explore.
+ *              The effects may be indistinguishable for a number of cases]
+ *
+ * <seconds> should be an integer value [acceptable to atoi()]
+ *
+ * There is NO space between the <code> and <seconds>.
+ *
+ * For example, a directory which contains information which changes
+ * frequently might contain:
+ *
+ *     # reports generated by cron every hour.  don't let caches
+ *     # hold onto stale information
+ *     ExpiresDefault M3600
+ *
+ * Another example, our html pages can change all the time, the gifs
+ * tend not to change often:
+ *
+ *     # pages are hot (1 week), images are cold (1 month)
+ *     ExpiresByType text/html A604800
+ *     ExpiresByType image/gif A2592000
+ *
+ * Expires can be turned on for all URLs on the server by placing the
+ * following directive in a conf file:
+ *
+ *     ExpiresActive on
+ *
+ * ExpiresActive can also appear in .htaccess files, enabling the
+ * behaviour to be turned on or off for each chosen directory.
+ *
+ *     # turn off Expires behaviour in this directory
+ *     # and subdirectories
+ *     ExpiresActive off
+ *
+ * Directives defined for a directory are valid in subdirectories
+ * unless explicitly overridden by new directives in the subdirectory
+ * .htaccess files.
+ *
+ * ALTERNATIVE DIRECTIVE SYNTAX
+ *
+ * Directives can also be defined in a more readable syntax of the form:
+ *
+ *     ExpiresDefault ""<base> [plus] {<num> <type>}*""
+ *     ExpiresByType type/encoding ""<base> [plus] {<num> <type>}*""
+ *
+ * where <base> is one of:
+ *      access
+ *      now             equivalent to 'access'
+ *      modification
+ *
+ * where the 'plus' keyword is optional
+ *
+ * where <num> should be an integer value [acceptable to atoi()]
+ *
+ * where <type> is one of:
+ *      years
+ *      months
+ *      weeks
+ *      days
+ *      hours
+ *      minutes
+ *      seconds
+ *
+ * For example, any of the following directives can be used to make
+ * documents expire 1 month after being accessed, by default:
+ *
+ *      ExpiresDefault ""access plus 1 month""
+ *      ExpiresDefault ""access plus 4 weeks""
+ *      ExpiresDefault ""access plus 30 days""
+ *
+ * The expiry time can be fine-tuned by adding several '<num> <type>'
+ * clauses:
+ *
+ *      ExpiresByType text/html ""access plus 1 month 15 days 2 hours""
+ *      ExpiresByType image/gif ""modification plus 5 hours 3 minutes""
+ *
+ * ---
+ *
+ * Change-log:
+ * 29.Jan.96    Hardened the add_* functions.  Server will now bail out
+ *              if bad directives are given in the conf files.
+ * 02.Feb.96    Returns DECLINED if not 'ExpiresActive on', giving other
+ *              expires-aware modules a chance to play with the same
+ *              directives. [Michael Rutman]
+ * 03.Feb.96    Call tzset() before localtime().  Trying to get the module
+ *              to work properly in non GMT timezones.
+ * 12.Feb.96    Modified directive syntax to allow more readable commands:
+ *                ExpiresDefault ""now plus 10 days 20 seconds""
+ *                ExpiresDefault ""access plus 30 days""
+ *                ExpiresDefault ""modification plus 1 year 10 months 30 days""
+ * 13.Feb.96    Fix call to table_get() with NULL 2nd parameter [Rob Hartill]
+ * 19.Feb.96    Call gm_timestr_822() to get time formatted correctly, can't
+ *              rely on presence of HTTP_TIME_FORMAT in Apache 1.1+.
+ * 21.Feb.96    This version (0.0.9) reverses assumptions made in 0.0.8
+ *              about star/star handlers.  Reverting to 0.0.7 behaviour.
+ * 08.Jun.96    allows ExpiresDefault to be used with responses that use
+ *              the DefaultType by not DECLINING, but instead skipping
+ *              the table_get check and then looking for an ExpiresDefault.
+ *              [Rob Hartill]
+ * 04.Nov.96    'const' definitions added.
+ *
+ * TODO
+ * add support for Cache-Control: max-age=20 from the HTTP/1.1
+ * proposal (in this case, a ttl of 20 seconds) [ask roy]
+ * add per-file expiry and explicit expiry times - duplicates some
+ * of the mod_cern_meta.c functionality.  eg:
+ *              ExpiresExplicit index.html ""modification plus 30 days""
+ *
+ * BUGS
+ * Hi, welcome to the internet.
+ */",undetermined,yes
+7116,httpd,UNKNOWN,/* TODO add code to handle V7 MUX and Blit MUX files */,undetermined,yes
+7619,httpd,UNKNOWN,"/* Lynx 2.7 and 2.8 send 'negotiate: trans' even though they
+         * do not support transparent content negotiation, so for Lynx we
+         * ignore the negotiate header when its contents are exactly ""trans"".
+         * If future versions of Lynx ever need to say 'negotiate: trans',
+         * they can send the equivalent 'negotiate: trans, trans' instead
+         * to avoid triggering the workaround below.
+         */",undetermined,yes
+7763,httpd,UNKNOWN,"/* Note that the Alternates specification (in rfc2295) does
+         * not require that we include {length x}, so we could omit it
+         * if determining the length is too expensive.  We currently
+         * always include it though.
+         *
+         * If the variant is a CGI script, find_content_length would
+         * return the length of the script, not the output it
+         * produces, so we check for the presence of a handler and if
+         * there is one we don't add a length.
+         *
+         * XXX: TODO: This check does not detect a CGI script if we
+         * get the variant from a type map.  This needs to be fixed
+         * (without breaking things if the type map specifies a
+         * content-length, which currently leads to the correct result).
+         */",undetermined,yes
+7774,httpd,UNKNOWN,"/* This adds an appropriate Variant-Vary header if the subrequest
+     * is a multiviews resource.
+     *
+     * XXX: TODO: Note that this does _not_ handle any Vary header
+     * returned by a CGI if sub_req is a CGI script, because we don't
+     * see that Vary header yet at this point in the control flow.
+     * This won't cause any cache consistency problems _unless_ the
+     * CGI script also returns a Cache-Control header marking the
+     * response as cachable.  This needs to be fixed, also there are
+     * problems if a CGI returns an Etag header which also need to be
+     * fixed.
+     */",undetermined,yes
+7790,httpd,UNKNOWN,/* XXX todo: expires? cachability? */,undetermined,yes
+7793,httpd,UNKNOWN,/* XXX todo: merge the two cases in the if statement below */,undetermined,yes
+7796,httpd,UNKNOWN,"/* XXX: Note that we only set r->no_cache to 1, which causes
+     * Expires: <now> to be added, when responding to a HTTP/1.0
+     * client.  If we return the response to a 1.1 client, we do not
+     * add Expires <now>, because doing so would degrade 1.1 cache
+     * performance by preventing re-use of the response without prior
+     * revalidation.  On the other hand, if the 1.1 client is a proxy
+     * which was itself contacted by a 1.0 client, or a proxy cache
+     * which can be contacted later by 1.0 clients, then we currently
+     * rely on this 1.1 proxy to add the Expires: <now> when it
+     * forwards the response.
+     *
+     * XXX: TODO: Find out if the 1.1 spec requires proxies and
+     * tunnels to add Expires: <now> when forwarding the response to
+     * 1.0 clients.  I (kh) recall it is rather vague on this point.
+     * Testing actual 1.1 proxy implementations would also be nice. If
+     * Expires: <now> is not added by proxies then we need to always
+     * include Expires: <now> ourselves to ensure correct caching, but
+     * this would degrade HTTP/1.1 cache efficiency unless we also add
+     * Cache-Control: max-age=N, which we currently don't.
+     *
+     * Roy: No, we are not going to screw over HTTP future just to
+     *      ensure that people who can't be bothered to upgrade their
+     *      clients will always receive perfect server-side negotiation.
+     *      Hell, those clients are sending bogus accept headers anyway.
+     *
+     *      Manual setting of cache-control/expires always overrides this
+     *      automated kluge, on purpose.
+     */",undetermined,yes
+8011,httpd,UNKNOWN,"/*
+ * perform all the expansions on the cookies
+ *
+ * TODO: use cached time similar to how logging does it
+ */",undetermined,yes
+8120,httpd,UNKNOWN,"/*
+             *  Pass-Through Feature (`RewriteRule .. .. [PT]'):
+             *  Because the Apache 1.x API is very limited we
+             *  need this hack to pass the rewritten URL to other
+             *  modules like mod_alias, mod_userdir, etc.
+             */",undetermined,yes
+8154,httpd,UNKNOWN,"/*
+             * Hack because of underpowered API: passing the current
+             * rewritten filename through to other URL-to-filename handlers
+             * just as it were the requested URL. This is to enable
+             * post-processing by mod_alias, etc.  which always act on
+             * r->uri! The difference here is: We do not try to
+             * add the document root
+             */",undetermined,yes
+8177,httpd,UNKNOWN,"/* I think, that hack needs an explanation:
+                     * well, here is it:
+                     * mod_rewrite was written for unix systems, were
+                     * absolute file-system paths start with a slash.
+                     * URL-paths _also_ start with slashes, so they
+                     * can be easily compared with system paths.
+                     *
+                     * the following assumes, that the actual url-path
+                     * may be prefixed by the current directory path and
+                     * tries to replace the system path with the RewriteBase
+                     * URL.
+                     * That assumption is true if we use a RewriteRule like
+                     *
+                     * RewriteRule ^foo bar [R]
+                     *
+                     * (see apply_rewrite_rule function)
+                     * However on systems that don't have a / as system
+                     * root this will never match, so we skip the / after the
+                     * hostname and compare/substitute only the stuff after it.
+                     *
+                     * (note that cp was already increased to the right value)
+                     */",undetermined,yes
+8277,httpd,UNKNOWN,"/*
+                 * Crummy hack. Need to figure out whether we have been
+                 * redirected to a URL or to a file on some drive. Since I
+                 * know of no protocols that are a single letter, ignore
+                 * a : as the first or second character, and assume a file
+                 * was specified
+                 */",undetermined,yes
+8559,httpd,UNKNOWN,/* TODO annotate spec with failure reason */,undetermined,yes
+8582,httpd,UNKNOWN,"/* You can be unhappy now.
+ *
+ * This is uncool.
+ *
+ * When you create a <Section handler in httpd, the only 'easy' way to create
+ * a directory context is to parse the section, and convert it into a 'normal'
+ * Configureation option, and then collapse the entire section, in memory,
+ * back into the parent section -- from which you can then get the new directive
+ * invoked.... anyways. evil. Rici taught me how to do this hack :-)
+ */",undetermined,yes
+8585,httpd,UNKNOWN,/* TODO: Make it work on other types than just AP_FTYPE_RESOURCE? */,undetermined,yes
+8591,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+8592,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+8593,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+8594,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+8595,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+8596,httpd,UNKNOWN,/* todo: test */,undetermined,yes
+9190,httpd,UNKNOWN,"/* FIXME: Note that we might get slightly confused on chunked inputs
+         * as we'd need to compensate for the chunk lengths which may not
+         * really count.  This seems to be up for interpretation.  */",undetermined,yes
+9235,httpd,UNKNOWN,"/* This is a hack, but I can't find anyway around it.  The idea is that
+     * we don't want to send out 0 Content-Lengths if it is a head request.
+     * This happens when modules try to outsmart the server, and return
+     * if they see a HEAD request.  Apache 1.3 handlers were supposed to
+     * just return in that situation, and the core handled the HEAD.  In
+     * 2.0, if a handler returns, then the core sends an EOS bucket down
+     * the filter stack, and the content-length filter computes a C-L of
+     * zero and that gets put in the headers, and we end up sending a
+     * zero C-L to the client.  We can't just remove the C-L filter,
+     * because well behaved 2.0 handlers will send their data down the stack,
+     * and we will compute a real C-L for the head request. RBB
+     */",undetermined,yes
+9241,httpd,UNKNOWN,"/* FIXME: If we ever have a mapping from filters (apr_status_t)
+             * to HTTP error codes, this would be a good place for them.
+             *
+             * If we received the special case AP_FILTER_ERROR, it means
+             * that the filters have already handled this error.
+             * Otherwise, we should assume we have a bad request.
+             */",undetermined,yes
+9390,httpd,UNKNOWN,"/* TODO: Should move these steps into a generic function, so modules
+         * working on a suspended request can also call _ENTRY again.
+         */",undetermined,yes
+9515,httpd,UNKNOWN,"/* This is a hack, but I can't find any better way to do this.
+                 * The problem is that we have already created the sub-request,
+                 * but we just inserted the OLD_WRITE filter, and the
+                 * sub-request needs to pass its data through the OLD_WRITE
+                 * filter, or things go horribly wrong (missing data, data in
+                 * the wrong order, etc).  To fix it, if you create a
+                 * sub-request and then insert the OLD_WRITE filter before you
+                 * run the request, you need to make sure that the sub-request
+                 * data goes through the OLD_WRITE filter.  Just steal this
+                 * code.  The long-term solution is to remove the ap_r*
+                 * functions.
+                 */",undetermined,yes
+9775,httpd,UNKNOWN,"/* TODO: Not all of these defines are getting set like they do in main.c.
+     *       Missing some headers?
+     */",undetermined,yes
+10116,httpd,UNKNOWN,"/* FIXME: We need to grab the 8 verification bytes
+                     * from the wire! */",undetermined,yes
+10211,httpd,UNKNOWN,"/* check protocol
+             *
+             * FIXME:
+             * This is a quick hack and almost certainly buggy.
+             * The idea is that by putting this in mod_filter, we relieve
+             * filter implementations of the burden of fixing up HTTP headers
+             * for cases that are routinely affected by filters.
+             *
+             * Default is ALWAYS to do nothing, so as not to tread on the
+             * toes of filters which want to do it themselves.
+             *
+             */",undetermined,yes
+10501,httpd,UNKNOWN,"/* TODO - implement HTML ""allowed here"" using the stack */",undetermined,yes
+10506,httpd,UNKNOWN,"/* TODO - implement HTML ""allowed here"" */",undetermined,yes
+10551,httpd,UNKNOWN,"/* TODO: Make these Optional Functions, so that module load order doesn't matter. */",undetermined,yes
+10739,httpd,UNKNOWN,/* FIXME: hook here for rewriting start-of-data? */,undetermined,yes
+11360,httpd,UNKNOWN,"/* ###
+     * MSFT Web Folders chokes if length of DAV header value > 63 characters!
+     * To workaround that, we use separate DAV headers for versioning and
+     * live prop provider namespace URIs.
+     * ###
+     */",undetermined,yes
+12347,httpd,UNKNOWN,"/*
+    ** Hrm.  IE5 will pass unqualified hostnames for both the
+    ** Host: and Destination: headers.  This breaks the
+    ** http_vhost.c::matches_aliases function.
+    **
+    ** For now, qualify unqualified comp.hostnames with
+    ** r->server->server_hostname.
+    **
+    ** ### this is a big hack. Apache should provide a better way.
+    ** ### maybe the admin should list the unqualified hosts in a
+    ** ### <ServerAlias> block?
+    */",undetermined,yes
+12592,httpd,UNKNOWN,"/*
+        ** A locknull resource has the form:
+        **
+        **   known-dir ""/"" locknull-file
+        **
+        ** It would be nice to look into <resource> to verify this form,
+        ** but it does not have enough information for us. Instead, we
+        ** can look at the path_info. If the form does not match, then
+        ** there is no way we could have a locknull resource -- it must
+        ** be a plain, null resource.
+        **
+        ** Apache sets r->filename to known-dir/unknown-file and r->path_info
+        ** to """" for the ""proper"" case. If anything is in path_info, then
+        ** it can't be a locknull resource.
+        **
+        ** ### I bet this path_info hack doesn't work for repositories.
+        ** ### Need input from repository implementors! What kind of
+        ** ### restructure do we need? New provider APIs?
+        */",undetermined,yes
+13334,httpd,UNKNOWN,/* hack: where to update it if needed */,undetermined,yes
+13360,httpd,UNKNOWN,"/* recursion is detected here by looking at the config file name,
+     * which may already contains ""macro 'foo'"". Ok, it looks like a hack,
+     * but otherwise it is uneasy to keep this data available somewhere...
+     * the name has just the needed visibility and liveness.
+     */",undetermined,yes
+13532,httpd,UNKNOWN,/* TODO: Make a runtime config */,undetermined,yes
+13542,httpd,UNKNOWN,/* TODO: Update stats file (!) */,undetermined,yes
+13547,httpd,UNKNOWN,/* TODO: Update stats file (!) */,undetermined,yes
+13554,httpd,UNKNOWN,/* TODO: REMOVE ME BEFORE PRODUCTION (????) */,undetermined,yes
+13557,httpd,UNKNOWN,"/* TODO: Insted HN_UPDATE_SEC use
+             * the ctx->interval
+             */",undetermined,yes
+13562,httpd,UNKNOWN,"/* TODO: Add directive for tuning the update interval
+     */",undetermined,yes
+14097,httpd,UNKNOWN,"/* TODO:
+     *    - Handle multiple-value headers better. (sort them?)
+     *    - Handle Case in-sensitive Values better.
+     *        This isn't the end of the world, since it just lowers the cache
+     *        hit rate, but it would be nice to fix.
+     *
+     * The majority are case insenstive if they are values (encoding etc).
+     * Most of rfc2616 is case insensitive on header contents.
+     *
+     * So the better solution may be to identify headers which should be
+     * treated case-sensitive?
+     *  HTTP URI's (3.2.3) [host and scheme are insensitive]
+     *  HTTP method (5.1.1)
+     *  HTTP-date values (3.3.1)
+     *  3.7 Media Types [exerpt]
+     *     The type, subtype, and parameter attribute names are case-
+     *     insensitive. Parameter values might or might not be case-sensitive,
+     *     depending on the semantics of the parameter name.
+     *  4.20 Except [exerpt]
+     *     Comparison of expectation values is case-insensitive for unquoted
+     *     tokens (including the 100-continue token), and is case-sensitive for
+     *     quoted-string expectation-extensions.
+     */",undetermined,yes
+14137,httpd,UNKNOWN,"/*
+ * Reads headers from a buffer and returns an array of headers.
+ * Returns NULL on file error
+ * This routine tries to deal with too long lines and continuation lines.
+ * @@@: XXX: FIXME: currently the headers are passed thru un-merged.
+ * Is that okay, or should they be collapsed where possible?
+ */",undetermined,yes
+14142,httpd,UNKNOWN,/* FIXME: Make call to the same thing cache_select calls to crack Vary. */,undetermined,yes
+14168,httpd,UNKNOWN,/* TODO: canonicalize cache_root and strip off any trailing slashes */,undetermined,yes
+14195,httpd,UNKNOWN,/* TODO: Make defaults OS specific */,undetermined,yes
+14231,httpd,UNKNOWN,"/* TODO:
+     *    - Handle multiple-value headers better. (sort them?)
+     *    - Handle Case in-sensitive Values better.
+     *        This isn't the end of the world, since it just lowers the cache
+     *        hit rate, but it would be nice to fix.
+     *
+     * The majority are case insenstive if they are values (encoding etc).
+     * Most of rfc2616 is case insensitive on header contents.
+     *
+     * So the better solution may be to identify headers which should be
+     * treated case-sensitive?
+     *  HTTP URI's (3.2.3) [host and scheme are insensitive]
+     *  HTTP method (5.1.1)
+     *  HTTP-date values (3.3.1)
+     *  3.7 Media Types [exerpt]
+     *     The type, subtype, and parameter attribute names are case-
+     *     insensitive. Parameter values might or might not be case-sensitive,
+     *     depending on the semantics of the parameter name.
+     *  4.20 Except [exerpt]
+     *     Comparison of expectation values is case-insensitive for unquoted
+     *     tokens (including the 100-continue token), and is case-sensitive for
+     *     quoted-string expectation-extensions.
+     */",undetermined,yes
+14235,httpd,UNKNOWN,/* TODO: but we could */,undetermined,yes
+14257,httpd,UNKNOWN,/* TODO: Make call to the same thing cache_select calls to crack Vary. */,undetermined,yes
+14368,httpd,UNKNOWN,/* TODO: Make a mod_status handler. meh. */,undetermined,yes
+14481,httpd,UNKNOWN,"/* TODO: These aught to become overrideable, so that we
+     * assure a given isapi can be fooled into behaving well.
+     *
+     * The tricky bit, they aren't really a per-dir sort of
+     * config, they will always be constant across every
+     * reference to the .dll no matter what context (vhost,
+     * location, etc) they apply to.
+     */",undetermined,yes
+14559,httpd,UNKNOWN,"/* TODO: are copies really needed here?
+     */",undetermined,yes
+14653,httpd,UNKNOWN,/* Todo: Make short name!!! */,undetermined,yes
+14680,httpd,UNKNOWN,/* TODO - get rid of unixd dependency */,undetermined,yes
+14689,httpd,UNKNOWN,/* ugly hack: grab default uid and gid from unixd */,undetermined,yes
+14700,httpd,UNKNOWN,"/* FIXME - does the child need to run synchronously?
+             * esp. if we enable mod_privileges with threaded MPMs?
+             * We do need at least to ensure r outlives the child.
+             */",undetermined,yes
+14726,httpd,UNKNOWN,"/*
+ * TODO: clean up the separation between this code
+ *       and its data structures and unixd.c, as shown
+ *       by the fact that we include unixd.h. Create
+ *       mod_unixd.h which does what we need and
+ *       clean up unixd.h for what it no longer needs
+ */",undetermined,yes
+14985,httpd,UNKNOWN,"/* MSIE compatibility hack.  MSIE has some RFC issues - doesn't
+             * include the query string in the uri Authorization component
+             * or when computing the response component.  the second part
+             * works out ok, since we can hash the header and get the same
+             * result.  however, the uri from the request line won't match
+             * the uri Authorization component since the header lacks the
+             * query string, leaving us incompatable with a (broken) MSIE.
+             *
+             * the workaround is to fake a query string match if in the proper
+             * environment - BrowserMatch MSIE, for example.  the cool thing
+             * is that if MSIE ever fixes itself the simple match ought to
+             * work and this code won't be reached anyway, even if the
+             * environment is set.
+             */",undetermined,yes
+15055,httpd,UNKNOWN,/* TODO: Flag the user somehow as to the reason for the failure */,undetermined,yes
+15107,httpd,UNKNOWN,"/* TODO List
+
+- Track down all of the references to r->ap_auth_type
+   and change them to ap_auth_type()
+- Remove ap_auth_type and ap_auth_name from the
+   request_rec
+
+*/",undetermined,yes
+15165,httpd,UNKNOWN,"/* FIXME: figure out usage of socache create vs init
+ * I think the cache and mutex should be global
+ */",undetermined,yes
+15178,httpd,UNKNOWN,/* FIXME: are we at risk of this blowing up? */,undetermined,yes
+15193,httpd,UNKNOWN,/* FIXME: getting this for NOTFOUND - prolly a bug in mod_socache */,undetermined,yes
+15197,httpd,UNKNOWN,/* FIXME: getting this for NOTFOUND - prolly a bug in mod_socache */,undetermined,yes
+15547,httpd,UNKNOWN,"/*
+    The MPM, ""multi-processing model"" provides an abstraction of the
+    interface with the OS for distributing incoming connections to
+    threads/process for processing.  http_main invokes the MPM, and
+    the MPM runs until a shutdown/restart has been indicated.
+    The MPM calls out to the apache core via the ap_process_connection
+    function when a connection arrives.
+
+    The MPM may or may not be multithreaded.  In the event that it is
+    multithreaded, at any instant it guarantees a 1:1 mapping of threads
+    ap_process_connection invocations.
+
+    Note: In the future it will be possible for ap_process_connection
+    to return to the MPM prior to finishing the entire connection; and
+    the MPM will proceed with asynchronous handling for the connection;
+    in the future the MPM may call ap_process_connection again -- but
+    does not guarantee it will occur on the same thread as the first call.
+
+    The MPM further guarantees that no asynchronous behaviour such as
+    longjmps and signals will interfere with the user code that is
+    invoked through ap_process_connection.  The MPM may reserve some
+    signals for its use (i.e. SIGUSR1), but guarantees that these signals
+    are ignored when executing outside the MPM code itself.  (This
+    allows broken user code that does not handle EINTR to function
+    properly.)
+
+    The suggested server restart and stop behaviour will be ""graceful"".
+    However the MPM may choose to terminate processes when the user
+    requests a non-graceful restart/stop.  When this occurs, the MPM kills
+    all threads with extreme prejudice, and destroys the pchild pool.
+    User cleanups registered in the pchild apr_pool_t will be invoked at
+    this point.  (This can pose some complications, the user cleanups
+    are asynchronous behaviour not unlike longjmp/signal... but if the
+    admin is asking for a non-graceful shutdown, how much effort should
+    we put into doing it in a nice way?)
+
+    unix/posix notes:
+    - The MPM does not set a SIGALRM handler, user code may use SIGALRM.
+        But the preferred method of handling timeouts is to use the
+        timeouts provided by the BUFF abstraction.
+    - The proper setting for SIGPIPE is SIG_IGN, if user code changes it
+        for any of their own processing, it must be restored to SIG_IGN
+        prior to executing or returning to any apache code.
+    TODO: add SIGPIPE debugging check somewhere to make sure it's SIG_IGN
+*/",undetermined,yes
+15990,httpd,UNKNOWN,/* FIXME! See STATUS about how */,undetermined,yes

@@ -3,7 +3,7 @@ from __future__ import division, print_function
 from datetime import timedelta
 from jitterbug import *
 from supervised_models import TM,SVM,RF,DT,NB,LR
-
+from pdb import set_trace
 
 import matplotlib.pyplot as plt
 from os import listdir
@@ -348,6 +348,27 @@ def two_step_Easy(data, target, model = "RF", seed = 0):
     stats = easy.eval()
     return stats
 
+
+
+def apply_Jitterbug(train_path = "../new_data/corrected/", test_path = "../httpd/", test_file = "httpd.csv"):
+    data = load_csv(path=train_path)
+    test_df = pd.read_csv(test_path+test_file)
+    target = test_file.split(".csv")[0]
+    data[target] = test_df
+
+    jitterbug=Jitterbug(data,target)
+
+    # Learn patterns for easy-to-find SATDs
+    jitterbug.find_patterns()
+    #
+    jitterbug.easy_code()
+    jitterbug.output_target(test_path)
+
+    # Find the hard-to-find SATDs interactively
+    jitterbug.apply_hard(est=True)
+    while True:
+        jitterbug.query_hard(tmp = "../httpd/http_query.csv", output = "../httpd/httpd_rest_coded.csv", batch_size = 10)
+        set_trace()
 
 if __name__ == "__main__":
     eval(cmd())
