@@ -108,3 +108,24 @@ Collect precision, recall, F1, and cost results of Jitterbug on the corrected da
  src$ python main.py stopping_results corrected
  ```
  
+### RQ4: How to apply Jitterbug to identify SATDs in a new project?
+ - Extract code comments from the target project with [srcML](https://www.srcml.org/). The file [httpd.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd.csv) contains the extracted code comments from [Apache httpd-2.4.6](https://archive.apache.org/dist/httpd/httpd-2.4.6.tar.gz).
+ - Apply Jitterbug interactively on [httpd.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd.csv):
+ ```
+ src$ python main.py apply_Jitterbug(train_path = "../new_data/corrected/", test_path = "../httpd/", test_file = "httpd.csv")
+ ```
+ - It will first train on the corrected 10 projects to find the patterns (Easy), then extract the "easy-to-find" SATDs as [httpd_easy.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd_easy.csv). The rest of the comments will be output as [httpd_rest.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd_rest.csv).
+ - Then it will execute Hard, pause at a breakpoint, output a csv file called httpd_query.csv for the user to inspect and label. The example httpd_query.csv is shown below, the user should edit the column of "code" based on the comments in the column of "Abstract": "yes" if the comment is an SATD, "no" otherwise.
+ ![](https://github.com/ai-se/Jitterbug/blob/master/img/query.png?raw=yes)
+ - After labeling the httpd_query.csv file, the user should continue the execution by input:
+ ```
+ (Pdb) c
+ ```
+ - Jitterbug will load the labeled httpd_query.csv file and retrain its internal model to make better predictions for the "hard-to-find" SATDs. It will pause again at the breakpoint and output a new httpd_query.csv for the user to label. Current status will also be shown as *# SATDs found / # comments inspected / # estimated SATDs*:
+ ```
+ 41/50/3855
+ ```
+ - This process iterates until *# SATDs found >= target recall (e.g. 90%) \* # estimated SATDs*.
+ - Below shows the first five iterations:
+ ![](https://github.com/ai-se/Jitterbug/blob/master/img/apply.png?raw=yes)
+ - Once stopped, the labeled SATDs can be found in [httpd_rest_coded.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd_rest_coded.csv).
