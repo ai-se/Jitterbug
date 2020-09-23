@@ -108,7 +108,7 @@ Collect precision, recall, F1, and cost results of Jitterbug on the corrected da
  src$ python main.py stopping_results corrected
  ```
  
-### RQ4: How to apply Jitterbug to identify SATDs in a new project?
+## How to apply Jitterbug to identify SATDs in a new project?
  - Extract code comments from the target project with [srcML](https://www.srcml.org/). The file [httpd.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd.csv) contains the extracted code comments from [Apache httpd-2.4.6](https://archive.apache.org/dist/httpd/httpd-2.4.6.tar.gz).
  - Apply Jitterbug interactively on [httpd.csv](https://github.com/ai-se/Jitterbug/blob/master/httpd/httpd.csv):
  ```
