@@ -367,7 +367,7 @@ def apply_Jitterbug(train_path = "../new_data/corrected/", test_path = "../httpd
     # Find the hard-to-find SATDs interactively
     jitterbug.apply_hard(est=True)
     while True:
-        jitterbug.query_hard(tmp = "../httpd/http_query.csv", output = "../httpd/httpd_rest_coded.csv", batch_size = 100)
+        jitterbug.query_hard(tmp = "../httpd/http_query.csv", output = "../httpd/httpd_rest_coded.csv", batch_size = 10)
         set_trace()
 
 if __name__ == "__main__":
